@@ -1,0 +1,47 @@
+@import 'GlobalStyle';
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: $fontSize;
+    font-family: $fontFam;
+}
+
+body {
+    background-color: $black;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 1000px;
+    max-height: 100vh;
+    min-height: 100vh;
+    margin: 0 auto 0 auto;
+    padding: 15px 0;
+}
+
+@media(min-device-width: 300px)
+{
+    html{
+        font-size: $fontSize * 1.5;
+    }
+}
+
+@media(min-device-width: 479px)
+{
+    html{
+        font-size: $fontSize * 2;
+    }
+}
+
+@media(min-device-width: 576px)
+{
+    html{
+        font-size: $fontSize * 2.3;
+    }
+}
+

@@ -22,10 +22,10 @@ var configDefault =
     {
         rules: [
         { 
-            test: /\.scss$/, 
+            test: /\.(scss|css)$/, 
             use: [
             {
-                loader: MiniCssExtractPlugin.loader,
+                loader: MiniCssExtractPlugin.loader
             },
             {
                 loader: 'css-loader',
@@ -61,7 +61,8 @@ var configDefault =
     {
         alias:
         {
-            Modules: path.resolve('./resources/modules')
+            Components: path.resolve('./resources/components'),
+            GlobalStyle: path.resolve('./resources/global.scss')
         }
     },
     devServer:

@@ -1,0 +1,15 @@
+@import 'GlobalStyle';
+
+#board {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 4;
+    width: 100%;
+    padding: 0.5em;
+
+    .board-container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+}

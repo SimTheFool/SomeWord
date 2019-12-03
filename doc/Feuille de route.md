@@ -6,4 +6,4 @@ Animations - 1 week
 
 Objets et données dynamiques - 1 week
 
-Page d'accueil
+Page d'accueil + empecher rotation paysage

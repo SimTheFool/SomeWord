@@ -1,0 +1,27 @@
+@use "sass:math";
+
+@font-face {
+    font-family: "Barlow";
+    src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Barlow";
+    src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Barlow";
+    src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
+    font-weight: lighter;
+}
+
+$fontSize: 11px;
+$fontFam: "Barlow";
+
+$black: #231F20;
+$grey: rgb(92, 84, 86);
+$red:  rgb(189, 64, 68);
+$white: rgb(214, 209, 209);

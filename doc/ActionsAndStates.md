@@ -11,3 +11,4 @@
 | setScore | score `int` |
 | addRelativeScore | relativeScores `[]` |
 | setInput | input `string` |
+| setEnemyDatas | enemyDatas `object` |
