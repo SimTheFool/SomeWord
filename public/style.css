@@ -548,12 +548,7 @@ body {
   align-items: center;
   flex-grow: 4;
   color: #d6d1d1;
-  width: 100%;
-  padding: 0.5em; }
-  .word-grid .word {
-    min-width: 30%;
-    text-align: center;
-    font-weight: lighter; }
+  width: 100%; }
 
 @use "sass:math";
 @font-face {
@@ -573,8 +568,11 @@ body {
 
 .word {
   display: inline-block;
-  font-weight: bold;
-  padding: 0rem 0 0.5rem 0.5rem; }
+  padding: 0rem 0 0.5rem 0.5rem;
+  min-width: 30%;
+  min-height: 2rem;
+  text-align: center;
+  font-weight: lighter; }
 
 @use "sass:math";
 @font-face {
@@ -595,9 +593,14 @@ body {
 .input-viewer {
   display: block;
   width: 100%;
+  height: 2rem;
   color: #bd4044;
+  font-weight: bold;
   padding-top: 1rem;
   text-align: center; }
+  .input-viewer span {
+    display: inline-block;
+    padding: 0rem 0 0.5rem 0.5rem; }
 
 @use "sass:math";
 @font-face {

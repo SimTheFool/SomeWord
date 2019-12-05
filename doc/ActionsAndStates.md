@@ -2,13 +2,14 @@
 
 | actions  | related states |
 |-|-|
+| setGameInfos  | gameInfos `{}`|
 | setUserInfos | userInfos `{}` |
-| setGameStatus  | status `string`|
+| setOpponentInfos | opponentInfos `{}` |
 | addWord | words `[]`  |
 | deleteWord | words `[]` |
-| setLife | life `int` |
-| setChain | chain `int` |
-| setScore | score `int` |
-| addRelativeScore | relativeScores `[]` |
+| adjustLife | life `int` |
+| incrementChain | chain `int` |
+| resetChain | chain `int` |
+| incrementScore | score `int` |
 | setInput | input `string` |
-| setEnemyDatas | enemyDatas `object` |
+| resetInput | input `string` |

@@ -62,6 +62,8 @@ var configDefault =
         alias:
         {
             Components: path.resolve('./resources/components'),
+            Actions: path.resolve('./resources/actions'),
+            Constants: path.resolve('./resources/constants'),
             GlobalStyle: path.resolve('./resources/global.scss')
         }
     },
