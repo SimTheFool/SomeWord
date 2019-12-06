@@ -8,7 +8,23 @@ const wordsReducer = (state = [], action) => {
     switch(action.type)
     {
         case types.ADD_WORD:
-            newState[action.id] = {
+
+            let indices = [];
+            state.forEach((word, index) => {
+                if(word.value === "")
+                {
+                    indices.push(index);
+                }
+            });
+
+            if(!indices.length)
+            {
+                break;
+            }
+
+            let rdIndex = indices[Math.floor(Math.random() * indices.length)];
+
+            newState[rdIndex] = {
                 value: action.word,
                 timer: action.timer
             };
@@ -17,13 +33,23 @@ const wordsReducer = (state = [], action) => {
         case types.DELETE_WORD:
             newState[action.id] = {
                 value: "",
-                timer: gameConst.INFINITE
+                timer: gameConst.INFINITE[1]
             };
+            break;
+
+        case types.INITIALIZE_WORDS:
+            newState = [];
+            for(let i = 0; i< action.nb; i++)
+            {
+                newState.push({
+                    value: "",
+                    timer: gameConst.INFINITE[1]
+                });
+            }
             break;
             
         default:
     }
-
     return newState;
 };
 

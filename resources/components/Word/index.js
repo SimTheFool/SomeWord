@@ -5,7 +5,6 @@ import './style.scss';
 
 var Word = function(props)
 {
-
     useEffect(() => {
         if(props.timer < 0)
         {

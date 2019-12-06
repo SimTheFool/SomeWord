@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {addWord, deleteWord, adjustLife, setWordPool} from 'Actions';
+import * as actions from 'Actions';
+import * as gameConst from 'Constants/GameConst';
 
 import './style.scss';
 
@@ -11,22 +12,25 @@ import InputViewer from 'Components/InputViewer';
 var Board = function(props)
 {
     const dispatch = useDispatch();
-    const speed = useSelector(state => state.gameInfos.speed);
+    const gameInfos = useSelector(state => state.gameInfos);
     const words = useSelector(state => state.words);
     const wordPool = useSelector(state => state.wordPool);
+    const wordPoolLength = useSelector(state => state.wordPool.length);
     const input = useSelector(state => state.input);
 
     const params = useRef({
-        words,
         wordPool,
-        speed
+        speed: gameInfos.speed
     });
-    params.current.words = words;
     params.current.wordPool = wordPool;
-    params.current.speed = speed;
+    params.current.speed = gameInfos.speed;
 
-    // Getting word pool from API.
+    // Intializing words list and getting word pool from API.
     useEffect(() => {
+
+        let nb = (gameInfos.gameType === gameConst.SOLO) ? 15 : 8;
+        dispatch(actions.initializeWords(nb));
+
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE)
@@ -34,7 +38,9 @@ var Board = function(props)
                 if (xhr.status === 200)
                 {
                     let wordPool = JSON.parse(xhr.responseText);
-                    dispatch(setWordPool(wordPool));
+                    dispatch(actions.setWordPool(wordPool));
+                    gameInfos.status = gameConst.PLAYING;
+                    dispatch(actions.setGameInfos(gameInfos));
                 } else 
                 {
                     console.error('La requête wordPool n\'a pas aboutie !')
@@ -47,41 +53,33 @@ var Board = function(props)
 
     // Setting the addWord process and cleaning it.
     useEffect(() => {
-        let processId = setInterval(createWord.bind(this, params), 1000);
-        return () => {
-            clearInterval(processId);
-        }
-    }, [speed]);
-
-    // Handle word timeout effect.
-    const handleWordEscape = (id) => {
-        dispatch(deleteWord(id));
-        dispatch(adjustLife(-5));
-    };
-
-    // Create new word and add it to the store.
-    let createWord = (params) => {
-        let {words, wordPool, speed} = {...params.current};
-
-        let indices = words.filter((word, index) => {
-            if(word.value === "")
-            {
-                return true;
-            }
-        }).map((word, index) => {
-            return index;
-        });
-
-        if(!indices.length)
+        if(gameInfos.status === gameConst.BEGINNING)
         {
             return;
         }
 
-        let rdIndex = indices[Math.floor(Math.random() * indices.length)];
-        let newWord = wordPool[Math.floor(Math.random() * wordPool.length)];
-        let timer = speed;
+        let processId = setInterval(createWord.bind(this, params), gameInfos.speed[0]);
+        return () => {
+            clearInterval(processId);
+        }
+    }, [gameInfos.speed[0], gameInfos.status]);
 
-        dispatch(addWord(rdIndex, newWord, timer));
+
+
+    // Handle word timeout effect.
+    const handleWordEscape = (id) => {
+        dispatch(actions.deleteWord(id));
+        dispatch(actions.adjustLife(-5));
+    };
+
+    // Create new word and add it to the store.
+    let createWord = (params) => {
+        let {wordPool, speed} = {...params.current};
+
+        let newWord = wordPool[Math.floor(Math.random() * wordPool.length)];
+        let timer = speed[1];
+
+        dispatch(actions.addWord(newWord, timer));
     };
 
 

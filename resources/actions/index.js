@@ -21,10 +21,9 @@ export const setGameInfos = (infos) => {
     });
 };
 
-export const addWord = (id, word, timer) => {
+export const addWord = (word, timer) => {
     return ({
         type: types.ADD_WORD,
-        id,
         word,
         timer
     });
@@ -36,6 +35,13 @@ export const deleteWord = (id) => {
         id
     });
 };
+
+export const initializeWords = (nb) => {
+    return({
+        type: types.INITIALIZE_WORDS,
+        nb
+    });
+}
 
 export const setWordPool = (pool) => {
     return ({

@@ -1,0 +1,101 @@
+@import 'GlobalStyle';
+
+#home {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: $black;
+
+    #home-container{
+        display: block;
+        max-width: 1000px;
+    }
+
+    #home-title{
+        font-size: 2rem;
+        text-align: center;
+        color: $red;
+    }
+
+    #home-subtitle{
+        font-size: 1rem;
+        text-align: center;
+        color: $grey;
+        padding: 0 1rem;
+    }
+
+    form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 2rem;
+        font-size: 1.2rem;
+        color: $white;
+
+        .pseudo-input{
+            width: 100%;
+            text-align: center;
+
+            label{
+                padding: 0 1rem 0.5rem 0;
+            }
+
+            input{
+                background-color: transparent;
+                border: solid 1px $red;
+                color: $white;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+
+        .radios{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding-top: 2rem;
+
+            .radio-input{
+
+                min-width: 50%;
+
+                input{
+                    opacity: 0;
+                    width: 0;
+                }
+    
+                input:checked + label{
+                    border-left: 1px solid $red;
+                    border-right: 1px solid $red;
+                }
+    
+                label{
+                    cursor: pointer;
+                    padding: 0 0.5rem;
+                }
+    
+                div{
+                    text-align: center;
+                    margin: 0.5rem auto 0 auto;
+                }
+
+            }
+        }
+
+        .submit-button{
+            background-color: transparent;
+            border: none;
+            color: $red;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+    }
+}

@@ -338,17 +338,18 @@ body {
   margin: 0 auto 0 auto;
   padding: 15px 0; }
 
-@media (min-device-width: 300px) {
+@media (min-device-width: 300px) and (min-device-height: 395px) {
   html {
     font-size: 16.5px; } }
 
-@media (min-device-width: 479px) {
+@media (min-device-width: 479px) and (min-device-height: 479px) {
   html {
     font-size: 22px; } }
 
-@media (min-device-width: 576px) {
+@media (min-device-width: 576px) and (min-device-height: 576px) {
   html {
     font-size: 25.3px; } }
+
 
 @use "sass:math";
 @font-face {
@@ -653,4 +654,87 @@ body {
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   color: #bd4044;
   font-weight: bold; }
+
+@use "sass:math";
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
+  font-weight: normal; }
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
+  font-weight: lighter; }
+
+#home {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #231F20; }
+  #home #home-container {
+    display: block;
+    max-width: 1000px; }
+  #home #home-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #bd4044; }
+  #home #home-subtitle {
+    font-size: 1rem;
+    text-align: center;
+    color: #5c5456;
+    padding: 0 1rem; }
+  #home form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #d6d1d1; }
+    #home form .pseudo-input {
+      width: 100%;
+      text-align: center; }
+      #home form .pseudo-input label {
+        padding: 0 1rem 0.5rem 0; }
+      #home form .pseudo-input input {
+        background-color: transparent;
+        border: solid 1px #bd4044;
+        color: #d6d1d1;
+        padding: 0.2rem 0.5rem; }
+    #home form .radios {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      padding-top: 2rem; }
+      #home form .radios .radio-input {
+        min-width: 50%; }
+        #home form .radios .radio-input input {
+          opacity: 0;
+          width: 0; }
+        #home form .radios .radio-input input:checked + label {
+          border-left: 1px solid #bd4044;
+          border-right: 1px solid #bd4044; }
+        #home form .radios .radio-input label {
+          cursor: pointer;
+          padding: 0 0.5rem; }
+        #home form .radios .radio-input div {
+          text-align: center;
+          margin: 0.5rem auto 0 auto; }
+    #home form .submit-button {
+      background-color: transparent;
+      border: none;
+      color: #bd4044;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      cursor: pointer; }
 

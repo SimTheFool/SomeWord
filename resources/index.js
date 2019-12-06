@@ -2,16 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import allReducers from './reducers';
+import defaultState from 'Constants/DefaultState';
 
 import 'normalize.css';
 import './index.scss';
 
-import HUD from 'Components/HUD';
-import Board from 'Components/Board';
-import InputText from 'Components/InputText';
-
-import allReducers from './reducers';
-import defaultState from 'Constants/DefaultState';
+import App from 'Components/App';
 
 const store = createStore(
   allReducers,
@@ -22,9 +19,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <HUD/>
-        <Board/>
-        <InputText/>
+        <App/>
     </Provider>,
     document.getElementById('app')
 );
