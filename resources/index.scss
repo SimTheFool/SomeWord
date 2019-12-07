@@ -24,21 +24,21 @@ body {
     padding: 15px 0;
 }
 
-@media (min-device-width: 300px) and (min-device-height: 395px)
+@media (min-device-width: 300px) and (min-device-height: 440px)
 {
     html{
         font-size: $fontSize * 1.5;
     }
 }
 
-@media(min-device-width: 479px) and (min-device-height: 479px)
+@media(min-device-width: 479px) and (min-device-height: 552px)
 {
     html{
         font-size: $fontSize * 2;
     }
 }
 
-@media(min-device-width: 576px) and (min-device-height: 576px)
+@media(min-device-width: 576px) and (min-device-height: 604px)
 {
     html{
         font-size: $fontSize * 2.3;

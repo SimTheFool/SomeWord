@@ -8,7 +8,8 @@ import './style.scss';
 
 import HUD from 'Components/HUD';
 import Board from 'Components/Board';
-import InputText from 'Components/InputText';
+import InputTextMobile from 'Components/InputTextMobile';
+import InputTextDesktop from 'Components/InputTextDesktop';
 import Home from 'Components/Home';
 
 var App = function(props)
@@ -21,7 +22,9 @@ var App = function(props)
         dispatch(setGameInfos(gameInfos));
     }, []);
 
-    const app = (gameInfos.status === gameConst.NOT_PLAYING ) ? <Home/> : <><HUD/><Board/><InputText/></>;
+    const inputComp = (gameInfos.device === gameConst.ON_MOBILE) ? <InputTextMobile/> : <InputTextDesktop/>;
+
+const app = (gameInfos.status === gameConst.NOT_PLAYING ) ? <Home/> : <><HUD/><Board/>{inputComp}</>;
 
     return (
         <>

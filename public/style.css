@@ -338,15 +338,15 @@ body {
   margin: 0 auto 0 auto;
   padding: 15px 0; }
 
-@media (min-device-width: 300px) and (min-device-height: 395px) {
+@media (min-device-width: 300px) and (min-device-height: 440px) {
   html {
     font-size: 16.5px; } }
 
-@media (min-device-width: 479px) and (min-device-height: 479px) {
+@media (min-device-width: 479px) and (min-device-height: 552px) {
   html {
     font-size: 22px; } }
 
-@media (min-device-width: 576px) and (min-device-height: 576px) {
+@media (min-device-width: 576px) and (min-device-height: 604px) {
   html {
     font-size: 25.3px; } }
 
@@ -619,16 +619,16 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-#input-text {
+#input-text-mobile {
   display: block;
   width: 100%;
   min-height: 50px;
   padding: 0.5rem; }
-  #input-text #keyboard {
+  #input-text-mobile #keyboard {
     display: flex;
     flex-direction: column;
     justify-content: space-around; }
-    #input-text #keyboard .keyboard-line {
+    #input-text-mobile #keyboard .keyboard-line {
       display: flex;
       justify-content: space-around;
       min-width: 100%; }
@@ -654,6 +654,7 @@ body {
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   color: #bd4044;
   font-weight: bold; }
+
 
 @use "sass:math";
 @font-face {

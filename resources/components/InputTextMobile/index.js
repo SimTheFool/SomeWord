@@ -1,12 +1,12 @@
 import React from 'react';
-import {setInput, resetInput, deleteWord, incrementChain, resetChain, incrementScore} from 'Actions';
+import * as actions from 'Actions';
 import {useSelector, useDispatch} from 'react-redux';
 
 import './style.scss';
 
 import Key from 'Components/Key';
 
-var InputText = function(props)
+var InputTextMobile = function(props)
 {
 
     const dispatch = useDispatch();
@@ -28,14 +28,14 @@ var InputText = function(props)
         
         if(index !== -1)
         {
-            dispatch(deleteWord(index));
+            dispatch(actions.deleteWord(index));
             let scoreGain = Math.floor(value.length * 10 * Math.pow(chain + 1, 1.3));
-            dispatch(incrementScore(scoreGain));
-            dispatch(incrementChain());
+            dispatch(actions.incrementScore(scoreGain));
+            dispatch(actions.incrementChain());
         }
         else
         {
-            dispatch(resetChain());
+            dispatch(actions.resetChain());
         }
     };
 
@@ -44,15 +44,15 @@ var InputText = function(props)
         {
             case "ENTER":
                 checkWord(input);
-                dispatch(resetInput());
+                dispatch(actions.resetInput());
                 break;
 
             case "BACK":
-                dispatch(setInput(input.slice(0, -1)));
+                dispatch(actions.setInput(input.slice(0, -1)));
                 break;
 
             default:
-                dispatch(setInput(input + keyName));
+                dispatch(actions.setInput(input + keyName));
         }
     };
 
@@ -70,7 +70,7 @@ var InputText = function(props)
     })
 
     return (
-        <div id="input-text">
+        <div id="input-text-mobile">
             <div id="keyboard">
                 {keyboard}
             </div>
@@ -78,4 +78,4 @@ var InputText = function(props)
     );
 }
 
-export default InputText;
+export default InputTextMobile;

@@ -64,6 +64,7 @@ var configDefault =
             Components: path.resolve('./resources/components'),
             Actions: path.resolve('./resources/actions'),
             Constants: path.resolve('./resources/constants'),
+            Hooks: path.resolve('./resources/hooks'),
             GlobalStyle: path.resolve('./resources/global.scss')
         }
     },
