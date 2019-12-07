@@ -19,6 +19,6 @@ var Lifebar = function(props)
 
 Lifebar.propTypes = {
     life: PropTypes.number.isRequired
-}
+};
 
 export default Lifebar;

@@ -1,6 +1,5 @@
 import React from 'react';
-import * as actions from 'Actions';
-import {useSelector, useDispatch} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
@@ -8,51 +7,23 @@ import Key from 'Components/Key';
 
 var InputTextMobile = function(props)
 {
+    console.log('update');
 
-    const dispatch = useDispatch();
-    const input = useSelector(state => state.input);
-    const words = useSelector(state => state.words);
-    const chain = useSelector(state => state.chain);
-    let keyboard = useSelector(state => state.gameInfos.keyboard);
-
-    const checkWord = (value) => {
-
-        if(value === "")
-        {
-            return;
-        }
-
-        let index = words.findIndex((word) => {
-            return word.value === value;
-        })
-        
-        if(index !== -1)
-        {
-            dispatch(actions.deleteWord(index));
-            let scoreGain = Math.floor(value.length * 10 * Math.pow(chain + 1, 1.3));
-            dispatch(actions.incrementScore(scoreGain));
-            dispatch(actions.incrementChain());
-        }
-        else
-        {
-            dispatch(actions.resetChain());
-        }
-    };
+    let keyboard = props.keyboard;
 
     const handleTouch = (keyName) => {
         switch(keyName)
         {
             case "ENTER":
-                checkWord(input);
-                dispatch(actions.resetInput());
+                props.handleEnterKey();
                 break;
 
             case "BACK":
-                dispatch(actions.setInput(input.slice(0, -1)));
+                props.handleBackspaceKey();
                 break;
 
             default:
-                dispatch(actions.setInput(input + keyName));
+                props.handleLetterKey(keyName);
         }
     };
 
@@ -67,7 +38,7 @@ var InputTextMobile = function(props)
                 {keys}
             </div>
         )
-    })
+    });
 
     return (
         <div id="input-text-mobile">
@@ -76,6 +47,12 @@ var InputTextMobile = function(props)
             </div>
         </div>
     );
-}
+};
+
+InputTextMobile.propTypes = {
+    handleLetterKey: PropTypes.func.isRequired,
+    handleBackspaceKey: PropTypes.func.isRequired,
+    handleEnterKey: PropTypes.func.isRequired
+};
 
 export default InputTextMobile;
