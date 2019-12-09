@@ -28,6 +28,11 @@ var InputTextDesktop = function(props)
     useEffect(() => {
         document.addEventListener('keypress', handleKeyPress);
         document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keypress', handleKeyPress);
+            document.removeEventListener('keydown', handleKeyDown);
+        };
     }, []);
 
     return (

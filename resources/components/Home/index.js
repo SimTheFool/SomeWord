@@ -9,7 +9,11 @@ import './style.scss';
 
 var Home = function(props)
 {
-    const [pseudo, setPseudo] = useState("");
+    const gameInfos = {...useSelector(state => state.gameInfos)};
+    const userInfos = {...useSelector(state => state.userInfos)};
+    const dispatch = useDispatch();
+
+    const [pseudo, setPseudo] = useState(userInfos.pseudo);
     const handlePseudoChange = (e) => {
         setPseudo(e.currentTarget.value);
     };
@@ -23,10 +27,6 @@ var Home = function(props)
     const handleGameTypeChange = (e) => {
         setGameType(e.currentTarget.value);
     };
-    
-    const gameInfos = {...useSelector(state => state.gameInfos)};
-    const userInfos = {...useSelector(state => state.userInfos)};
-    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +37,6 @@ var Home = function(props)
         userInfos.pseudo = pseudo;
         dispatch(setUserInfos(userInfos));
     };
-
 
     return (
         <div id="home">

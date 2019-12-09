@@ -5,17 +5,8 @@ import './style.scss';
 
 var Lifebar = function(props)
 {
-    const life = Math.max(0, props.life)
-
-    useEffect(() => {
-        if(life <= 0)
-        {
-            props.onLifeZero();
-        }
-    }, [props.life]);
-
     let style = {
-        height: `${life}%`
+        height: `${props.life}%`
     };
 
     return (
@@ -26,8 +17,7 @@ var Lifebar = function(props)
 };
 
 Lifebar.propTypes = {
-    life: PropTypes.number.isRequired,
-    onLifeZero: PropTypes.func.isRequired
+    life: PropTypes.number.isRequired
 };
 
 export default Lifebar;

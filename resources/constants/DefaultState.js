@@ -2,7 +2,11 @@ import * as gameConst from 'Constants/GameConst';
 
 const defaultState = {
     userInfos:{
-        pseudo: ""
+        pseudo: "",
+        bestChain: 0,
+        typos: 0,
+        timeElapsed: 0,
+        speedReached: gameConst.VERY_SLOW
     },
     gameInfos: {
         device: gameConst.ON_DESKTOP,
@@ -13,7 +17,7 @@ const defaultState = {
     },
     input: "",
     chain: 0,
-    life: 100,
+    life: 5,
     score: 0,
     words: [],
     wordPool: []

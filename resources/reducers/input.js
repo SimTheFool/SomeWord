@@ -9,9 +9,15 @@ const inputReducer = (state = null, action) => {
         case types.SET_INPUT:
             newState = action.value;
             break;
+
         case types.RESET_INPUT:
             newState = "";
             break;
+
+        case types.INITIALIZE_CURRENT_GAME:
+            newState = "";
+            break;
+
         default:
             newState = state;
     }
