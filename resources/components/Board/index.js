@@ -8,28 +8,38 @@ import './style.scss';
 import Flash from 'Components/Flash';
 import WordGrid from 'Components/WordGrid';
 import InputViewer from 'Components/InputViewer';
+import useRefCallback from 'Hooks/useRefCallback';
 
 var Board = function(props)
 {
     const dispatch = useDispatch();
-    const gameInfos = useSelector(state => state.gameInfos);
+    const gameInfos = {...useSelector(state => state.gameInfos)};
     const words = useSelector(state => state.words);
     const wordPool = useSelector(state => state.wordPool);
     const wordPoolLength = useSelector(state => state.wordPool.length);
     const input = useSelector(state => state.input);
 
-    const params = useRef({
-        wordPool,
-        speed: gameInfos.speed
-    });
-    params.current.wordPool = wordPool;
-    params.current.speed = gameInfos.speed;
+    // Create new word and add it to the store.
+    const handleCreateWord = function() {
+        dispatch(actions.addWord(wordPool, gameInfos.speed[1]));
+    };
+    let handleCreateWordRef = useRefCallback(handleCreateWord);
+
+    // Handle word timeout effect.
+    const handleWordEscape = (id) => {
+        dispatch(actions.deleteWord(id));
+        dispatch(actions.adjustLife(-5));
+    };
+
 
     // Intializing words list and getting word pool from API.
     useEffect(() => {
+        if(gameInfos.status !== gameConst.BEGINNING)
+        {
+            return;
+        }
 
-        let nb = (gameInfos.gameType === gameConst.SOLO) ? 15 : 8;
-        dispatch(actions.initializeWords(nb));
+        dispatch(actions.initializeCurrentGame(gameInfos));
 
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
@@ -39,6 +49,7 @@ var Board = function(props)
                 {
                     let wordPool = JSON.parse(xhr.responseText);
                     dispatch(actions.setWordPool(wordPool));
+
                     gameInfos.status = gameConst.PLAYING;
                     dispatch(actions.setGameInfos(gameInfos));
                 } else 
@@ -49,38 +60,20 @@ var Board = function(props)
         };
         xhr.open('GET', './wordsPool.json');
         xhr.send();
-    }, []);
+    }, [gameInfos.status]);
 
     // Setting the addWord process and cleaning it.
     useEffect(() => {
-        if(gameInfos.status === gameConst.BEGINNING)
-        {
-            return;
-        }
+        let shouldSetInterval = gameInfos.status === gameConst.PLAYING;
+        if(!shouldSetInterval){return;}
 
-        let processId = setInterval(createWord.bind(this, params), gameInfos.speed[0]);
+        let processId = setInterval(handleCreateWordRef, gameInfos.speed[0]);
+        
         return () => {
+            if(!shouldSetInterval){return;}
             clearInterval(processId);
         }
     }, [gameInfos.speed[0], gameInfos.status]);
-
-
-
-    // Handle word timeout effect.
-    const handleWordEscape = (id) => {
-        dispatch(actions.deleteWord(id));
-        dispatch(actions.adjustLife(-5));
-    };
-
-    // Create new word and add it to the store.
-    let createWord = (params) => {
-        let {wordPool, speed} = {...params.current};
-
-        let newWord = wordPool[Math.floor(Math.random() * wordPool.length)];
-        let timer = speed[1];
-
-        dispatch(actions.addWord(newWord, timer));
-    };
 
 
     return (

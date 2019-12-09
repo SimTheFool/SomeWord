@@ -6,13 +6,16 @@ import './style.scss';
 var Word = function(props)
 {
     useEffect(() => {
-        if(props.timer < 0)
-        {
-            return;
-        }
+        let shouldSetTimeout = props.timer >= 0;
+        if(!shouldSetTimeout){return;}
 
-        setTimeout( props.onWordEscape.bind(this, props.id), props.timer);        
-    });
+        let processId = setTimeout( props.onWordEscape.bind(this, props.id), props.timer);
+
+        return () => {
+            if(!shouldSetTimeout){return;}
+            clearTimeout(processId);
+        };
+    }, [props.word]);
 
     return (
         <div className="word">
@@ -28,7 +31,4 @@ Word.propTypes = {
     onWordEscape: PropTypes.func.isRequired
 };
 
-export default React.memo(Word, (prev, next) => {
-    let dontRender = prev.word === next.word && prev.timer === next.timer;
-    return dontRender;
-});
+export default Word;

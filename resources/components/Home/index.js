@@ -24,8 +24,8 @@ var Home = function(props)
         setGameType(e.currentTarget.value);
     };
     
-    const gameInfos = useSelector(state => state.gameInfos);
-    const userInfos = useSelector(state => state.userInfos);
+    const gameInfos = {...useSelector(state => state.gameInfos)};
+    const userInfos = {...useSelector(state => state.userInfos)};
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {

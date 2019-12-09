@@ -1,0 +1,11 @@
+@import 'GlobalStyle';
+
+#app {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 1000px;
+    height: 100vh;
+    margin: 0 auto 0 auto;
+    padding: 15px 0;
+}

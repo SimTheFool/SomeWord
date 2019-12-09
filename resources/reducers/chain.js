@@ -10,8 +10,13 @@ const chainReducer = (state = null, action) => {
             newState = state + 1;
             break;
         case types.RESET_CHAIN:
-                newState = 0;
-                break;
+            newState = 0;
+            break;
+
+        case types.INITIALIZE_CURRENT_GAME:
+            newState = 0;
+            break;
+            
         default:
             newState = state;
     }

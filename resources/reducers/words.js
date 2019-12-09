@@ -10,7 +10,7 @@ const wordsReducer = (state = [], action) => {
         case types.ADD_WORD:
 
             let indices = [];
-            state.forEach((word, index) => {
+            newState.forEach((word, index) => {
                 if(word.value === "")
                 {
                     indices.push(index);
@@ -25,7 +25,7 @@ const wordsReducer = (state = [], action) => {
             let rdIndex = indices[Math.floor(Math.random() * indices.length)];
 
             newState[rdIndex] = {
-                value: action.word,
+                value: action.wordPool[Math.floor(Math.random() * action.wordPool.length)],
                 timer: action.timer
             };
             break;
@@ -37,9 +37,20 @@ const wordsReducer = (state = [], action) => {
             };
             break;
 
-        case types.INITIALIZE_WORDS:
+        case types.DELETE_ALL_WORDS:
+            newState = newState.map((word) => {
+                return {
+                    value: "",
+                    timer: gameConst.INFINITE[1]
+                }
+            });
+            break;
+
+        case types.INITIALIZE_CURRENT_GAME:
             newState = [];
-            for(let i = 0; i< action.nb; i++)
+            let nb= (action.infos.gameType === gameConst.SOLO) ? 15 : 8;
+
+            for(let i = 0; i< nb; i++)
             {
                 newState.push({
                     value: "",

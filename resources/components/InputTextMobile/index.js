@@ -7,8 +7,6 @@ import Key from 'Components/Key';
 
 var InputTextMobile = function(props)
 {
-    console.log('update');
-
     let keyboard = props.keyboard;
 
     const handleTouch = (keyName) => {

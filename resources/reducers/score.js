@@ -9,6 +9,11 @@ const scoreReducer = (state = null, action) => {
         case types.INCREMENT_SCORE:
             newState = state + action.value;
             break;
+
+        case types.INITIALIZE_CURRENT_GAME:
+            newState = 0;
+            break;
+
         default:
             newState = state;
     }

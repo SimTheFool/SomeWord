@@ -1,7 +1,7 @@
 import {useRef} from 'react';
 
 
-const useRefCallback = (callback) => {
+const useRefCallback = (callback, thisObject) => {
 
     const callbackRef = useRef(callback);
     callbackRef.current = callback;
@@ -10,8 +10,8 @@ const useRefCallback = (callback) => {
         var args = Array.from(arguments);
         let callback = callbackRef.current;
 
-        callback.apply(null, args);
-    }
+        callback.apply(thisObject, args);
+    };
 };
 
 export default useRefCallback;

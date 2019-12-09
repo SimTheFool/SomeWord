@@ -1,0 +1,59 @@
+@import 'GlobalStyle';
+
+#gameover-modal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-content: space-between;
+    align-items: baseline;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    width: 100%;
+
+    background-color: $black;
+
+    #gameover-title{
+        text-align: center;
+        width: 100%;
+        color: $red;
+        font-size: 1.5rem;
+        font-weight:  bold;
+    }
+
+    #gameover-recap{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 1rem 0;
+        color: $white;
+
+        .gameover-list{
+            display: inline-block;
+            list-style: none;
+            padding: 0;
+            width: 50%;
+            text-align: center;
+
+            .gameover-pseudo{
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+                color: $grey;
+            }
+        }
+    }
+
+    button{
+        width: 50%;
+        text-align: center;
+        background-color: transparent;
+        color: $red;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight:  bold;
+    }
+}

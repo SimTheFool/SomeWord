@@ -1,5 +1,8 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import useRefCallback from 'Hooks/useRefCallback';
+import * as gameConst from 'Constants/GameConst';
+import * as actions from 'Actions';
 
 import './style.scss';
 
@@ -10,15 +13,24 @@ import Lifebar from 'Components/Lifebar';
 
 var HUD = function(props)
 {
+    const dispatch = useDispatch();
     const chain = useSelector(state => state.chain);
     const pseudo = useSelector(state => state.userInfos.pseudo);
     const score = useSelector(state => state.score);
     const life = useSelector(state => state.life);
+    const gameInfos = {...useSelector(state => state.gameInfos)};
+
+    const handleLifeZero = function() {
+        gameInfos.status = gameConst.WINNING;
+        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.deleteAllWords());
+    };
+    let handleLifeZeroRef = useRefCallback(handleLifeZero);
 
     return (
         <div id="HUD">
             <div className="HUD-container">
-                <Lifebar life={life}/>
+                <Lifebar life={life} onLifeZero={handleLifeZeroRef}/>
                 <Pseudo pseudo={pseudo}/>
                 <Chain chain={chain}/>
                 <Score score={score}/>
