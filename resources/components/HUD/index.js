@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import useRefCallback from 'Hooks/useRefCallback';
+import useSubscriber from 'Hooks/useSubscriber';
 import * as gameConst from 'Constants/GameConst';
 import * as actions from 'Actions';
 
@@ -19,6 +20,15 @@ var HUD = function(props)
     const score = useSelector(state => state.score);
     const life = useSelector(state => Math.max(0, state.life));
     const gameInfos = {...useSelector(state => state.gameInfos)};
+    const userInfos = {...useSelector(state => state.userInfos)};
+
+    const chainSubscriber = useSubscriber(state => state.chain, (prev, next) => {
+        if(next > userInfos.bestChain)
+        {
+            userInfos.bestChain = next;
+            dispatch(actions.setUserInfos(userInfos));
+        }
+    }, 0);
 
     const handleLifeZero = function() {
         gameInfos.status = gameConst.WINNING;
@@ -27,7 +37,8 @@ var HUD = function(props)
     };
 
     useEffect(() => {
-        // store subscription
+        const chainUnsubscriber = chainSubscriber();
+        return chainUnsubscriber;        
     }, []);
 
     useEffect(() => {
