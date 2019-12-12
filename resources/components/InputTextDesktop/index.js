@@ -35,10 +35,7 @@ var InputTextDesktop = function(props)
         };
     }, []);
 
-    return (
-        <>
-        </>
-    );
+    return null;
 };
 
 InputTextDesktop.propTypes = {

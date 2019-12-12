@@ -17,13 +17,14 @@ var App = function(props)
     const gameInfos = {...useSelector(state => state.gameInfos)};
     const dispatch = useDispatch();
 
+    // Registering device type.
     useEffect(() => {
         gameInfos.device = (isMobile) ? gameConst.ON_MOBILE : gameConst.ON_DESKTOP;
         dispatch(actions.setGameInfos(gameInfos));
     }, []);
 
+    // Recording time on begin and end for the current game.
     useEffect(() => {
-
         if(gameInfos.status === gameConst.PLAYING)
         {
             dispatch(actions.setStartTime(new Date()));
@@ -33,7 +34,6 @@ var App = function(props)
         {
             dispatch(actions.setEndTime(new Date()));
         }
-
     }, [gameInfos.status]);
 
     let app;

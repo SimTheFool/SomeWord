@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import useRefCallback from 'Hooks/useRefCallback';
-import useSubscriber from 'Hooks/useSubscriber';
 import * as gameConst from 'Constants/GameConst';
 import * as actions from 'Actions';
 
@@ -18,22 +16,23 @@ var HUD = function(props)
     const chain = useSelector(state => state.chain);
     const userBestChain = useSelector(state => state.userInfos.bestChain);
     const pseudo = useSelector(state => state.userInfos.pseudo);
-    const score = useSelector(state => state.score);
+    const score = useSelector(state => Math.floor(state.score));
     const life = useSelector(state => Math.max(0, state.life));
-    const gameInfos = {...useSelector(state => state.gameInfos)};
 
-    const handleLifeZero = function() {
+    const triggerGameOver = function() {
         dispatch(actions.setStatus(gameConst.WINNING));
         dispatch(actions.deleteAllWords());
     };
 
+    // Trigger game over when no more life.
     useEffect(() => {
         if(life <= 0)
         {
-            handleLifeZero();
+            triggerGameOver();
         }
     }, [life]);
 
+    // Set user best chain for the current game.
     useEffect(() => {
         if(chain > userBestChain)
         {

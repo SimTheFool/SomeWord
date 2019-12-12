@@ -6,15 +6,13 @@ import './style.scss';
 var Word = function(props)
 {
     useEffect(() => {
-        let shouldSetTimeout = props.timer >= 0;
-        if(!shouldSetTimeout){return;}
-
-        let processId = setTimeout( props.onWordEscape.bind(this, props.id), props.timer);
-
-        return () => {
-            if(!shouldSetTimeout){return;}
-            clearTimeout(processId);
-        };
+        if(props.timer >= 0)
+        {
+            let processId = setTimeout( props.onWordEscape.bind(this, props.id), props.timer);
+            return () => {
+                clearTimeout(processId);
+            };
+        }        
     }, [props.word]);
 
     return (

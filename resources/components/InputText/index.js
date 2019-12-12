@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import useRefCallback from 'Hooks/useRefCallback';
 import * as gameConst from 'Constants/GameConst';
 import * as actions from 'Actions';
 
 import InputTextMobile from 'Components/InputTextMobile';
 import InputTextDesktop from 'Components/InputTextDesktop';
-import useRefCallback from 'Hooks/useRefCallback';
 
 var InputText = function(props)
 {
@@ -24,12 +24,12 @@ var InputText = function(props)
 
         let index = words.findIndex((word) => {
             return word.value === value;
-        })
+        });
         
         if(index !== -1)
         {
             dispatch(actions.deleteWord(index));
-            let scoreGain = Math.floor(value.length * 10 * Math.pow(chain + 1, 1.3));
+            let scoreGain = value.length * 10 * (1 + gameConst.CHAIN_FACTOR(chain));
             dispatch(actions.incrementScore(scoreGain));
             dispatch(actions.incrementChain());
         }

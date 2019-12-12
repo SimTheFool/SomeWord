@@ -533,27 +533,6 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-#flash {
-  display: block;
-  width: 100%;
-  max-height: 1rem; }
-
-@use "sass:math";
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
-  font-weight: normal; }
-
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
-  font-weight: bold; }
-
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
-  font-weight: lighter; }
-
 .word-grid {
   display: flex;
   flex-wrap: wrap;

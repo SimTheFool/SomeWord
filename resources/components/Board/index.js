@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import useRefCallback from 'Hooks/useRefCallback';
 import * as actions from 'Actions';
 import * as gameConst from 'Constants/GameConst';
 
 import './style.scss';
 
-import Flash from 'Components/Flash';
 import WordGrid from 'Components/WordGrid';
 import InputViewer from 'Components/InputViewer';
-import useRefCallback from 'Hooks/useRefCallback';
+
 
 var Board = function(props)
 {
@@ -16,7 +16,6 @@ var Board = function(props)
     const gameInfos = {...useSelector(state => state.gameInfos)};
     const words = useSelector(state => state.words);
     const wordPool = useSelector(state => state.wordPool);
-    const wordPoolLength = useSelector(state => state.wordPool.length);
     const input = useSelector(state => state.input);
     const [speedIndex, setSpeedIndex] = useState(1);
     const [createWordPID, setCreateWordPID] = useState(null);
@@ -79,15 +78,13 @@ var Board = function(props)
     // Setting the addWord process.
     useEffect(() => {
 
-        if(gameInfos.status !== gameConst.PLAYING)
+        if(gameInfos.status === gameConst.PLAYING)
         {
-            return;
-        }
+            createWordRef();
 
-        createWordRef();
-
-        return () => {
-            cleanCreateWordRef();
+            return () => {
+                cleanCreateWordRef();
+            };
         }
 
     }, [gameInfos.status]);
