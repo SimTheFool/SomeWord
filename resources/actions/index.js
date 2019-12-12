@@ -7,6 +7,47 @@ export const setUserInfos = (infos) => {
     });
 };
 
+export const setPseudo = (pseudo) => {
+    return ({
+        type: types.SET_PSEUDO,
+        pseudo
+    });
+};
+
+export const setBestChain = (bestChain) => {
+    return ({
+        type: types.SET_BEST_CHAIN,
+        bestChain
+    });
+};
+
+export const incrementTypos = () => {
+    return ({
+        type: types.INCREMENT_TYPOS
+    });
+};
+
+export const setStartTime = (time) => {
+    return ({
+        type: types.SET_START_TIME,
+        time
+    });
+};
+
+export const setEndTime = (time) => {
+    return ({
+        type: types.SET_END_TIME,
+        time
+    });
+};
+
+export const setBestSpeed = (bestSpeed) => {
+    return ({
+        type: types.SET_BEST_SPEED,
+        bestSpeed
+    });
+};
+
 export const setOpponentInfos = (infos) => {
     return ({
         type: types.SET_OPPONENT_INFOS,
@@ -18,6 +59,20 @@ export const setGameInfos = (infos) => {
     return ({
         type: types.SET_GAME_INFOS,
         infos
+    });
+};
+
+export const setStatus = (status) => {
+    return ({
+        type: types.SET_STATUS,
+        status
+    });
+};
+
+export const setSpeed = (speedIndex) => {
+    return ({
+        type: types.SET_SPEED,
+        speedIndex
     });
 };
 

@@ -800,16 +800,17 @@ body {
       width: 50%;
       text-align: center; }
       #gameover-modal #gameover-recap .gameover-list .gameover-pseudo {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         margin-bottom: 0.5rem;
         color: #5c5456; }
-  #gameover-modal button {
+  #gameover-modal .gameover-button {
     width: 50%;
-    text-align: center;
-    background-color: transparent;
-    color: #bd4044;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold; }
+    text-align: center; }
+    #gameover-modal .gameover-button button {
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: transparent;
+      color: #bd4044;
+      border: none;
+      cursor: pointer; }
 

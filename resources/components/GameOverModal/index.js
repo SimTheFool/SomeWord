@@ -9,15 +9,17 @@ function GameOverModal(props)
 {
     const dispatch = useDispatch();
     const gameInfos = {...useSelector(state => state.gameInfos)};
+    const userInfos = {...useSelector(state => state.userInfos)};
+
+    let timeElapsed = (userInfos.endTime - userInfos.startTime)/1000;
+    timeElapsed = `${Math.floor(timeElapsed/60)} min ${Math.floor(timeElapsed % 60)} sec`;
 
     const handlePlayAgain = () => {
-        gameInfos.status = gameConst.BEGINNING;
-        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setStatus(gameConst.BEGINNING));
     };
 
     const handleBackToHome = () => {
-        gameInfos.status = gameConst.NOT_PLAYING;
-        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setStatus(gameConst.NOT_PLAYING));
     };
 
 
@@ -30,29 +32,33 @@ function GameOverModal(props)
             <div id="gameover-recap">
                 <ul className="gameover-list">
                     <li className="gameover-item gameover-pseudo">
-                        Brenda
+                        {userInfos.pseudo}
                     </li>
                     <li className="gameover-item">
-                        Best chain: 5
+                        Best chain : {userInfos.bestChain}
                     </li>
                     <li className="gameover-item">
-                        Typos: 15
+                        Typos : {userInfos.typos}
                     </li>
                     <li className="gameover-item">
-                        Time elapsed: 12:23
+                        {timeElapsed}
                     </li>
                     <li className="gameover-item">
-                        Speed reached: EXTREME
+                        Speed reached : {userInfos.bestSpeed}
                     </li>
                 </ul>
             </div>
 
-            <button onClick={handlePlayAgain}>
-                Play Again ?
-            </button>
-            <button onClick={handleBackToHome}>
-                Back to home
-            </button>
+            <div className="gameover-button">
+                <button onClick={handlePlayAgain}>
+                    Play Again ?
+                </button>
+            </div>
+            <div className="gameover-button">
+                <button onClick={handleBackToHome}>
+                    Back to home
+                </button>
+            </div>
         </div>
     );
 }

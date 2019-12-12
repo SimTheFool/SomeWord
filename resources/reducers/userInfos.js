@@ -17,6 +17,30 @@ const userInfosReducer = (state = {}, action) => {
             newState.pseudo = pseudo;
             break;
 
+        case types.SET_PSEUDO:
+            newState.pseudo = action.pseudo;
+            break;
+        
+        case types.SET_BEST_CHAIN:
+            newState.bestChain = action.bestChain;
+            break;
+
+        case types.INCREMENT_TYPOS:
+            newState.typos ++;
+            break;
+
+        case types.SET_START_TIME:
+            newState.startTime = action.time.getTime();
+            break;
+
+        case types.SET_END_TIME:
+            newState.endTime = action.time.getTime();
+            break;
+
+        case types.SET_BEST_SPEED:
+            newState.bestSpeed = action.bestSpeed;
+            break;
+
         default:
     }
 

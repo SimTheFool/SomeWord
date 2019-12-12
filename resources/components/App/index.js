@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {isMobile} from 'mobile-device-detect';
 import {useSelector, useDispatch} from 'react-redux';
-import {setGameInfos} from 'Actions';
+import * as actions from 'Actions';
 import * as gameConst from 'Constants/GameConst';
 
 import './style.scss';
@@ -19,8 +19,22 @@ var App = function(props)
 
     useEffect(() => {
         gameInfos.device = (isMobile) ? gameConst.ON_MOBILE : gameConst.ON_DESKTOP;
-        dispatch(setGameInfos(gameInfos));
+        dispatch(actions.setGameInfos(gameInfos));
     }, []);
+
+    useEffect(() => {
+
+        if(gameInfos.status === gameConst.PLAYING)
+        {
+            dispatch(actions.setStartTime(new Date()));
+        }
+
+        if(gameInfos.status === gameConst.WINNING || gameInfos.status === gameConst.LOOSING)
+        {
+            dispatch(actions.setEndTime(new Date()));
+        }
+
+    }, [gameInfos.status]);
 
     let app;
     if(gameInfos.status === gameConst.NOT_PLAYING)

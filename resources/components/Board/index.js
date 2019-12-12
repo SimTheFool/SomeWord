@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import * as actions from 'Actions';
 import * as gameConst from 'Constants/GameConst';
@@ -18,19 +18,35 @@ var Board = function(props)
     const wordPool = useSelector(state => state.wordPool);
     const wordPoolLength = useSelector(state => state.wordPool.length);
     const input = useSelector(state => state.input);
+    const [speedIndex, setSpeedIndex] = useState(1);
+    const [createWordPID, setCreateWordPID] = useState(null);
 
-    // Create new word and add it to the store.
-    const handleCreateWord = function() {
-        dispatch(actions.addWord(wordPool, gameInfos.speed[1]));
+    const createWord = () => {
+
+        const effectiveWords = words.filter((word) => {
+            return word.value !== "";
+        });
+
+        const delay = gameConst.MIN_SPAWN_DELAY + (effectiveWords.length / words.length) * (gameConst.MAX_SPAWN_DELAY - gameConst.MIN_SPAWN_DELAY);
+
+        const PID = setTimeout(() => {
+            dispatch(actions.addWord(wordPool, gameInfos.speed.unspawnDelay));
+            createWordRef();
+        }, delay);
+
+        setCreateWordPID(PID);
     };
-    let handleCreateWordRef = useRefCallback(handleCreateWord);
+    const createWordRef = useRefCallback(createWord);
+
+    const cleanCreateWordRef = useRefCallback(() => {
+        clearTimeout(createWordPID);
+    });
 
     // Handle word timeout effect.
     const handleWordEscape = (id) => {
         dispatch(actions.deleteWord(id));
         dispatch(actions.adjustLife(-5));
     };
-
 
     // Intializing words list and getting word pool from API.
     useEffect(() => {
@@ -49,9 +65,7 @@ var Board = function(props)
                 {
                     let wordPool = JSON.parse(xhr.responseText);
                     dispatch(actions.setWordPool(wordPool));
-
-                    gameInfos.status = gameConst.PLAYING;
-                    dispatch(actions.setGameInfos(gameInfos));
+                    dispatch(actions.setStatus(gameConst.PLAYING));
                 } else 
                 {
                     console.error('La requête wordPool n\'a pas aboutie !')
@@ -62,18 +76,44 @@ var Board = function(props)
         xhr.send();
     }, [gameInfos.status]);
 
-    // Setting the addWord process and cleaning it.
+    // Setting the addWord process.
     useEffect(() => {
-        let shouldSetInterval = gameInfos.status === gameConst.PLAYING;
-        if(!shouldSetInterval){return;}
 
-        let processId = setInterval(handleCreateWordRef, gameInfos.speed[0]);
-        
-        return () => {
-            if(!shouldSetInterval){return;}
-            clearInterval(processId);
+        if(gameInfos.status !== gameConst.PLAYING)
+        {
+            return;
         }
-    }, [gameInfos.speed[0], gameInfos.status]);
+
+        createWordRef();
+
+        return () => {
+            cleanCreateWordRef();
+        }
+
+    }, [gameInfos.status]);
+
+
+    // Setting the change speed effect. This effect must be cleared and set again after each speed changing.
+    useEffect(() => {
+
+        if(gameInfos.status === gameConst.PLAYING && speedIndex < gameConst.SPEEDS.length)
+        {
+            let changeSpeedPID = setTimeout(() => {
+                setSpeedIndex(speedIndex + 1);
+                dispatch(actions.setSpeed(speedIndex));                
+            }, gameConst.CHANGE_SPEED_DELAY);
+    
+            return () => {
+                clearTimeout(changeSpeedPID);
+            };
+        }
+
+    }, [gameInfos.speed.name, gameInfos.status])
+
+    // Recording best speed.
+    useEffect(() =>{
+        dispatch(actions.setBestSpeed(gameInfos.speed.name));
+    }, [gameInfos.speed.name]);
 
 
     return (

@@ -1,4 +1,5 @@
 import * as types from 'Constants/ActionTypes';
+import {SPEEDS} from 'Constants/GameConst';
 import { bindActionCreators } from 'redux';
 
 const gameInfosReducer = (state = {}, action) => {
@@ -10,6 +11,15 @@ const gameInfosReducer = (state = {}, action) => {
         case types.SET_GAME_INFOS:
             newState = action.infos;
             break;
+
+        case types.SET_STATUS:
+            newState.status = action.status;
+            break;
+
+        case types.SET_SPEED:
+            newState.speed = SPEEDS[action.speedIndex];
+            break;
+
         default:
     }
 

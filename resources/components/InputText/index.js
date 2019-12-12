@@ -35,6 +35,7 @@ var InputText = function(props)
         }
         else
         {
+            dispatch(actions.incrementTypos());
             dispatch(actions.resetChain());
         }
     };

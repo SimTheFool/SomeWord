@@ -33,7 +33,7 @@ const wordsReducer = (state = [], action) => {
         case types.DELETE_WORD:
             newState[action.id] = {
                 value: "",
-                timer: gameConst.INFINITE[1]
+                timer: gameConst.INFINITE.unspawnDelay
             };
             break;
 
@@ -41,7 +41,7 @@ const wordsReducer = (state = [], action) => {
             newState = newState.map((word) => {
                 return {
                     value: "",
-                    timer: gameConst.INFINITE[1]
+                    timer: gameConst.INFINITE.unspawnDelay
                 }
             });
             break;
@@ -54,7 +54,7 @@ const wordsReducer = (state = [], action) => {
             {
                 newState.push({
                     value: "",
-                    timer: gameConst.INFINITE[1]
+                    timer: gameConst.INFINITE.unspawnDelay
                 });
             }
             break;

@@ -16,30 +16,16 @@ var HUD = function(props)
 {
     const dispatch = useDispatch();
     const chain = useSelector(state => state.chain);
+    const userBestChain = useSelector(state => state.userInfos.bestChain);
     const pseudo = useSelector(state => state.userInfos.pseudo);
     const score = useSelector(state => state.score);
     const life = useSelector(state => Math.max(0, state.life));
     const gameInfos = {...useSelector(state => state.gameInfos)};
-    const userInfos = {...useSelector(state => state.userInfos)};
-
-    const chainSubscriber = useSubscriber(state => state.chain, (prev, next) => {
-        if(next > userInfos.bestChain)
-        {
-            userInfos.bestChain = next;
-            dispatch(actions.setUserInfos(userInfos));
-        }
-    }, 0);
 
     const handleLifeZero = function() {
-        gameInfos.status = gameConst.WINNING;
-        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setStatus(gameConst.WINNING));
         dispatch(actions.deleteAllWords());
     };
-
-    useEffect(() => {
-        const chainUnsubscriber = chainSubscriber();
-        return chainUnsubscriber;        
-    }, []);
 
     useEffect(() => {
         if(life <= 0)
@@ -47,6 +33,13 @@ var HUD = function(props)
             handleLifeZero();
         }
     }, [life]);
+
+    useEffect(() => {
+        if(chain > userBestChain)
+        {
+            dispatch(actions.setBestChain(chain));
+        }
+    }, [chain]);
 
     return (
         <div id="HUD">

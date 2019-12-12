@@ -26,11 +26,39 @@ export const PLAYING = "PLAYING";
 export const WINNING = "WINNING";
 export const LOOSING = "LOOSING";
 
+
+
 // Game speed
-export const INFINITE = [-1, -1];
-export const VERY_SLOW = [4000, 7000];
-export const SLOW = [3500, 5500];
-export const MEDIUM = [3000, 4500];
-export const FAST = [2500, 3500];
-export const VERY_FAST = [2000, 3000];
-export const EXTREME = [1500, 2500];
+export const INFINITE = {
+  unspawnDelay: -1,
+  name: "INFINITE"
+};
+export const VERY_SLOW = {
+  unspawnDelay: 7000,
+  name: "VERY_SLOW"
+};
+export const SLOW = {
+  unspawnDelay: 5500,
+  name: "SLOW"
+};
+export const MEDIUM = {
+  unspawnDelay: 4500,
+  name: "MEDIUM"
+};
+export const FAST = {
+  unspawnDelay: 3500,
+  name: "FAST"
+};
+export const VERY_FAST = {
+  unspawnDelay: 3000,
+  name: "VERY_FAST"
+};
+export const EXTREME = {
+  unspawnDelay: 2500,
+  name: "EXTREME"
+};
+
+export const SPEEDS = [VERY_SLOW, SLOW, MEDIUM, FAST, VERY_FAST, EXTREME];
+export const CHANGE_SPEED_DELAY = 20000;
+export const MIN_SPAWN_DELAY = 1000;
+export const MAX_SPAWN_DELAY = 3000;

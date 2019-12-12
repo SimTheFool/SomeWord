@@ -5,19 +5,20 @@ const defaultState = {
         pseudo: "",
         bestChain: 0,
         typos: 0,
-        timeElapsed: 0,
-        speedReached: gameConst.VERY_SLOW
+        startTime: 0,
+        endTime: 0,
+        bestSpeed: ""
     },
     gameInfos: {
         device: gameConst.ON_DESKTOP,
         keyboard: gameConst.KEYBOARD_AZERTY,
         gameType: gameConst.SOLO,
         status: gameConst.NOT_PLAYING,
-        speed: gameConst.SLOW
+        speed: gameConst.VERY_SLOW
     },
     input: "",
     chain: 0,
-    life: 25,
+    life: 100,
     score: 0,
     words: [],
     wordPool: []

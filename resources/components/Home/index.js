@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import * as gameConst from 'Constants/GameConst';
-import {setUserInfos, setGameInfos} from 'Actions';
+import * as actions from 'Actions';
 
 
 import './style.scss';
@@ -10,10 +10,10 @@ import './style.scss';
 var Home = function(props)
 {
     const gameInfos = {...useSelector(state => state.gameInfos)};
-    const userInfos = {...useSelector(state => state.userInfos)};
+    const userPseudo = useSelector(state => state.userInfos.pseudo);
     const dispatch = useDispatch();
 
-    const [pseudo, setPseudo] = useState(userInfos.pseudo);
+    const [pseudo, setPseudo] = useState(userPseudo);
     const handlePseudoChange = (e) => {
         setPseudo(e.currentTarget.value);
     };
@@ -33,9 +33,8 @@ var Home = function(props)
         gameInfos.keyboard = (keyboard === "azerty") ? gameConst.KEYBOARD_AZERTY : gameConst.KEYBOARD_QWERTY;
         gameInfos.gameType = gameType;
         gameInfos.status = gameConst.BEGINNING;
-        dispatch(setGameInfos(gameInfos));
-        userInfos.pseudo = pseudo;
-        dispatch(setUserInfos(userInfos));
+        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setPseudo(pseudo));
     };
 
     return (
