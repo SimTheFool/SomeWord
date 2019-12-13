@@ -14,7 +14,7 @@ const defaultState = {
         keyboard: gameConst.KEYBOARD_AZERTY,
         gameType: gameConst.SOLO,
         status: gameConst.NOT_PLAYING,
-        speed: gameConst.VERY_SLOW
+        speed: 0
     },
     input: "",
     chain: 0,

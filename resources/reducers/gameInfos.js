@@ -17,7 +17,11 @@ const gameInfosReducer = (state = {}, action) => {
             break;
 
         case types.SET_SPEED:
-            newState.speed = SPEEDS[action.speedIndex];
+            newState.speed = action.speedIndex;
+            break;
+
+        case types.INITIALIZE_CURRENT_GAME:
+            newState.speed = 0;
             break;
 
         default:

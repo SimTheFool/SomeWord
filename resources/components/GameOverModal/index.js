@@ -35,7 +35,7 @@ function GameOverModal(props)
                         {userInfos.pseudo}
                     </li>
                     <li className="gameover-item">
-                        Best chain : {userInfos.bestChain}
+                        Combo : {userInfos.bestChain}
                     </li>
                     <li className="gameover-item">
                         Typos : {userInfos.typos}

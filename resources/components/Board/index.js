@@ -14,10 +14,10 @@ var Board = function(props)
 {
     const dispatch = useDispatch();
     const gameInfos = {...useSelector(state => state.gameInfos)};
+    const speedIndex = useSelector(state => state.gameInfos.speed);
     const words = useSelector(state => state.words);
     const wordPool = useSelector(state => state.wordPool);
     const input = useSelector(state => state.input);
-    const [speedIndex, setSpeedIndex] = useState(1);
     const [createWordPID, setCreateWordPID] = useState(null);
 
     const createWord = () => {
@@ -29,7 +29,7 @@ var Board = function(props)
         const delay = gameConst.MIN_SPAWN_DELAY + (effectiveWords.length / words.length) * (gameConst.MAX_SPAWN_DELAY - gameConst.MIN_SPAWN_DELAY);
 
         const PID = setTimeout(() => {
-            dispatch(actions.addWord(wordPool, gameInfos.speed.unspawnDelay));
+            dispatch(actions.addWord(wordPool, gameConst.SPEEDS[speedIndex].unspawnDelay + delay));
             createWordRef();
         }, delay);
 
@@ -93,11 +93,10 @@ var Board = function(props)
     // Setting the change speed effect. This effect must be cleared and set again after each speed changing.
     useEffect(() => {
 
-        if(gameInfos.status === gameConst.PLAYING && speedIndex < gameConst.SPEEDS.length)
+        if(gameInfos.status === gameConst.PLAYING && speedIndex < gameConst.SPEEDS.length-1)
         {
             let changeSpeedPID = setTimeout(() => {
-                setSpeedIndex(speedIndex + 1);
-                dispatch(actions.setSpeed(speedIndex));                
+                dispatch(actions.setSpeed(speedIndex + 1));                
             }, gameConst.CHANGE_SPEED_DELAY);
     
             return () => {
@@ -105,12 +104,12 @@ var Board = function(props)
             };
         }
 
-    }, [gameInfos.speed.name, gameInfos.status])
+    }, [speedIndex, gameInfos.status])
 
     // Recording best speed.
     useEffect(() =>{
-        dispatch(actions.setBestSpeed(gameInfos.speed.name));
-    }, [gameInfos.speed.name]);
+        dispatch(actions.setBestSpeed(gameConst.SPEEDS[speedIndex].name));
+    }, [speedIndex]);
 
 
     return (

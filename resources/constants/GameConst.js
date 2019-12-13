@@ -58,7 +58,7 @@ export const EXTREME = {
 
 export const SPEEDS = [VERY_SLOW, SLOW, MEDIUM, FAST, VERY_FAST, EXTREME];
 export const CHANGE_SPEED_DELAY = 25000;
-export const MIN_SPAWN_DELAY = 800;
+export const MIN_SPAWN_DELAY = 1000;
 export const MAX_SPAWN_DELAY = 4500;
 
 

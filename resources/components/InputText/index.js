@@ -52,7 +52,7 @@ var InputText = function(props)
     const handleLetterKeyRef = useRefCallback(handleLetterKey);
 
     const handleBackspaceKey = () => {
-        dispatch(actions.setInput(input.slice(0, -1)));
+        dispatch(actions.setInput(""));
     };
     const handleBackspaceKeyRef = useRefCallback(handleBackspaceKey);
 
