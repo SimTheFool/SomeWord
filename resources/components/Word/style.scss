@@ -6,5 +6,7 @@
     min-width: 30%;
     min-height: 2rem;
     text-align: center;
-    font-weight: lighter;
+    font-weight: bold;
+    color: $red;
+    text-shadow: 0 0 1px $red, 0 0 1px $red;
 }

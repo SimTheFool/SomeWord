@@ -48,7 +48,7 @@ const wordsReducer = (state = [], action) => {
 
         case types.INITIALIZE_CURRENT_GAME:
             newState = [];
-            let nb= (action.infos.gameType === gameConst.SOLO) ? 15 : 8;
+            let nb= (action.infos.gameType === gameConst.SOLO) ? 9 : 8;
 
             for(let i = 0; i< nb; i++)
             {

@@ -32,34 +32,34 @@ export const INFINITE = {
   name: "INFINITE"
 };
 export const VERY_SLOW = {
-  unspawnDelay: 7000,
+  unspawnDelay: 12000,
   name: "VERY_SLOW"
 };
 export const SLOW = {
-  unspawnDelay: 5500,
+  unspawnDelay: 9000,
   name: "SLOW"
 };
 export const MEDIUM = {
-  unspawnDelay: 4500,
+  unspawnDelay: 8000,
   name: "MEDIUM"
 };
 export const FAST = {
-  unspawnDelay: 3500,
+  unspawnDelay: 6000,
   name: "FAST"
 };
 export const VERY_FAST = {
-  unspawnDelay: 3000,
+  unspawnDelay: 4500,
   name: "VERY_FAST"
 };
 export const EXTREME = {
-  unspawnDelay: 2500,
+  unspawnDelay: 3000,
   name: "EXTREME"
 };
 
 export const SPEEDS = [VERY_SLOW, SLOW, MEDIUM, FAST, VERY_FAST, EXTREME];
-export const CHANGE_SPEED_DELAY = 20000;
-export const MIN_SPAWN_DELAY = 1000;
-export const MAX_SPAWN_DELAY = 3000;
+export const CHANGE_SPEED_DELAY = 25000;
+export const MIN_SPAWN_DELAY = 800;
+export const MAX_SPAWN_DELAY = 4500;
 
 
 // Game score
