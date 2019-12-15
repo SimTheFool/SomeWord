@@ -47,6 +47,13 @@ var Board = function(props)
         dispatch(actions.adjustLife(-5));
     };
 
+    const handleWordValidated = (id, length, chain) => {
+        dispatch(actions.deleteWord(id));
+        let scoreGain = length * 10 * (1 + gameConst.CHAIN_FACTOR(chain));
+        dispatch(actions.incrementScore(scoreGain));
+        dispatch(actions.incrementChain());
+    };
+
     // Intializing words list and getting word pool from API.
     useEffect(() => {
         if(gameInfos.status !== gameConst.BEGINNING)
@@ -115,7 +122,7 @@ var Board = function(props)
     return (
         <div id="board">
             <div className="board-container">
-                <WordGrid words={words} onWordEscape={handleWordEscape}/>
+                <WordGrid words={words} onWordEscape={handleWordEscape} onWordValidated={handleWordValidated}/>
                 <InputViewer input={input}/>
             </div>
         </div>

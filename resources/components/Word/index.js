@@ -1,74 +1,107 @@
 import React, {useEffect, useState, useRef} from 'react';
+import {useSelector} from 'react-redux';
 import useRefCallback from 'Hooks/useRefCallback';
 import PropTypes from 'prop-types';
 
 import './style.scss';
 
+import Animator from 'Utils/Animator';
+
 var Word = function(props)
 {
-    const [PID, setPID] = useState(null);
+    const anim = useRef(new Animator());
     const wordRef = useRef(null);
+    const PID = useRef(null);
+    const chain = useSelector(state => state.chain);
 
-    const animeSpawn = () => {
-        wordRef.current.style.animation = `0.75s word_spawn`;
-    };
-    const animeLiving = () => {
-        wordRef.current.style.animation = `${props.timer/1000 - 0.75}s word_living`;
-    };
-
-    const animeNearEscape = () => {
-        wordRef.current.style.animation += `, 3.5s word_near_escape`;
+    const animSpawn = {
+        duration: 500,
+        name: "word_spawn",
+        easing: "linear"
     };
 
-
-
-    const startWordTimeline = () => {
-        let pId;
-
-            animeSpawn();
-
-            pId = setTimeout(() => {
-
-                animeLiving();
-
-                pId = setTimeout(() => {
-
-                    animeNearEscape()
-
-                    pId = setTimeout(() => {
-
-                        props.onWordEscape.call(this, props.id);
-    
-                    }, 3500);
-                    setPID(pId);
-
-                }, props.timer - 750 - 3500);
-                setPID(pId);
-
-            }, 750);
-            setPID(pId);
+    const animLiving = {
+        name: "word_living",
+        duration: props.timer - 750,
+        easing: "linear"
     };
 
-    const endWordTimeline = useRefCallback(() => {
-        clearTimeout(PID);
-        wordRef.current.style.animation =  "";
-    });
+    const animNearEscape = {
+        name: "word_near_escape",
+        duration: 3000,
+        easing: "ease-in"
+    };
+
+    const animValidated = {
+        name: "word_validated",
+        duration: 750,
+        easing: "linear"
+    };
+
 
     useEffect(() => {
-        if(props.timer >= 0)
+        anim.current.setNode(wordRef.current);
+    }, []);
+
+
+    useEffect(() => {
+        if(props.word !== "")
         {
-            startWordTimeline();
+            anim.current.add(animSpawn);
+
+            const animLivingPID = setTimeout(() => {
+                anim.current.add(animLiving);
+            }, animSpawn.duration);
 
             return () => {
-                endWordTimeline();
+                anim.current.clear();
+                clearTimeout(animLivingPID);
             }
-        }        
+        }
     }, [props.word]);
 
+    useEffect(() => {
+        if(props.word === "")
+        {
+            return;
+        }
+
+
+        if(!props.validated)
+        {
+            PID.current = setTimeout(() => {
+                anim.current.add(animNearEscape);
+                anim.current.remove(animLiving);
+
+                PID.current = setTimeout(() => {
+                    props.onWordEscape.call(this, props.id);
+
+                }, animNearEscape.duration)
+
+            }, props.timer - animNearEscape.duration);
+
+            return () => {
+                clearTimeout(PID.current);
+                anim.current.remove(animNearEscape.name);
+            };
+        }
+        else
+        {
+            anim.current.add(animValidated);
+            anim.current.remove(animNearEscape);
+            anim.current.remove(animLiving);
+
+            setTimeout(() => {
+                props.onWordValidated.call(this, props.id, props.word.length, chain);
+            }, animValidated.duration);
+        }
+
+    }, [props.validated, props.word]);
+
     return (
-        <div className="word" ref={wordRef}>
-            {props.word}
-        </div>
+            <div className="word" ref={wordRef}>
+                {props.word}
+            </div>
     );
 };
 
@@ -76,7 +109,8 @@ Word.propTypes = {
     word : PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     timer: PropTypes.number.isRequired,
-    onWordEscape: PropTypes.func.isRequired
+    onWordEscape: PropTypes.func.isRequired,
+    onWordValidated: PropTypes.func.isRequired
 };
 
 export default Word;

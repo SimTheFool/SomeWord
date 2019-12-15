@@ -104,6 +104,13 @@ export const deleteAllWords = () => {
     });
 };
 
+export const validateWord = (id) => {
+    return({
+        type: types.VALIDATE_WORD,
+        id
+    });
+};
+
 export const setWordPool = (pool) => {
     return ({
         type: types.SET_WORD_POOL,

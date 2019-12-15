@@ -26,14 +26,16 @@ const wordsReducer = (state = [], action) => {
 
             newState[rdIndex] = {
                 value: action.wordPool[Math.floor(Math.random() * action.wordPool.length)],
-                timer: action.timer
+                timer: action.timer,
+                validated: false
             };
             break;
 
         case types.DELETE_WORD:
             newState[action.id] = {
                 value: "",
-                timer: gameConst.INFINITE.unspawnDelay
+                timer: gameConst.INFINITE.unspawnDelay,
+                validated: false
             };
             break;
 
@@ -41,9 +43,14 @@ const wordsReducer = (state = [], action) => {
             newState = newState.map((word) => {
                 return {
                     value: "",
-                    timer: gameConst.INFINITE.unspawnDelay
+                    timer: gameConst.INFINITE.unspawnDelay,
+                    validated: false
                 }
             });
+            break;
+
+        case types.VALIDATE_WORD:
+            newState[action.id].validated = true;
             break;
 
         case types.INITIALIZE_CURRENT_GAME:
@@ -54,7 +61,8 @@ const wordsReducer = (state = [], action) => {
             {
                 newState.push({
                     value: "",
-                    timer: gameConst.INFINITE.unspawnDelay
+                    timer: gameConst.INFINITE.unspawnDelay,
+                    validated: false
                 });
             }
             break;

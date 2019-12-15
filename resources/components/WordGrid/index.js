@@ -12,7 +12,9 @@ var WordGrid = function(props)
             <Word word={word.value}
             timer={word.timer}
             id={index}
+            validated={word.validated}
             onWordEscape={props.onWordEscape}
+            onWordValidated={props.onWordValidated}
             key={index}
             />
         );
@@ -27,7 +29,8 @@ var WordGrid = function(props)
 
 WordGrid.propTypes = {
     words: PropTypes.array.isRequired,
-    onWordEscape: PropTypes.func.isRequired
+    onWordEscape: PropTypes.func.isRequired,
+    onWordValidated: PropTypes.func.isRequired
 };
 
 export default WordGrid;

@@ -52,14 +52,14 @@ export const VERY_FAST = {
   name: "VERY_FAST"
 };
 export const EXTREME = {
-  unspawnDelay: 3000,
+  unspawnDelay: 3500,
   name: "EXTREME"
 };
 
 export const SPEEDS = [VERY_SLOW, SLOW, MEDIUM, FAST, VERY_FAST, EXTREME];
 export const CHANGE_SPEED_DELAY = 25000;
 export const MIN_SPAWN_DELAY = 1000;
-export const MAX_SPAWN_DELAY = 4500;
+export const MAX_SPAWN_DELAY = 3700;
 
 
 // Game score

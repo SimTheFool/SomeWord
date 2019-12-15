@@ -28,10 +28,7 @@ var InputText = function(props)
         
         if(index !== -1)
         {
-            dispatch(actions.deleteWord(index));
-            let scoreGain = value.length * 10 * (1 + gameConst.CHAIN_FACTOR(chain));
-            dispatch(actions.incrementScore(scoreGain));
-            dispatch(actions.incrementChain());
+            dispatch(actions.validateWord(index));
         }
         else
         {
@@ -52,7 +49,7 @@ var InputText = function(props)
     const handleLetterKeyRef = useRefCallback(handleLetterKey);
 
     const handleBackspaceKey = () => {
-        dispatch(actions.setInput(""));
+        dispatch(actions.resetInput());
     };
     const handleBackspaceKeyRef = useRefCallback(handleBackspaceKey);
 
