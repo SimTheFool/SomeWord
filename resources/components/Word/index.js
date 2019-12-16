@@ -15,20 +15,14 @@ var Word = function(props)
     const chain = useSelector(state => state.chain);
 
     const animSpawn = {
-        duration: 500,
+        duration: 250,
         name: "word_spawn",
-        easing: "linear"
-    };
-
-    const animLiving = {
-        name: "word_living",
-        duration: props.timer - 750,
         easing: "linear"
     };
 
     const animNearEscape = {
         name: "word_near_escape",
-        duration: 3000,
+        duration: 2250,
         easing: "ease-in"
     };
 
@@ -36,6 +30,13 @@ var Word = function(props)
         name: "word_validated",
         duration: 750,
         easing: "linear"
+    };
+
+    const animLiving = {
+        name: "word_living",
+        duration: props.timer - animSpawn.duration - animNearEscape.duration,
+        easing: "linear",
+        fillMode: "forwards"
     };
 
 
@@ -71,7 +72,6 @@ var Word = function(props)
         {
             PID.current = setTimeout(() => {
                 anim.current.add(animNearEscape);
-                anim.current.remove(animLiving);
 
                 PID.current = setTimeout(() => {
                     props.onWordEscape.call(this, props.id);
@@ -89,7 +89,6 @@ var Word = function(props)
         {
             anim.current.add(animValidated);
             anim.current.remove(animNearEscape);
-            anim.current.remove(animLiving);
 
             setTimeout(() => {
                 props.onWordValidated.call(this, props.id, props.word.length, chain);

@@ -11,13 +11,12 @@ class Animator
     {
         this.animations.push(animation);
         this.node.style.animation = this.toString();
-        console.log(this.node.innerHTML);
     }
 
-    remove(animationName)
+    remove(animation)
     {
-        let id = this.animations.findIndex((animation) => {
-            return animation.name === animationName;
+        let id = this.animations.findIndex((anim) => {
+            return anim.name === animation.name;
         });
 
         if(id < 0)
