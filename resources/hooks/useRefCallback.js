@@ -10,7 +10,7 @@ const useRefCallback = (callback, thisObject) => {
         var args = Array.from(arguments);
         let callback = callbackRef.current;
 
-        callback.apply(thisObject, args);
+        return callback.apply(thisObject, args);
     };
 };
 

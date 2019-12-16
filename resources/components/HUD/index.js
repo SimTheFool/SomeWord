@@ -16,7 +16,7 @@ var HUD = function(props)
     const chain = useSelector(state => state.chain);
     const userBestChain = useSelector(state => state.userInfos.bestChain);
     const pseudo = useSelector(state => state.userInfos.pseudo);
-    const score = useSelector(state => Math.floor(state.score));
+    const score = useSelector(state => state.score);
     const life = useSelector(state => Math.max(0, state.life));
 
     const triggerGameOver = function() {

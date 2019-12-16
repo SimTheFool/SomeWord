@@ -65,5 +65,5 @@ export const MAX_SPAWN_DELAY = 3700;
 // Game score
 export const SCORE_PER_CHAR = 10;
 export const CHAIN_FACTOR = (chain) => {
-  return Math.pow(chain + 1, 3) / 1500;
+  return Math.pow(chain + 1, 2) / 125;
 };

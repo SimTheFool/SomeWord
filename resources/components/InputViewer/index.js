@@ -9,9 +9,9 @@ var InputViewer = function(props)
 {
     return (
         <div className="input-viewer">
-            >
-            <span>{props.input}</span>
-            |
+            <span className="input-viewer-left">></span>
+            <span className="input-viewer-content">{props.input}</span>
+            <span className="input-viewer-right">|</span>
         </div>
     );
 };

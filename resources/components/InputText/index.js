@@ -15,6 +15,7 @@ var InputText = function(props)
     const chain = useSelector(state => state.chain);
     const keyboard = useSelector(state => state.gameInfos.keyboard);
     const device = useSelector(state => state.gameInfos.device);
+    const status = useSelector(state => state.gameInfos.status);
 
     const checkWord = (value) => {
         if(value === "")
@@ -38,7 +39,10 @@ var InputText = function(props)
     };
 
     const handleEnterKey = () => {
-        checkWord(input);
+        if(status !== gameConst.WINNING && status !== gameConst.LOOSING)
+        {
+            checkWord(input);
+        }
         dispatch(actions.resetInput());
     };
     const handleEnterKeyRef = useRefCallback(handleEnterKey);
