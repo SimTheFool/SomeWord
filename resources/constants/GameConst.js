@@ -33,7 +33,7 @@ export const INFINITE = {
 };
 export const VERY_SLOW = {
   unspawnDelay: 12000,
-  name: "VERY_SLOW"
+  name: "VERY SLOW"
 };
 export const SLOW = {
   unspawnDelay: 9000,
@@ -49,7 +49,7 @@ export const FAST = {
 };
 export const VERY_FAST = {
   unspawnDelay: 4500,
-  name: "VERY_FAST"
+  name: "VERY FAST"
 };
 export const EXTREME = {
   unspawnDelay: 2750,

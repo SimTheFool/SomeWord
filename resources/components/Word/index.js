@@ -1,16 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {useSelector} from 'react-redux';
 import useRefCallback from 'Hooks/useRefCallback';
+import useAnimator from 'Hooks/useAnimator';
 import PropTypes from 'prop-types';
 
 import './style.scss';
 
-import Animator from 'Utils/Animator';
-
 var Word = function(props)
 {
-    const anim = useRef(new Animator());
-    const wordRef = useRef(null);
+    const [animator, nodeRef] = useAnimator();
     const PID = useRef(null);
     const chain = useSelector(state => state.chain);
 
@@ -39,23 +37,17 @@ var Word = function(props)
         fillMode: "forwards"
     };
 
-
-    useEffect(() => {
-        anim.current.setNode(wordRef.current);
-    }, []);
-
-
     useEffect(() => {
         if(props.word !== "")
         {
-            anim.current.add(animSpawn);
+            animator.add(animSpawn);
 
             const animLivingPID = setTimeout(() => {
-                anim.current.add(animLiving);
+                animator.add(animLiving);
             }, animSpawn.duration);
 
             return () => {
-                anim.current.clear();
+                animator.clear();
                 clearTimeout(animLivingPID);
             }
         }
@@ -67,11 +59,10 @@ var Word = function(props)
             return;
         }
 
-
         if(!props.validated)
         {
             PID.current = setTimeout(() => {
-                anim.current.add(animNearEscape);
+                animator.add(animNearEscape);
 
                 PID.current = setTimeout(() => {
                     props.onWordEscape.call(this, props.id);
@@ -82,13 +73,13 @@ var Word = function(props)
 
             return () => {
                 clearTimeout(PID.current);
-                anim.current.remove(animNearEscape.name);
+                animator.remove(animNearEscape.name);
             };
         }
         else
         {
-            anim.current.add(animValidated);
-            anim.current.remove(animNearEscape);
+            animator.add(animValidated);
+            animator.remove(animNearEscape);
 
             setTimeout(() => {
                 props.onWordValidated.call(this, props.id, props.word.length, chain);
@@ -98,7 +89,7 @@ var Word = function(props)
     }, [props.validated, props.word]);
 
     return (
-            <div className="word" ref={wordRef}>
+            <div className="word" ref={nodeRef}>
                 {props.word}
             </div>
     );

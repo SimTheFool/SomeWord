@@ -6,5 +6,18 @@
 
     color: $red;
     font-size: 1.3rem;
-    font-weight: bold;
+    font-weight: lighter;
+    @include light_neon;
+
+    span{
+        display: inline-block;
+        color: $lightRed;
+    }
+}
+
+@keyframes chain_increment{
+    0%{
+        text-shadow: 0 1px $red, 0 0 1px $red, 0 0 2px $red, 0 0 4px $red, 0 0 7px $red, 0 0 16px $red;
+        transform: scale(2);
+    }
 }

@@ -10,6 +10,23 @@
     div {
         width: 100%;
         height: 100%;
-        background-color: $red;
+        background-color: $lightRed;
+    }
+}
+
+@keyframes lifebar_decrement{
+
+    10%{
+        box-shadow: 0 0 1px $red, 0 0 1px $red, 0 0 3px $red, 0 0 7px $red, 0 0 12px $red;
+    }
+
+    70%{
+        box-shadow: 0 0 1px $red, 0 0 2px $red, 0 0 5px $red, 0 0 11px $red, 0 0 18px $red;
+    }
+}
+
+@keyframes lifebar_blink{
+    100%{
+        background-color: $lightRedTransparent;
     }
 }

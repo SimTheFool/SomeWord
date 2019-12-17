@@ -25,8 +25,13 @@ $black: #231F20;
 $grey: rgb(92, 84, 86);
 $red:  rgb(189, 64, 68);
 $lightRed: rgb(243, 126, 130);
+$lightRedTransparent: rgba(243, 126, 130, 0.411);
 $lighterRed: rgb(248, 194, 196);
 $white: rgb(214, 209, 209);
+
+@mixin light_neon{
+    text-shadow: 0 0 1px $red, 0 0 1px $red;
+}
 
 @keyframes opacity_blink{
     0%{
@@ -35,15 +40,5 @@ $white: rgb(214, 209, 209);
 
     50%{
         opacity: 0;
-    }
-}
-
-@keyframes background_blink{
-    0%{
-        background-color: $red;
-    }
-    
-    50%{
-        background-color: $lightRed;
     }
 }
