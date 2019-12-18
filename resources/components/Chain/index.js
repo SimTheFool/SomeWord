@@ -22,12 +22,13 @@ var Chain = function(props)
         }
 
         animator.add(animChainIncrement);
+        animator.refresh(true);
 
     }, [props.chain])
 
     return (
         <div className="chain">
-            CHAIN <span ref={nodeRef}>{props.chain}</span>
+            <span className="first-letter">C</span>HAIN <span className="value" ref={nodeRef}>{props.chain}</span>
         </div>
     );
 };

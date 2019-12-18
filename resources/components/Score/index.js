@@ -5,34 +5,26 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-var test = {
-    a: 0
-};
-
 var Score = function(props)
 {
 
     const [animator, nodeRef] = useAnimator();
 
-    const tweeningDuration = 2250;
+    const tweeningDuration = 2000;
 
     const tweenedScore = useTweenedProp(props.score, {
         duration: (props.score === 0) ? 0 : tweeningDuration,
         autoplay: false,
         easing: "easeInCirc",
         begin: () => {
-            
-            if(animator.isOver(animScoreStopIncrementing))
+
+            if(animator.hasTag("incrementing"))
             {
-                console.log('dqsdd')
-                animator.add(animScoreIncrementing);
-                animator.refresh(true);
+                return;
             }
-            else
-            {
-                animator.add(animScoreIncrementing);
-                animator.refresh(false);
-            }
+
+            animator.add(animScoreIncrementing);
+            animator.refresh(true);
         },
         complete: () => {
             animator.add(animScoreStopIncrementing);
@@ -41,19 +33,20 @@ var Score = function(props)
     });
 
     const animScoreIncrementing = {
-        duration: tweeningDuration / 2,
-        name: "score_increment",
+        tag: "incrementing",
+        duration: tweeningDuration / 3,
+        name: "score_incrementing",
         easing: "linear",
         fill: "forwards"
     };
 
-    const animScoreStopIncrementing = {...animScoreIncrementing, direction: "reverse"};
+    const animScoreStopIncrementing = {...animScoreIncrementing, direction: "reverse", tag: "stopIncrementing", duration: tweeningDuration / 5};
 
 
 
     return (
         <div className="score">
-            SCORE <span ref={nodeRef}>{Math.floor(tweenedScore)}</span>
+            <span className="first-letter">S</span>CORE <span className="value" ref={nodeRef}>{Math.floor(tweenedScore)}</span>
         </div>
     );
 };

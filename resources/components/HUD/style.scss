@@ -6,13 +6,11 @@
     width: 100%;
     min-height: 100px;
 
-    padding: 0.5rem;
-
     .HUD-container {
         display: inline-flex;
         flex-direction: column;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: stretch;
         align-content: flex-start;
         
         height: 100%;

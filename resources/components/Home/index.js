@@ -34,7 +34,7 @@ var Home = function(props)
         gameInfos.gameType = gameType;
         gameInfos.status = gameConst.BEGINNING;
         dispatch(actions.setGameInfos(gameInfos));
-        dispatch(actions.setPseudo(pseudo));
+        dispatch(actions.setPseudo(pseudo.toUpperCase()));
     };
 
     return (

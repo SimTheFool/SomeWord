@@ -1,7 +1,12 @@
 @import 'GlobalStyle';
 
 .chain {
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+
+    height: 1.2rem;
     padding: 0 0 0 1rem;
 
     color: $red;
@@ -9,7 +14,12 @@
     font-weight: lighter;
     @include light_neon;
 
-    span{
+    .first-letter{
+        font-size: 2rem;
+        transform: translateY(-0.7rem);
+    }
+
+    .value{
         display: inline-block;
         color: $lightRed;
     }

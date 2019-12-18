@@ -15,18 +15,6 @@ class Animator
         if(index === -1)
         {
             this.animations.push(animation);
-            this.node.addEventListener('animationstart', (e) => {
-                if(e.animationName === animation.name)
-                {
-                    animation.over = false;
-                }
-            });
-            this.node.addEventListener('animationend', (e) => {
-                if(e.animationName === animation.name)
-                {
-                    animation.over = true;
-                }
-            });
         }
         else
         {
@@ -46,18 +34,6 @@ class Animator
         this.animations.splice(index, 1);
     }
 
-    isOver(animation)
-    {
-        let index = this.find(animation);
-
-        if(index === -1)
-        {
-            return;
-        }
-
-        return this.animations[index].over === true ? true : false;
-    }
-
     clear()
     {
         this.animations = [];
@@ -72,6 +48,13 @@ class Animator
         return index;
     }
 
+    hasTag(tag)
+    {
+        return this.animations.some((animation) => {
+            return animation.tag === tag;
+        });
+    }
+
     setNode(node)
     {
         this.node = node;
@@ -79,9 +62,9 @@ class Animator
 
     refresh(reflow = false)
     {
-        this.node.style.animation = "none";
         if(reflow)
         {
+            this.node.style.animation = "none";
             this.node.offsetHeight; //triggering reflow
         }
         this.node.style.animation = this.toString();
@@ -98,13 +81,19 @@ class Animator
 
                 switch(key)
                 {
-                    case "id":
+                    case "name":
+                    case "easing":
+                    case "fill":
+                    case "direction":
+                    case "iteration":
+                        animAttr += ` ${animation[key]}`;
                         break;
+
                     case "duration":
                         animAttr += ` ${animation[key]/1000}s`;
                         break;
+
                     default:
-                        animAttr += ` ${animation[key]}`;
                         break;
                 }
                 

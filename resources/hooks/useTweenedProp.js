@@ -21,6 +21,10 @@ const useTweenedProp = (prop, config) => {
     });
 
     useEffect(() => {
+        if(prop === value)
+        {
+            return;
+        }
 
         tween.play();
 

@@ -1,6 +1,5 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useSelector} from 'react-redux';
-import useRefCallback from 'Hooks/useRefCallback';
 import useAnimator from 'Hooks/useAnimator';
 import PropTypes from 'prop-types';
 
@@ -32,7 +31,7 @@ var Word = function(props)
 
     const animLiving = {
         name: "word_living",
-        duration: props.timer - animSpawn.duration - animNearEscape.duration,
+        duration: props.timer - animSpawn.duration,
         easing: "linear",
         fillMode: "forwards"
     };
@@ -41,13 +40,16 @@ var Word = function(props)
         if(props.word !== "")
         {
             animator.add(animSpawn);
+            animator.refresh();
 
             const animLivingPID = setTimeout(() => {
                 animator.add(animLiving);
+                animator.refresh();
             }, animSpawn.duration);
 
             return () => {
                 animator.clear();
+                animator.refresh();
                 clearTimeout(animLivingPID);
             }
         }
@@ -63,6 +65,7 @@ var Word = function(props)
         {
             PID.current = setTimeout(() => {
                 animator.add(animNearEscape);
+                animator.refresh();
 
                 PID.current = setTimeout(() => {
                     props.onWordEscape.call(this, props.id);
@@ -73,13 +76,15 @@ var Word = function(props)
 
             return () => {
                 clearTimeout(PID.current);
-                animator.remove(animNearEscape.name);
+                animator.refresh();
+                animator.remove(animNearEscape);
             };
         }
         else
         {
             animator.add(animValidated);
             animator.remove(animNearEscape);
+            animator.refresh();
 
             setTimeout(() => {
                 props.onWordValidated.call(this, props.id, props.word.length, chain);
@@ -92,7 +97,7 @@ var Word = function(props)
             <div className="word" ref={nodeRef}>
                 {props.word}
             </div>
-    );
+    ); 
 };
 
 Word.propTypes = {

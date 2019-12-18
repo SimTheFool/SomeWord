@@ -32,6 +32,7 @@ var Lifebar = function(props)
 
     useEffect(() => {
         animator.add(animBlink);
+        animator.refresh(false);
     }, []);
 
     useEffect(() => {
@@ -40,6 +41,7 @@ var Lifebar = function(props)
             return;
         }
         animator.add(animLifeDecrease);
+        animator.refresh(true);
     }, [props.life]);
 
     let style = {
