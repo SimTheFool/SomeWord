@@ -18,16 +18,36 @@
     font-weight: lighter;
 }
 
+@font-face {
+    font-family: "Code";
+    src: url("/fonts/Code/CODE Bold.otf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Code";
+    src: url("/fonts/Code/CODE Light.otf");
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: "Giorgio";
+    src: url("/fonts/Giorgio/Giorgio.ttf");
+    font-weight: normal;
+}
+
 $fontSize: 11px;
-$fontFam: "Barlow";
+$fontBasic: "Barlow";
+$fontFancy: "Code";
+$fontTitle: "Giorgio";
 
 $black: #231F20;
-$grey: rgb(92, 84, 86);
+$grey: rgb(161, 138, 136);
 $red:  rgb(189, 64, 68);
+$transparentRed: rgba(189, 64, 68, 0);
 $lightRed: rgb(243, 126, 130);
 $lightRedTransparent: rgba(243, 126, 130, 0.411);
 $lighterRed: rgb(248, 194, 196);
-$white: rgb(214, 209, 209);
 
 @mixin light_neon{
     text-shadow: 0 0 1px $red, 0 0 1px $red;

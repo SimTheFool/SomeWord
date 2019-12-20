@@ -13,7 +13,7 @@ var Score = function(props)
     const tweeningDuration = 2000;
 
     const tweenedScore = useTweenedProp(props.score, {
-        duration: (props.score === 0) ? 0 : tweeningDuration,
+        duration: tweeningDuration,
         autoplay: false,
         easing: "easeInCirc",
         begin: () => {

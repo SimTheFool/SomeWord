@@ -5,6 +5,9 @@ import * as actions from 'Actions';
 
 import './style.scss';
 
+import AppButton from 'Components/AppButton';
+import NeonText from 'Components/NeonText';
+
 function GameOverModal(props)
 {
     const dispatch = useDispatch();
@@ -12,7 +15,12 @@ function GameOverModal(props)
     const userInfos = {...useSelector(state => state.userInfos)};
 
     let timeElapsed = (userInfos.endTime - userInfos.startTime)/1000;
-    timeElapsed = `${Math.floor(timeElapsed/60)} min ${Math.floor(timeElapsed % 60)} sec`;
+    timeElapsed = (
+        <>
+            <span className="gameover-value">{Math.floor(timeElapsed/60)}</span> min &nbsp;
+            <span className="gameover-value">{Math.floor(timeElapsed % 60)}</span> sec
+        </>
+    );
 
     const handlePlayAgain = () => {
         dispatch(actions.setStatus(gameConst.BEGINNING));
@@ -26,38 +34,34 @@ function GameOverModal(props)
     return(
         <div id="gameover-modal">
             <div id="gameover-title">
-                Game Over
+                GAME <NeonText>O</NeonText>VER
             </div>
 
             <div id="gameover-recap">
                 <ul className="gameover-list">
-                    <li className="gameover-item gameover-pseudo">
+                    {/* <li className="gameover-item gameover-pseudo">
                         {userInfos.pseudo}
+                    </li> */}
+                    <li className="gameover-item">
+                        Chain : <span className="gameover-value">{userInfos.bestChain}</span>
                     </li>
                     <li className="gameover-item">
-                        Combo : {userInfos.bestChain}
-                    </li>
-                    <li className="gameover-item">
-                        Typos : {userInfos.typos}
+                        Typos : <span className="gameover-value">{userInfos.typos}</span>
                     </li>
                     <li className="gameover-item">
                         {timeElapsed}
                     </li>
                     <li className="gameover-item">
-                        Speed reached : {userInfos.bestSpeed}
+                        Speed reached : <span className="gameover-value">{userInfos.bestSpeed}</span>
                     </li>
                 </ul>
             </div>
 
-            <div className="gameover-button">
-                <button onClick={handlePlayAgain}>
-                    Play Again ?
-                </button>
+            <div className="gameover-button-left gameover-button">
+                <AppButton onClick={handlePlayAgain}>Play again ?</AppButton>
             </div>
-            <div className="gameover-button">
-                <button onClick={handleBackToHome}>
-                    Back to home
-                </button>
+            <div className="gameover-button-right gameover-button">
+                <AppButton onClick={handleBackToHome}>Back to home</AppButton>
             </div>
         </div>
     );

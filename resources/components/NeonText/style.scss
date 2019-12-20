@@ -1,0 +1,16 @@
+@import 'GlobalStyle';
+
+.neon-text{
+    color: $lighterRed;
+    animation: 0.5s linear alternate infinite neon_text, 5s linear alternate infinite neon_text_blink;
+}
+
+@keyframes neon_text {
+    0% {
+      text-shadow: 0 0 3px $lightRed, 0 0 7px $red, 0 0 10px $red, 0 0 13px $red, 0 0 23px $red, 0 0 27px $red;
+    }
+
+    100% {
+      text-shadow: 0 0 5px $lightRed, 0 0 10px $red, 0 0 15px $red, 0 0 20px $red, 0 0 35px $red, 0 0 40px $red;
+    }
+}

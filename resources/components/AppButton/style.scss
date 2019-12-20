@@ -1,0 +1,16 @@
+@import 'GlobalStyle';
+
+.app-button{
+    background-color: transparent;
+    border: none;
+    color: $red;
+    cursor: pointer;
+    font-family: $fontTitle;
+
+    transition: color 0.5s linear 0s, text-shadow 0.5s linear 0s;
+
+    &:hover{
+        color: $lightRed;
+        text-shadow: 0 0 1px $red, 0 0 1px $red, 0 0 3px $red, 0 0 6px $red;
+    }
+}

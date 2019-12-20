@@ -7,7 +7,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-
+    padding: 0 15px;
     position: absolute;
     top: 0;
     left: 0;
@@ -20,16 +20,24 @@
     }
 
     #home-title{
-        font-size: 2rem;
+        font-size: 2.8rem;
+        font-family: $fontTitle;
         text-align: center;
         color: $red;
     }
 
     #home-subtitle{
-        font-size: 1rem;
-        text-align: center;
+        font-size: 0.8rem;
+        text-align: right;
+        font-family: $fontFancy;
+        font-weight: bold;
         color: $grey;
-        padding: 0 1rem;
+
+        transform: translateY(-0.95rem);
+
+        .carret-cursor{
+            transform: translateY(-0.1rem);
+        }
     }
 
     form{
@@ -38,21 +46,25 @@
         justify-content: space-around;
         padding: 2rem;
         font-size: 1.2rem;
-        color: $white;
+        color: $grey;
 
         .pseudo-input{
             width: 100%;
             text-align: center;
 
-            label{
-                padding: 0 1rem 0.5rem 0;
-            }
-
             input{
                 background-color: transparent;
                 border: solid 1px $red;
-                color: $white;
+                color: $grey;
                 padding: 0.2rem 0.5rem;
+                caret-color: $grey;
+
+                transition: border 1s linear 0s, box-shadow 0.5s linear 0s;
+
+                &:focus{
+                    border: solid 1px $lightRed;
+                    box-shadow: 0 0 1px $red, 0 0 1px $red, 0 0 3px $red, 0 0 6px $red;
+                }
             }
         }
 
@@ -67,18 +79,27 @@
                 min-width: 50%;
 
                 input{
+                    display: block;
                     opacity: 0;
                     width: 0;
-                }
-    
-                input:checked + label{
-                    border-left: 1px solid $red;
-                    border-right: 1px solid $red;
                 }
     
                 label{
                     cursor: pointer;
                     padding: 0 0.5rem;
+                    border-left: 1px solid $transparentRed;
+                    border-right: 1px solid $transparentRed;
+                    transition: border 1s linear 0s;
+                }
+
+                input:checked + label{
+                    border-left: 1px solid $red;
+                    border-right: 1px solid $red;
+                }
+
+                input:focus + label{
+                    border-left: solid 1px $lightRed;
+                    border-right: solid 1px $lightRed;
                 }
     
                 div{
@@ -89,13 +110,9 @@
             }
         }
 
-        .submit-button{
-            background-color: transparent;
-            border: none;
-            color: $red;
+        .app-button{
             font-size: 1.5rem;
             margin-top: 1rem;
-            cursor: pointer;
         }
     }
 }

@@ -319,95 +319,27 @@ template {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 * {
   box-sizing: border-box; }
 
@@ -446,102 +378,34 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 #app {
   display: flex;
   flex-direction: column;
   max-width: 1000px;
   height: 100vh;
   margin: 0 auto 0 auto;
-  padding: 15px 0; }
+  padding: 15px; }
 
 @use "sass:math";
 @font-face {
@@ -559,105 +423,36 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 #HUD {
   display: block;
   width: 100%;
-  min-height: 100px;
-  padding: 0.5rem; }
+  min-height: 100px; }
   #HUD .HUD-container {
     display: inline-flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: stretch;
     align-content: flex-start;
     height: 100%; }
 
@@ -677,101 +472,53 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 .score {
-  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  height: 1.2rem;
   padding: 0 0 0 1rem;
+  transform: translateX(-0.3rem);
   color: #bd4044;
   font-size: 1rem;
-  font-weight: bold; }
+  font-weight: lighter;
+  text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044; }
+  .score .first-letter {
+    font-size: 2rem;
+    transform: translateY(-1rem); }
+  .score .value {
+    display: inline-block;
+    color: #f37e82; }
+
+@keyframes score_incrementing {
+  0% {
+    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044;
+    transform: scale(1); }
+  100% {
+    text-shadow: 0 1px #bd4044, 0 0 1px #bd4044, 0 0 2px #bd4044, 0 0 4px #bd4044, 0 0 7px #bd4044, 0 0 16px #bd4044;
+    transform: scale(1.7); } }
 
 @use "sass:math";
 @font-face {
@@ -789,101 +536,49 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 .chain {
-  display: block;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  height: 1.2rem;
   padding: 0 0 0 1rem;
   color: #bd4044;
   font-size: 1.3rem;
-  font-weight: bold; }
+  font-weight: lighter;
+  text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044; }
+  .chain .first-letter {
+    font-size: 2rem;
+    transform: translateY(-0.7rem); }
+  .chain .value {
+    display: inline-block;
+    color: #f37e82; }
+
+@keyframes chain_increment {
+  0% {
+    text-shadow: 0 1px #bd4044, 0 0 1px #bd4044, 0 0 2px #bd4044, 0 0 4px #bd4044, 0 0 7px #bd4044, 0 0 16px #bd4044;
+    transform: scale(2); } }
 
 @use "sass:math";
 @font-face {
@@ -901,101 +596,40 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 .pseudo {
-  display: block;
-  color: #5c5456;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-grow: 1;
+  color: #bd4044;
+  font-weight: lighter;
+  font-family: "Giorgio";
   padding: 0 0 0 1rem;
   font-size: 1.3rem;
-  font-weight: bold; }
+  transform: translateX(-0.35rem); }
+  .pseudo .first-letter {
+    font-size: 2rem;
+    color: #f37e82; }
 
 @use "sass:math";
 @font-face {
@@ -1013,95 +647,74 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
+    opacity: 0; } }
+
+.neon-text {
+  color: #f8c2c4;
+  animation: 0.5s linear alternate infinite neon_text, 5s linear alternate infinite neon_text_blink; }
+
+@keyframes neon_text {
+  0% {
+    text-shadow: 0 0 3px #f37e82, 0 0 7px #bd4044, 0 0 10px #bd4044, 0 0 13px #bd4044, 0 0 23px #bd4044, 0 0 27px #bd4044; }
   100% {
-    opacity: 100; } }
+    text-shadow: 0 0 5px #f37e82, 0 0 10px #bd4044, 0 0 15px #bd4044, 0 0 20px #bd4044, 0 0 35px #bd4044, 0 0 40px #bd4044; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
+@use "sass:math";
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
+  font-weight: normal; }
 
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
+  font-weight: bold; }
 
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
+  font-weight: lighter; }
 
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
+
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
+
 .lifebar {
   display: flex;
   flex-direction: column-reverse;
@@ -1111,7 +724,17 @@ body {
   .lifebar div {
     width: 100%;
     height: 100%;
-    background-color: #bd4044; }
+    background-color: #f37e82; }
+
+@keyframes lifebar_decrement {
+  10% {
+    box-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 7px #bd4044, 0 0 12px #bd4044; }
+  70% {
+    box-shadow: 0 0 1px #bd4044, 0 0 2px #bd4044, 0 0 5px #bd4044, 0 0 11px #bd4044, 0 0 18px #bd4044; } }
+
+@keyframes lifebar_blink {
+  100% {
+    background-color: rgba(243, 126, 130, 0.411); } }
 
 @use "sass:math";
 @font-face {
@@ -1129,95 +752,27 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 #board {
   display: flex;
   flex-direction: row;
@@ -1245,95 +800,27 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 .word-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1342,7 +829,6 @@ body {
   align-content: space-around;
   align-items: center;
   flex-grow: 4;
-  color: #d6d1d1;
   width: 100%; }
 
 @use "sass:math";
@@ -1361,128 +847,43 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 .word {
   display: inline-block;
   padding: 0rem 0 0.5rem 0.5rem;
   min-width: 30%;
   min-height: 2rem;
   text-align: center;
-  font-weight: bold;
+  font-weight: lighter;
   color: #bd4044;
-  text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044; }
-
-@use "sass:math";
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
-  font-weight: normal; }
-
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
-  font-weight: bold; }
-
-@font-face {
-  font-family: "Barlow";
-  src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
-  font-weight: lighter; }
+  text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044;
+  transform-origin: bottom center; }
 
 @keyframes word_spawn {
   0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
+    opacity: 0; }
   100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+    opacity: 1; } }
 
 @keyframes word_living {
   0% {
@@ -1490,11 +891,11 @@ body {
     text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
     transform: scale(1); }
   100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+    color: #f8c2c4;
+    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 23px #bd4044;
+    transform: scale(1.4); } }
 
-@keyframes word_near_escape {
+@keyframes word_validated {
   0% {
     opacity: 0; }
   1% {
@@ -1528,54 +929,66 @@ body {
   100% {
     opacity: 100; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
+@keyframes word_near_escape {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
+@use "sass:math";
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
+  font-weight: normal; }
 
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
+  font-weight: bold; }
 
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
+  font-weight: lighter; }
+
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
+
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
+
 .input-viewer {
   display: block;
   width: 100%;
   height: 2rem;
-  color: #bd4044;
-  font-weight: bold;
+  color: #f37e82;
+  font-weight: lighter;
   padding-top: 1rem;
   text-align: center; }
-  .input-viewer span {
+  .input-viewer .input-viewer-content {
     display: inline-block;
     padding: 0rem 0 0.5rem 0.5rem; }
+  .input-viewer .input-viewer-left {
+    color: #f37e82; }
+  .input-viewer .input-viewer-right {
+    padding-left: 0.2rem;
+    color: #f37e82;
+    animation: 2s linear 0s normal infinite opacity_blink; }
 
 @use "sass:math";
 @font-face {
@@ -1593,95 +1006,27 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 #input-text-mobile {
   display: block;
   width: 100%;
@@ -1712,95 +1057,27 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 .key {
   display: inline-block;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
@@ -1824,95 +1101,27 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
-
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
-
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
-
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
 #home {
   display: flex;
   justify-content: center;
@@ -1920,6 +1129,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding: 0 15px;
   position: absolute;
   top: 0;
   left: 0;
@@ -1928,31 +1138,39 @@ body {
     display: block;
     max-width: 1000px; }
   #home #home-title {
-    font-size: 2rem;
+    font-size: 2.8rem;
+    font-family: "Giorgio";
     text-align: center;
     color: #bd4044; }
   #home #home-subtitle {
-    font-size: 1rem;
-    text-align: center;
-    color: #5c5456;
-    padding: 0 1rem; }
+    font-size: 0.8rem;
+    text-align: right;
+    font-family: "Code";
+    font-weight: bold;
+    color: #a18a88;
+    transform: translateY(-0.95rem); }
+    #home #home-subtitle .carret-cursor {
+      transform: translateY(-0.1rem); }
   #home form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 2rem;
     font-size: 1.2rem;
-    color: #d6d1d1; }
+    color: #a18a88; }
     #home form .pseudo-input {
       width: 100%;
       text-align: center; }
-      #home form .pseudo-input label {
-        padding: 0 1rem 0.5rem 0; }
       #home form .pseudo-input input {
         background-color: transparent;
         border: solid 1px #bd4044;
-        color: #d6d1d1;
-        padding: 0.2rem 0.5rem; }
+        color: #a18a88;
+        padding: 0.2rem 0.5rem;
+        caret-color: #a18a88;
+        transition: border 1s linear 0s, box-shadow 0.5s linear 0s; }
+        #home form .pseudo-input input:focus {
+          border: solid 1px #f37e82;
+          box-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044; }
     #home form .radios {
       display: flex;
       justify-content: space-around;
@@ -1961,24 +1179,27 @@ body {
       #home form .radios .radio-input {
         min-width: 50%; }
         #home form .radios .radio-input input {
+          display: block;
           opacity: 0;
           width: 0; }
+        #home form .radios .radio-input label {
+          cursor: pointer;
+          padding: 0 0.5rem;
+          border-left: 1px solid rgba(189, 64, 68, 0);
+          border-right: 1px solid rgba(189, 64, 68, 0);
+          transition: border 1s linear 0s; }
         #home form .radios .radio-input input:checked + label {
           border-left: 1px solid #bd4044;
           border-right: 1px solid #bd4044; }
-        #home form .radios .radio-input label {
-          cursor: pointer;
-          padding: 0 0.5rem; }
+        #home form .radios .radio-input input:focus + label {
+          border-left: solid 1px #f37e82;
+          border-right: solid 1px #f37e82; }
         #home form .radios .radio-input div {
           text-align: center;
           margin: 0.5rem auto 0 auto; }
-    #home form .submit-button {
-      background-color: transparent;
-      border: none;
-      color: #bd4044;
+    #home form .app-button {
       font-size: 1.5rem;
-      margin-top: 1rem;
-      cursor: pointer; }
+      margin-top: 1rem; }
 
 @use "sass:math";
 @font-face {
@@ -1996,95 +1217,116 @@ body {
   src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
   font-weight: lighter; }
 
-@keyframes word_spawn {
-  0% {
-    transform-origin: bottom center;
-    transform: rotateX(90deg); }
-  100% {
-    transform-origin: bottom center;
-    transform: rotateX(0deg); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
 
-@keyframes word_living {
-  0% {
-    color: #bd4044;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 1px #bd4044;
-    transform: scale(1); }
-  100% {
-    color: #f5b2b4;
-    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044, 0 0 12px #bd4044, 0 0 20px #bd4044;
-    transform: scale(1.3); } }
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
 
-@keyframes word_near_escape {
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
   0% {
-    opacity: 0; }
-  1% {
-    opacity: 100; }
-  12% {
-    opacity: 0; }
-  13% {
-    opacity: 100; }
-  15% {
-    opacity: 0; }
-  16% {
-    opacity: 100; }
-  25% {
-    opacity: 0; }
-  30% {
-    opacity: 100; }
+    opacity: 1; }
   50% {
-    opacity: 0; }
-  52% {
-    opacity: 100; }
-  60% {
-    opacity: 0; }
-  61% {
-    opacity: 100; }
-  90% {
-    opacity: 0; }
-  95% {
-    opacity: 100; }
-  99% {
-    opacity: 0; }
-  100% {
-    opacity: 100; } }
+    opacity: 0; } }
 
-@keyframes word_pop {}/* @keyframes word_pop{
-    0%{
-        transform: rotateX(90deg);
-        text-shadow: 0 0 3px $red;
-    }
-    100%{
-        transform: rotateX(0deg);
-        text-shadow: 0 0 3px $red;
-    }
-}
+.carret-cursor {
+  display: inline-block;
+  animation: 2s linear 0s normal infinite opacity_blink; }
 
-@keyframes word_mid_life{
-    0%{
-        color: purple;
-    }
-    100%{
-        color: blue;
-    }
-}
+@use "sass:math";
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
+  font-weight: normal; }
 
-@keyframes word_near_escape{
-    0%{
-        color: blue;
-    }
-    100%{
-        color: yellowgreen;
-    }
-}
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
+  font-weight: bold; }
 
-@keyframes word_escape{
-    0%{
-        color: yellowgreen;
-    }
-    100%{
-        color: red;
-    }
-} */
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
+  font-weight: lighter; }
+
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
+
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
+
+.app-button {
+  background-color: transparent;
+  border: none;
+  color: #bd4044;
+  cursor: pointer;
+  font-family: "Giorgio";
+  transition: color 0.5s linear 0s, text-shadow 0.5s linear 0s; }
+  .app-button:hover {
+    color: #f37e82;
+    text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044; }
+
+@use "sass:math";
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
+  font-weight: normal; }
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-Medium.ttf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/fonts/Barlow/BarlowSemiCondensed-ExtraLight.ttf");
+  font-weight: lighter; }
+
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Bold.otf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Code";
+  src: url("/fonts/Code/CODE Light.otf");
+  font-weight: lighter; }
+
+@font-face {
+  font-family: "Giorgio";
+  src: url("/fonts/Giorgio/Giorgio.ttf");
+  font-weight: normal; }
+
+@keyframes opacity_blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
+
 #gameover-modal {
   display: flex;
   flex-wrap: wrap;
@@ -2095,38 +1337,45 @@ body {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 100%;
-  background-color: #231F20; }
+  width: 75%;
+  background-color: #231F20;
+  font-family: "Code"; }
   #gameover-modal #gameover-title {
     text-align: center;
     width: 100%;
     color: #bd4044;
     font-size: 1.5rem;
-    font-weight: bold; }
+    font-weight: bold;
+    font-family: "Giorgio"; }
   #gameover-modal #gameover-recap {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    padding: 1rem 0;
-    color: #d6d1d1; }
+    padding: 1rem 0; }
     #gameover-modal #gameover-recap .gameover-list {
       display: inline-block;
       list-style: none;
       padding: 0;
       width: 50%;
-      text-align: center; }
+      text-align: center;
+      color: #bd4044; }
+      #gameover-modal #gameover-recap .gameover-list .gameover-item {
+        font-family: "Barlow"; }
       #gameover-modal #gameover-recap .gameover-list .gameover-pseudo {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         margin-bottom: 0.5rem;
-        color: #5c5456; }
+        color: #a18a88; }
+      #gameover-modal #gameover-recap .gameover-list .gameover-value {
+        color: #f37e82; }
   #gameover-modal .gameover-button {
-    width: 50%;
-    text-align: center; }
-    #gameover-modal .gameover-button button {
-      font-size: 1.2rem;
-      font-weight: bold;
-      background-color: transparent;
-      color: #bd4044;
-      border: none;
-      cursor: pointer; }
+    width: 50%; }
+    #gameover-modal .gameover-button-right {
+      text-align: left;
+      padding-left: 1rem; }
+    #gameover-modal .gameover-button-left {
+      text-align: right;
+      padding-right: 1rem; }
+    #gameover-modal .gameover-button .app-button {
+      font-size: 1rem;
+      font-weight: bold; }
 

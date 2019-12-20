@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import * as gameConst from 'Constants/GameConst';
 import * as actions from 'Actions';
 
-
 import './style.scss';
+
+import CarretCursor from 'Components/CarretCursor';
+import AppButton from 'Components/AppButton';
+import NeonText from 'Components/NeonText';
 
 
 var Home = function(props)
@@ -15,7 +18,12 @@ var Home = function(props)
 
     const [pseudo, setPseudo] = useState(userPseudo);
     const handlePseudoChange = (e) => {
-        setPseudo(e.currentTarget.value);
+        let value = e.currentTarget.value;
+        value = value.replace( /./gi, (match) => {
+            return match.toUpperCase();
+        });
+
+        setPseudo(value);
     };
 
     const [keyboard, setKeyboard] = useState("azerty");
@@ -40,13 +48,14 @@ var Home = function(props)
     return (
         <div id="home">
             <div id="home-container">
-                <div id="home-title">Someword</div>
-                <div id="home-subtitle">For a better user experience, we recommand you to play in portrait mode ;)</div>
+                <div id="home-title">
+                    >SOME<NeonText>W</NeonText>ORD
+                    <div id="home-subtitle">A TYPING SCORING GAME <CarretCursor/></div>
+                </div>
 
                 <form onSubmit={handleSubmit}>
                     <div className="pseudo-input">
-                        <label htmlFor="pseudo">Pseudo :</label>
-                        <input id="pseudo" type="text" placeholder="votre pseudo" value={pseudo} onChange={handlePseudoChange}/>
+                        <input id="pseudo" type="text" placeholder="YOUR PSEUDO" value={pseudo} onChange={handlePseudoChange} autoFocus/>
                     </div>
 
                     <div className="radios">
@@ -75,7 +84,7 @@ var Home = function(props)
                         </div>
                     </div>
 
-                    <button className="submit-button" type="submit"> Jouer </button>
+                    <AppButton> Jouer </AppButton>
 
                 </form>
             </div>

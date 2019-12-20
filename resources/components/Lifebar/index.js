@@ -8,7 +8,6 @@ import './style.scss';
 var Lifebar = function(props)
 {
     const [animator, nodeRef] = useAnimator();
-
     const tweenedLife =  useTweenedProp(props.life, {
         duration: 1000,
         autoplay: false,

@@ -1,30 +1,38 @@
-import {useState, useEffect} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import anime from 'animejs';
 
-const useTweenedProp = (prop, config) => {
+const useTweenedProp = (prop, config, instantValue = null) => {
 
     const [value, setValue] = useState(prop)
-    const current = {
-        value: value
+    const tempValue = {
+        current: value
     };
 
-    const tween = anime({
-        targets: current,
-        value: prop,
-        update: () => {
-            setValue(current.value);
-        },
-        complete: () => {
-            setValue(prop);
-        },
-        ...config
-    });
-
     useEffect(() => {
+
         if(prop === value)
         {
             return;
         }
+
+        if(prop === instantValue)
+        {
+            setValue(prop);
+            return;
+        }
+
+        const tween = anime({
+            targets: tempValue,
+            current: prop,
+            autoplay: false,
+            update: () => {
+                setValue(tempValue.current);
+            },
+            complete: () => {
+                setValue(prop);
+            },
+            ...config
+        });
 
         tween.play();
 

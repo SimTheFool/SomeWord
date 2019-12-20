@@ -12,9 +12,10 @@
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 
-    width: 100%;
+    width: 75%;
 
     background-color: $black;
+    font-family: $fontFancy;
 
     #gameover-title{
         text-align: center;
@@ -22,6 +23,7 @@
         color: $red;
         font-size: 1.5rem;
         font-weight:  bold;
+        font-family: $fontTitle;
     }
 
     #gameover-recap{
@@ -29,7 +31,6 @@
         justify-content: space-around;
         width: 100%;
         padding: 1rem 0;
-        color: $white;
 
         .gameover-list{
             display: inline-block;
@@ -37,26 +38,40 @@
             padding: 0;
             width: 50%;
             text-align: center;
+            color: $red;
+
+            .gameover-item{
+                font-family: $fontBasic;
+            }
 
             .gameover-pseudo{
-                font-size: 1.3rem;
+                font-size: 1.4rem;
                 margin-bottom: 0.5rem;
                 color: $grey;
+            }
+
+            .gameover-value{
+                color: $lightRed;
             }
         }
     }
 
     .gameover-button{
         width: 50%;
-        text-align: center;
 
-        button{
-            font-size: 1.2rem;
+        &-right{
+            text-align: left;
+            padding-left: 1rem;
+        }
+
+        &-left{
+            text-align: right;
+            padding-right: 1rem;
+        }
+
+        .app-button{
+            font-size: 1rem;
             font-weight:  bold;
-            background-color: transparent;
-            color: $red;
-            border: none;
-            cursor: pointer;
         }
     }
 }

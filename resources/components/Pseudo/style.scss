@@ -1,10 +1,18 @@
 @import 'GlobalStyle';
 
 .pseudo {
-    display: block;
+    display: flex;
+    flex-direction: column-reverse;
     flex-grow: 1;
-    color: $grey;
+    color: $red;
     font-weight: lighter;
+    font-family: $fontTitle;
     padding: 0 0 0 1rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    transform: translateX(-0.35rem);
+
+    .first-letter{
+        font-size: 2rem;
+        color: $lightRed;
+    }
 }

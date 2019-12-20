@@ -1,4 +1,5 @@
 import * as types from 'Constants/ActionTypes';
+import defaultState from 'Constants/DefaultState';
 
 const scoreReducer = (state = null, action) => {
     
@@ -11,7 +12,8 @@ const scoreReducer = (state = null, action) => {
             break;
 
         case types.INITIALIZE_CURRENT_GAME:
-            newState = 0;
+            console.log('score 0');
+            newState = defaultState.score;
             break;
 
         default:

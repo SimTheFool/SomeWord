@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
+import NeonText from 'Components/NeonText';
 var Pseudo = function(props)
 {
+
+    let firstLetter = props.pseudo.slice(0, 1);
+
     return (
         <div className="pseudo">
-            {props.pseudo}
+            <span>
+            <span className="first-letter">{firstLetter}</span>
+            {props.pseudo.slice(1)}
+            </span>
         </div>
     );
 };
