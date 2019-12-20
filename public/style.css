@@ -303,7 +303,6 @@ template {
 [hidden] {
   display: none; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -362,7 +361,6 @@ body {
   html {
     font-size: 25.3px; } }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -407,7 +405,6 @@ body {
   margin: 0 auto 0 auto;
   padding: 15px; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -456,7 +453,6 @@ body {
     align-content: flex-start;
     height: 100%; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -520,7 +516,6 @@ body {
     text-shadow: 0 1px #bd4044, 0 0 1px #bd4044, 0 0 2px #bd4044, 0 0 4px #bd4044, 0 0 7px #bd4044, 0 0 16px #bd4044;
     transform: scale(1.7); } }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -580,7 +575,6 @@ body {
     text-shadow: 0 1px #bd4044, 0 0 1px #bd4044, 0 0 2px #bd4044, 0 0 4px #bd4044, 0 0 7px #bd4044, 0 0 16px #bd4044;
     transform: scale(2); } }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -631,7 +625,6 @@ body {
     font-size: 2rem;
     color: #f37e82; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -678,7 +671,6 @@ body {
   100% {
     text-shadow: 0 0 5px #f37e82, 0 0 10px #bd4044, 0 0 15px #bd4044, 0 0 20px #bd4044, 0 0 35px #bd4044, 0 0 40px #bd4044; } }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -736,7 +728,6 @@ body {
   100% {
     background-color: rgba(243, 126, 130, 0.411); } }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -784,7 +775,6 @@ body {
     flex-direction: column;
     flex-grow: 1; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -831,7 +821,6 @@ body {
   flex-grow: 4;
   width: 100%; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -935,7 +924,6 @@ body {
   100% {
     opacity: 0; } }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -990,7 +978,6 @@ body {
     color: #f37e82;
     animation: 2s linear 0s normal infinite opacity_blink; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -1041,7 +1028,6 @@ body {
       justify-content: space-around;
       min-width: 100%; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -1085,7 +1071,6 @@ body {
   font-weight: bold; }
 
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -1201,7 +1186,6 @@ body {
       font-size: 1.5rem;
       margin-top: 1rem; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -1242,7 +1226,6 @@ body {
   display: inline-block;
   animation: 2s linear 0s normal infinite opacity_blink; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");
@@ -1290,7 +1273,6 @@ body {
     color: #f37e82;
     text-shadow: 0 0 1px #bd4044, 0 0 1px #bd4044, 0 0 3px #bd4044, 0 0 6px #bd4044; }
 
-@use "sass:math";
 @font-face {
   font-family: "Barlow";
   src: url("/fonts/Barlow/BarlowSemiCondensed-Regular.ttf");

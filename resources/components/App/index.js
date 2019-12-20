@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {isMobile} from 'mobile-device-detect';
 import {useSelector, useDispatch} from 'react-redux';
 import * as actions from 'Actions';

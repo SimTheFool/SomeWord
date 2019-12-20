@@ -53,7 +53,7 @@ var Home = function(props)
                     <div id="home-subtitle">A TYPING SCORING GAME <CarretCursor/></div>
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} spellCheck="false">
                     <div className="pseudo-input">
                         <input id="pseudo" type="text" placeholder="YOUR PSEUDO" value={pseudo} onChange={handlePseudoChange} autoFocus/>
                     </div>
