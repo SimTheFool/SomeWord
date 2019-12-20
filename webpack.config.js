@@ -10,7 +10,7 @@ var configDefault =
     mode: 'development',
     entry: 
     {
-        "index": './resources/index.js'
+        "app": './resources/index.js'
     },
     output: 
     {
