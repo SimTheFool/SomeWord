@@ -5,10 +5,21 @@ import './style.scss';
 
 var Key = function(props)
 {
+    let style = {};
+    if(props.keyName === "ENTER" || props.keyName === "BACK")
+    {
+        style = {
+            flexGrow : 0
+        };
+    }
+
     return (
-        <div className="key"
-            onTouchStart={() => props.onTouch(props.keyName)}
-        >
+        <div className="key" style={style} onTouchStart={() => props.onTouch(props.keyName)}>
+
+            {/* <div className="key-trigger-zone"
+                onTouchStart={() => props.onTouch(props.keyName)}
+            ></div> */}
+
             {props.keyName}
         </div>
     );
