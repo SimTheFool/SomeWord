@@ -1,26 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types'
 
 import './style.scss';
 
+import NeonText from 'Components/NeonText';
+
 var Key = function(props)
 {
-    let style = {};
-    if(props.keyName === "ENTER" || props.keyName === "BACK")
+    const [showInfo, setShowInfo] = useState(false);
+    let className = "";
+    let symbol = "";
+
+    switch(props.keyName)
     {
-        style = {
-            flexGrow : 0
-        };
+        case "ENTER":
+            className = "key-special";
+            symbol = "↲";
+            break;
+        case "BACK":
+            className = "key-special";
+            symbol = "←";
+            break;
+        default:
+            break;
     }
 
+    const handleTouchStart = (e) => {
+        props.onTouch(props.keyName);
+        setShowInfo(true);
+    };
+
+    const handleTouchEnd = (e) => {
+        setShowInfo(false);
+    };
+
     return (
-        <div className="key" style={style} onTouchStart={() => props.onTouch(props.keyName)}>
-
-            {/* <div className="key-trigger-zone"
-                onTouchStart={() => props.onTouch(props.keyName)}
-            ></div> */}
-
-            {props.keyName}
+        <div className={`key ${className}`} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} >
+            {
+                showInfo ?
+                <div className="key-info">
+                    <NeonText>{symbol ? symbol : props.keyName}</NeonText>
+                </div> :
+                null
+            }
+            {symbol ? symbol : props.keyName}
         </div>
     );
 };
