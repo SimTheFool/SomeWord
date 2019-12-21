@@ -8,17 +8,14 @@ import NeonText from 'Components/NeonText';
 var Key = function(props)
 {
     const [showInfo, setShowInfo] = useState(false);
-    let className = "";
     let symbol = "";
 
     switch(props.keyName)
     {
         case "ENTER":
-            className = "key-special";
             symbol = "↲";
             break;
         case "BACK":
-            className = "key-special";
             symbol = "←";
             break;
         default:
@@ -35,7 +32,7 @@ var Key = function(props)
     };
 
     return (
-        <div className={`key ${className}`} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} >
+        <div className="key" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} >
             {
                 showInfo ?
                 <div className="key-info">
