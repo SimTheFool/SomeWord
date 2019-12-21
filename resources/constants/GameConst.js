@@ -6,13 +6,13 @@ export const ON_DESKTOP = "ON_DESKTOP";
 export const KEYBOARD_QWERTY = [
     ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
     ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-    ["Z", "X", "C", "V", "B", "N", "M"],
+    ["EMPTY", "EMPTY", "Z", "X", "C", "V", "B", "N", "M", "EMPTY", "EMPTY"],
     ["BACK", "ENTER"]
   ];
 export const KEYBOARD_AZERTY = [
     ["A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P"],
     ["Q", "S", "D", "F", "G", "H", "J", "K", "L", "M"],
-    ["W", "X", "C", "V", "B", "N"],
+    ["EMPTY", "EMPTY", "W", "X", "C", "V", "B", "N", "EMPTY", "EMPTY"],
     ["BACK", "ENTER"]
 ];
 

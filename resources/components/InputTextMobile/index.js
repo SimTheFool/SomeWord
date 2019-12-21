@@ -20,6 +20,9 @@ var InputTextMobile = function(props)
                 props.handleBackspaceKey();
                 break;
 
+            case "EMPTY":
+                break;
+
             default:
                 props.handleLetterKey(keyName);
         }
