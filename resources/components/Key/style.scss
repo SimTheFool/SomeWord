@@ -11,8 +11,12 @@
     text-align: center;
     user-select: none;
     touch-action: manipulation;
-    border: $red 1px solid;
+    //border: $red 1px solid;
 
+    .key-box{
+        display: inline-block;
+        width: 2rem;
+    }
 
     .key-info{
         position: absolute;
