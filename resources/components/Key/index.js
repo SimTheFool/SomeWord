@@ -40,7 +40,9 @@ var Key = function(props)
                 </div> :
                 null
             }
-            {symbol ? symbol : props.keyName}
+            <span className="key-box">
+                {symbol ? symbol : props.keyName}
+            </span>
         </div>
     );
 };
