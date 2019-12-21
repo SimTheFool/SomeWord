@@ -1074,10 +1074,8 @@ body {
   font-weight: bold;
   position: relative;
   text-align: center;
-  user-select: none; }
-  .key-special {
-    flex-grow: 0;
-    padding-left: 0.5rem; }
+  user-select: none;
+  touch-action: manipulation; }
   .key .key-info {
     position: absolute;
     bottom: 100%;

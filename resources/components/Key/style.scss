@@ -10,11 +10,9 @@
     position: relative;
     text-align: center;
     user-select: none;
+    touch-action: manipulation;
 
-    &-special{
-        flex-grow: 0;
-        padding-left: 0.5rem;
-    }
+
 
     .key-info{
         position: absolute;

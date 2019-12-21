@@ -5,13 +5,13 @@ export const ON_DESKTOP = "ON_DESKTOP";
 // Game keyboard
 export const KEYBOARD_QWERTY = [
     ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-    ["A", "S", "D", "F", "G", "H", "J", "K", "L", "BACK"],
-    ["Z", "X", "C", "V", "B", "N", "M", "ENTER"]
+    ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+    ["BACK", "Z", "X", "C", "V", "B", "N", "M", "ENTER"]
   ];
 export const KEYBOARD_AZERTY = [
     ["A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P"],
-    ["Q", "S", "D", "F", "G", "H", "J", "K", "L", "M", "BACK"],
-    ["W", "X", "C", "V", "B", "N", "ENTER"]
+    ["Q", "S", "D", "F", "G", "H", "J", "K", "L", "M"],
+    [ "BACK", "W", "X", "C", "V", "B", "N", "ENTER"]
 ];
 
 // Game type
