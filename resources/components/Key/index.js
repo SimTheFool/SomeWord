@@ -18,6 +18,9 @@ var Key = function(props)
         case "BACK":
             symbol = "←";
             break;
+        case "EMPTY":
+            symbol = ".";
+            break;
         default:
             break;
     }
