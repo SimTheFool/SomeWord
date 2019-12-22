@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types'
 
 import './style.scss';
@@ -8,43 +8,42 @@ import NeonText from 'Components/NeonText';
 var Key = function(props)
 {
     const [showInfo, setShowInfo] = useState(false);
-    let symbol = "";
-
-    switch(props.keyName)
-    {
-        case "ENTER":
-            symbol = "↲";
-            break;
-        case "BACK":
-            symbol = "←";
-            break;
-        case "EMPTY":
-            symbol = ".";
-            break;
-        default:
-            break;
-    }
+    const PID = useRef(null);
 
     const handleTouchStart = (e) => {
-        props.onTouch(props.keyName);
+
+        if(props.keyData.name === "EMPTY")
+        {
+            return;
+        }
+
+        props.onTouch(props.keyData.name);
+        clearTimeout(PID.current);
         setShowInfo(true);
     };
 
     const handleTouchEnd = (e) => {
-        setShowInfo(false);
+        PID.current = setTimeout(() => {
+            setShowInfo(false);
+        }, 150);
     };
+
+    let char = props.keyData.symbol !== undefined ? props.keyData.symbol : props.keyData.name;
+
+    let info = showInfo ?
+        <div className="key-info">
+            <NeonText>{char}</NeonText>
+        </div> :
+        null;
+
 
     return (
         <div className="key" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} >
-            {
-                showInfo ?
-                <div className="key-info">
-                    <NeonText>{symbol ? symbol : props.keyName}</NeonText>
-                </div> :
-                null
-            }
+            
+            {info}
+
             <span className="key-box">
-                {symbol ? symbol : props.keyName}
+                {char}
             </span>
         </div>
     );
@@ -52,7 +51,7 @@ var Key = function(props)
 
 Key.propTypes = {
     onTouch: PropTypes.func.isRequired,
-    keyName: PropTypes.string
+    keyData: PropTypes.object.isRequired
 };
 
 export default Key;

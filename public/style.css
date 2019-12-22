@@ -1068,14 +1068,17 @@ body {
 .key {
   display: inline-block;
   flex-grow: 1;
-  font-size: 1.3rem;
-  padding: 0.5rem 0;
+  font-size: 1.6rem;
+  padding: 0.75rem 0;
   color: #bd4044;
   font-weight: bold;
   position: relative;
   text-align: center;
   user-select: none;
-  touch-action: manipulation; }
+  touch-action: none; }
+  .key .key-box {
+    display: inline-block;
+    width: 2rem; }
   .key .key-info {
     position: absolute;
     bottom: 100%;

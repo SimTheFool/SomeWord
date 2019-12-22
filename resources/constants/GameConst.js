@@ -4,16 +4,16 @@ export const ON_DESKTOP = "ON_DESKTOP";
 
 // Game keyboard
 export const KEYBOARD_QWERTY = [
-    ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-    ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-    ["EMPTY", "EMPTY", "Z", "X", "C", "V", "B", "N", "M", "EMPTY", "EMPTY"],
-    ["BACK", "ENTER"]
+    [{name: "Q"}, {name: "W"}, {name: "E"}, {name: "R"}, {name: "T"}, {name: "Y"}, {name: "U"}, {name: "I"}, {name: "O"}, {name: "P"}],
+    [{name: "A"}, {name: "S"}, {name: "D"}, {name: "F"}, {name: "G"}, {name: "H"}, {name: "J"}, {name: "K"}, {name: "L"}],
+    [{name: "EMPTY", symbol: ""}, {name: "EMPTY", symbol: ""}, {name: "Z"}, {name: "X"}, {name: "C"}, {name: "V"}, {name: "B"}, {name: "N"}, {name: "M"}, {name: "EMPTY", symbol: ""}, {name: "EMPTY", symbol: ""},],
+    [{name: "BACK", symbol: "←"}, {name: "ENTER", symbol: "↲"}]
   ];
 export const KEYBOARD_AZERTY = [
-    ["A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P"],
-    ["Q", "S", "D", "F", "G", "H", "J", "K", "L", "M"],
-    ["EMPTY", "EMPTY", "W", "X", "C", "V", "B", "N", "EMPTY", "EMPTY"],
-    ["BACK", "ENTER"]
+    [{name: "A"}, {name: "Z"}, {name: "E"}, {name: "R"}, {name: "T"}, {name: "Y"}, {name: "U"}, {name: "I"}, {name: "O"}, {name: "P"}],
+    [{name: "Q"}, {name: "S"}, {name: "D"}, {name: "F"}, {name: "G"}, {name: "H"}, {name: "J"}, {name: "K"}, {name: "L"}, {name: "M"}],
+    [{name: "EMPTY", symbol: ""}, {name: "EMPTY", symbol: ""}, {name: "W"}, {name: "X"}, {name: "C"}, {name: "V"}, {name: "B"}, {name: "N"}, {name: "EMPTY", symbol: ""}, {name: "EMPTY", symbol: ""},],
+    [{name: "BACK", symbol: "←"}, {name: "ENTER", symbol: "↲"}]
 ];
 
 // Game type

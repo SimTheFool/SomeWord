@@ -30,8 +30,8 @@ var InputTextMobile = function(props)
 
     keyboard = keyboard.map((row, index) => {
 
-        let keys = row.map((keyName, index) => {
-            return <Key keyName={keyName} onTouch={handleTouch} key={index}/>
+        let keys = row.map((key, index) => {
+            return <Key keyData={key} onTouch={handleTouch} key={index}/>
         })
 
         return (
