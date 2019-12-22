@@ -44,6 +44,8 @@ var Key = function(props)
 
             <span className="key-box" onTouchStart={() => {
                 e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
             }}>
                 {char}
             </span>
