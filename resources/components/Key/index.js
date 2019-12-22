@@ -11,7 +11,7 @@ var Key = function(props)
     const PID = useRef(null);
 
     const handleTouchStart = (e) => {
-
+        e.preventDefault();
         if(props.keyData.name === "EMPTY")
         {
             return;
@@ -42,7 +42,9 @@ var Key = function(props)
             
             {info}
 
-            <span className="key-box">
+            <span className="key-box" onTouchStart={() => {
+                e.preventDefault();
+            }}>
                 {char}
             </span>
         </div>
