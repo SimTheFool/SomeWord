@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -17,7 +18,7 @@ var configDefault =
         path: path.resolve('./public/'),
         filename: '[name].js'
     },
-    watch: true,
+    watch: false,
     module: 
     {
         rules: [
@@ -31,6 +32,12 @@ var configDefault =
                 loader: 'css-loader',
                 options: {
                     url: false,
+                }
+            },
+            {
+                loader: 'postcss-loader',
+                options: {
+                    plugins: () => [autoprefixer()]
                 }
             },
             {
