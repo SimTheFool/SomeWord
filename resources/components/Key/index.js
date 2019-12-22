@@ -43,6 +43,7 @@ var Key = function(props)
             {info}
 
             <span className="key-box" onTouchStart={() => {
+                // "pointer-events : none" wasn't enought to disable touch event on mobile devices.
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
