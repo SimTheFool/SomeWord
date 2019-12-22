@@ -8,9 +8,9 @@
     align-items: baseline;
 
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%);
 
     width: 75%;
 
@@ -21,7 +21,7 @@
         text-align: center;
         width: 100%;
         color: $red;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight:  bold;
         font-family: $fontTitle;
     }
@@ -30,7 +30,7 @@
         display: flex;
         justify-content: space-around;
         width: 100%;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
 
         .gameover-list{
             display: inline-block;
@@ -39,6 +39,7 @@
             width: 50%;
             text-align: center;
             color: $red;
+            margin: 0;
 
             .gameover-item{
                 font-family: $fontBasic;
@@ -70,7 +71,7 @@
         }
 
         .app-button{
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight:  bold;
         }
     }
