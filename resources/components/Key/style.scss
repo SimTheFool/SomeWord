@@ -9,13 +9,13 @@
     font-weight: bold;
     position: relative;
     text-align: center;
-    user-select: none;
     touch-action: none;
     //border: $red 1px solid;
 
     .key-box{
         display: inline-block;
         width: 2rem;
+        user-select: none;
     }
 
     .key-info{
@@ -28,5 +28,6 @@
         background-color: $black;
         padding: inherit;
         border: $red 1px solid;
+        pointer-events: none;
     }
 }
