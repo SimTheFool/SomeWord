@@ -11,9 +11,9 @@ var Pseudo = function(props)
 
     return (
         <div className="pseudo">
-            <span>
-            <span className="first-letter">{firstLetter}</span>
-            {props.pseudo.slice(1)}
+            <span className="pseudo-box">
+                <span className="first-letter">{firstLetter}</span>
+                {props.pseudo.slice(1)}
             </span>
         </div>
     );

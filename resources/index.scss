@@ -11,6 +11,7 @@ html {
 
 body {
     background-color: $black;
+    touch-action: none;
 }
 
 @media (min-device-width: 300px) and (min-device-height: 440px)

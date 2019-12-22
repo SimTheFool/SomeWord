@@ -11,6 +11,13 @@
     font-size: 1.3rem;
     transform: translateX(-0.35rem);
 
+    &-box{
+        display: inline-block;
+        min-width: 1rem;
+        min-height: 1rem;
+    }
+    
+
     .first-letter{
         font-size: 2rem;
         color: $lightRed;
