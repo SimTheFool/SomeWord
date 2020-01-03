@@ -87,8 +87,10 @@ var Home = function(props)
                     <AppButton> Jouer </AppButton>
 
                 </form>
-
-                <div id="home-infos">/!\ For a better user experience, we recommend playing in portrait mode.</div>
+                
+                <div id="home-infos">
+                    <span hidden={gameInfos.device === gameConst.ON_DESKTOP}>/!\ For a better user experience, we recommend playing in portrait mode.</span>
+                </div>
             </div>
         </div>
     );
