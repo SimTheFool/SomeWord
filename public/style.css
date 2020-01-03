@@ -351,14 +351,18 @@ template {
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+  -ms-touch-action: none;
+      touch-action: none; }
 
 html {
   font-size: 11px;
   font-family: "Barlow"; }
 
 body {
-  background-color: #231F20; }
+  background-color: #231F20;
+  -ms-touch-action: none;
+      touch-action: none; }
 
 @media (min-device-width: 300px) and (min-device-height: 440px) {
   html {
@@ -724,6 +728,10 @@ body {
   -webkit-transform: translateX(-0.35rem);
       -ms-transform: translateX(-0.35rem);
           transform: translateX(-0.35rem); }
+  .pseudo-box {
+    display: inline-block;
+    min-width: 1rem;
+    min-height: 1rem; }
   .pseudo .first-letter {
     font-size: 2rem;
     color: #f37e82; }
@@ -1346,7 +1354,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   padding: 0.75rem 0;
   color: #bd4044;
   font-weight: bold;
@@ -1356,7 +1364,7 @@ body {
       touch-action: none; }
   .key .key-box {
     display: inline-block;
-    width: 2rem;
+    width: 1rem;
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
@@ -1456,6 +1464,10 @@ body {
       -webkit-transform: translateY(-0.1rem);
           -ms-transform: translateY(-0.1rem);
               transform: translateY(-0.1rem); }
+  #home #home-infos {
+    font-size: 0.6rem;
+    color: #a18a88;
+    font-family: "Barlow"; }
   #home form {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1679,11 +1691,11 @@ body {
       -ms-flex-align: baseline;
           align-items: baseline;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-      -ms-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   width: 75%;
   background-color: #231F20;
   font-family: "Code"; }
@@ -1691,7 +1703,7 @@ body {
     text-align: center;
     width: 100%;
     color: #bd4044;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     font-family: "Giorgio"; }
   #gameover-modal #gameover-recap {
@@ -1701,14 +1713,15 @@ body {
     -ms-flex-pack: distribute;
         justify-content: space-around;
     width: 100%;
-    padding: 1rem 0; }
+    padding: 0.5rem 0; }
     #gameover-modal #gameover-recap .gameover-list {
       display: inline-block;
       list-style: none;
       padding: 0;
       width: 50%;
       text-align: center;
-      color: #bd4044; }
+      color: #bd4044;
+      margin: 0; }
       #gameover-modal #gameover-recap .gameover-list .gameover-item {
         font-family: "Barlow"; }
       #gameover-modal #gameover-recap .gameover-list .gameover-pseudo {
@@ -1726,6 +1739,6 @@ body {
       text-align: right;
       padding-right: 1rem; }
     #gameover-modal .gameover-button .app-button {
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: bold; }
 
