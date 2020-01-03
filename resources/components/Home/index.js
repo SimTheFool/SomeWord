@@ -87,6 +87,8 @@ var Home = function(props)
                     <AppButton> Jouer </AppButton>
 
                 </form>
+
+                <div id="home-infos">/!\ For a better user experience, we recommend playing in portrait mode.</div>
             </div>
         </div>
     );
