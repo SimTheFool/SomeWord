@@ -40,6 +40,12 @@
         }
     }
 
+    #home-infos{
+        font-size: 0.6rem;
+        color: $grey;
+        font-family: $fontBasic;
+    }
+
     form{
         display: flex;
         flex-wrap: wrap;
