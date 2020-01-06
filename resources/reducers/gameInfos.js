@@ -25,6 +25,7 @@ const gameInfosReducer = (state = {}, action) => {
             break;
 
         default:
+            newState = state;
     }
 
     return newState;

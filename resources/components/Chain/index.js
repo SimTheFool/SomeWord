@@ -37,4 +37,6 @@ Chain.propTypes = {
     chain: PropTypes.number.isRequired
 };
 
-export default Chain;
+export default React.memo(Chain, (prev, next) => {
+    return prev.chain === next.chain;
+});

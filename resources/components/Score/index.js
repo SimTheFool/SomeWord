@@ -42,8 +42,6 @@ var Score = function(props)
 
     const animScoreStopIncrementing = {...animScoreIncrementing, direction: "reverse", tag: "stopIncrementing", duration: tweeningDuration / 5};
 
-
-
     return (
         <div className="score">
             <span className="first-letter">S</span>CORE <span className="value" ref={nodeRef}>{Math.floor(tweenedScore)}</span>
@@ -55,4 +53,6 @@ Score.propTypes = {
     score: PropTypes.number.isRequired
 };
 
-export default Score;
+export default React.memo(Score, (prev, next) => {
+    return prev.score === next.score;
+});

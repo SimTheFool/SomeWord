@@ -41,7 +41,7 @@ var Home = function(props)
         gameInfos.keyboard = (keyboard === "azerty") ? gameConst.KEYBOARD_AZERTY : gameConst.KEYBOARD_QWERTY;
         gameInfos.gameType = gameType;
         gameInfos.status = gameConst.BEGINNING;
-        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setGameInfos({...gameInfos}));
         dispatch(actions.setPseudo(pseudo.toUpperCase()));
     };
 
@@ -87,8 +87,10 @@ var Home = function(props)
                     <AppButton> Jouer </AppButton>
 
                 </form>
-
-                <div id="home-infos">/!\ For a better user experience, we recommend playing in portrait mode.</div>
+                
+                <div id="home-infos">
+                    <span hidden={gameInfos.device === gameConst.ON_DESKTOP}>/!\ For a better user experience, we recommend playing in portrait mode.</span>
+                </div>
             </div>
         </div>
     );

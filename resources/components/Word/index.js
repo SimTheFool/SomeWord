@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {useSelector} from 'react-redux';
+import useStoreValue from 'Hooks/useStoreValue';
 import useAnimator from 'Hooks/useAnimator';
 import PropTypes from 'prop-types';
 
@@ -9,7 +10,7 @@ var Word = function(props)
 {
     const [animator, nodeRef] = useAnimator();
     const PID = useRef(null);
-    const chain = useSelector(state => state.chain);
+    const chain = useStoreValue(state => state.chain);
 
     const animSpawn = {
         duration: 250,
@@ -102,10 +103,13 @@ var Word = function(props)
 
 Word.propTypes = {
     word : PropTypes.string.isRequired,
+    validated: PropTypes.bool.isRequired,
     id: PropTypes.number.isRequired,
     timer: PropTypes.number.isRequired,
     onWordEscape: PropTypes.func.isRequired,
     onWordValidated: PropTypes.func.isRequired
 };
 
-export default Word;
+export default React.memo(Word, (prev, next) => {
+    return (prev.word === next.word) && (prev.validated === next.validated);
+});

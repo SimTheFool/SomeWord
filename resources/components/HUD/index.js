@@ -10,7 +10,7 @@ import Chain from 'Components/Chain';
 import Pseudo from 'Components/Pseudo';
 import Lifebar from 'Components/Lifebar';
 
-var HUD = function(props)
+var HUD = function()
 {
     const dispatch = useDispatch();
     const chain = useSelector(state => state.chain);

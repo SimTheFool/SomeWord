@@ -58,4 +58,6 @@ Lifebar.propTypes = {
     life: PropTypes.number.isRequired
 };
 
-export default Lifebar;
+export default React.memo(Lifebar, (prev, next) => {
+    return prev.life === next.life;
+});

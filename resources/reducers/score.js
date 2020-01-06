@@ -12,7 +12,6 @@ const scoreReducer = (state = null, action) => {
             break;
 
         case types.INITIALIZE_CURRENT_GAME:
-            console.log('score 0');
             newState = defaultState.score;
             break;
 

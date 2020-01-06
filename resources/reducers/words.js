@@ -68,6 +68,7 @@ const wordsReducer = (state = [], action) => {
             break;
             
         default:
+            newState = state;
     }
     return newState;
 };
