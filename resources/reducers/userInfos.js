@@ -42,6 +42,7 @@ const userInfosReducer = (state = {}, action) => {
             break;
 
         default:
+            newState = state;
     }
 
     return newState;

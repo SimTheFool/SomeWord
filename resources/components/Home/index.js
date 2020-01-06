@@ -41,7 +41,7 @@ var Home = function(props)
         gameInfos.keyboard = (keyboard === "azerty") ? gameConst.KEYBOARD_AZERTY : gameConst.KEYBOARD_QWERTY;
         gameInfos.gameType = gameType;
         gameInfos.status = gameConst.BEGINNING;
-        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setGameInfos({...gameInfos}));
         dispatch(actions.setPseudo(pseudo.toUpperCase()));
     };
 

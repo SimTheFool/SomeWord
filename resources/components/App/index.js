@@ -12,15 +12,15 @@ import InputText from 'Components/InputText';
 import Home from 'Components/Home';
 import GameOverModal from 'Components/GameOverModal';
 
-var App = function(props)
+var App = function()
 {
-    const gameInfos = {...useSelector(state => state.gameInfos)};
+    const gameInfos = useSelector(state => state.gameInfos);
     const dispatch = useDispatch();
 
     // Registering device type.
     useEffect(() => {
         gameInfos.device = (isMobile) ? gameConst.ON_MOBILE : gameConst.ON_DESKTOP;
-        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setGameInfos({...gameInfos}));
     }, []);
 
     // Recording time on begin and end for the current game.

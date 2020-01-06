@@ -34,8 +34,8 @@ const store = createStore(
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
+  <Provider store={store}>
+    <App/>
+  </Provider>,    
     appNode
 );

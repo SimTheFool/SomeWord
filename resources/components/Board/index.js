@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import useRefCallback from 'Hooks/useRefCallback';
 import * as actions from 'Actions';
@@ -13,12 +13,12 @@ import InputViewer from 'Components/InputViewer';
 var Board = function(props)
 {
     const dispatch = useDispatch();
-    const gameInfos = {...useSelector(state => state.gameInfos)};
+    const gameInfos = useSelector(state => state.gameInfos);
     const speedIndex = useSelector(state => state.gameInfos.speed);
     const words = useSelector(state => state.words);
     const wordPool = useSelector(state => state.wordPool);
     const input = useSelector(state => state.input);
-    const [createWordPID, setCreateWordPID] = useState(null);
+    const createWordPID = useRef(null);
 
     const createWord = () => {
 
@@ -33,12 +33,12 @@ var Board = function(props)
             createWordRef();
         }, delay);
 
-        setCreateWordPID(PID);
+        createWordPID.current = PID;
     };
     const createWordRef = useRefCallback(createWord);
 
     const cleanCreateWordRef = useRefCallback(() => {
-        clearTimeout(createWordPID);
+        clearTimeout(createWordPID.current);
     });
 
     // Handle word timeout effect.
