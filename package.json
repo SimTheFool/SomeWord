@@ -42,5 +42,8 @@
   "browserslist": [
     "> 1%",
     "last 5 versions"
-  ]
+  ],
+  "dependencies": {
+    "ws": "^7.2.1"
+  }
 }
