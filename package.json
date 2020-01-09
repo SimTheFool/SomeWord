@@ -7,6 +7,7 @@
     "dev": "webpack",
     "prod": "webpack --env='prod'",
     "serve": "webpack-dev-server",
+    "launchWS": "node ./websockets/launchServer.js",
     "help": "webpack --help"
   },
   "author": "",
