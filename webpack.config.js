@@ -73,7 +73,8 @@ var configDefault =
             Constants: path.resolve('./resources/constants'),
             Hooks: path.resolve('./resources/hooks'),
             Utils: path.resolve('./resources/utils'),
-            GlobalStyle: path.resolve('./resources/global.scss')
+            GlobalStyle: path.resolve('./resources/global.scss'),
+            Env: path.resolve('./env.json')
         }
     },
     devServer:

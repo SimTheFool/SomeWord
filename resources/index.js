@@ -4,6 +4,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from './reducers';
 import defaultState from 'Constants/DefaultState';
+import Env from 'Env';
 
 import 'normalize.css';
 import './index.scss';
@@ -11,7 +12,6 @@ import './index.scss';
 import App from 'Components/App';
 
 const appNode = document.getElementById('app');
-
 
 // Using inner height for app size, instead 100vh which leads to inconsitencies on mobile.
 appNode.style.height = `${window.innerHeight}px`;
@@ -39,3 +39,10 @@ ReactDOM.render(
   </Provider>,    
     appNode
 );
+
+// Websocket connection
+
+var wsConnection = new WebSocket(`ws://${Env.webSocket.host}:${Env.webSocket.port}`);
+wsConnection.onmessage = (e) => {
+  console.log(e.data);
+}
