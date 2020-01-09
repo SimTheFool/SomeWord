@@ -18,7 +18,7 @@ var configDefault =
         path: path.resolve('./public/'),
         filename: '[name].js'
     },
-    watch: false,
+    watch: true,
     module: 
     {
         rules: [
@@ -90,6 +90,7 @@ var configModifiers =
     "prod": function()
     {
         configDefault.mode = "production";
+        configDefault.watch = false;
         configDefault.plugins.push(new OptimizeCssAssetsPlugin({assetNameRegExp: /\.css$/g }));
     }
 };
