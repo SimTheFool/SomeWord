@@ -6,13 +6,7 @@ Page d'accueil + initialization + fonctionnal responsive - 1 week DONE
 
 Animations - 1 week DONE
 
-Component memoization et étude des performances sous Firefox - 06/01
-
-Conteneuristation et déploiement de l'image - 10/01 :
-
-    - déploiement test avec une application simple et une image apache
-    - Développement d'un simple serveur de websoket (socket.io?) et ajout au conteneur.
-    - Etude : apache + socket.io ou serveur node + socket.io ?
+Component memoization et étude des performances sous Firefox - 06/01 DONE
 
 Websockets : Développement du multijoueur et connexion à l'api - 17/01 :
 

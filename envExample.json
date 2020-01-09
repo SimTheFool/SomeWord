@@ -1,0 +1,6 @@
+{
+    "webSocket": {
+        "host" : "mydomain.ext",
+        "port" : 1234
+    }
+}

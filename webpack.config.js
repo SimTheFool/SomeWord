@@ -18,7 +18,7 @@ var configDefault =
         path: path.resolve('./public/'),
         filename: '[name].js'
     },
-    watch: false,
+    watch: true,
     module: 
     {
         rules: [
@@ -73,7 +73,8 @@ var configDefault =
             Constants: path.resolve('./resources/constants'),
             Hooks: path.resolve('./resources/hooks'),
             Utils: path.resolve('./resources/utils'),
-            GlobalStyle: path.resolve('./resources/global.scss')
+            GlobalStyle: path.resolve('./resources/global.scss'),
+            Env: path.resolve('./env.json')
         }
     },
     devServer:
@@ -90,6 +91,7 @@ var configModifiers =
     "prod": function()
     {
         configDefault.mode = "production";
+        configDefault.watch = false;
         configDefault.plugins.push(new OptimizeCssAssetsPlugin({assetNameRegExp: /\.css$/g }));
     }
 };
