@@ -4,12 +4,12 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from './reducers';
 import defaultState from 'Constants/DefaultState';
-import Env from 'Env';
 
 import 'normalize.css';
 import './index.scss';
 
 import App from 'Components/App';
+import WSConnection from 'Components/WSConnection';
 
 const appNode = document.getElementById('app');
 
@@ -36,13 +36,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <App/>
+    <WSConnection/>
   </Provider>,    
     appNode
 );
-
-// Websocket connection
-
-var wsConnection = new WebSocket(`ws://${Env.webSocket.host}:${Env.webSocket.port}`);
-wsConnection.onmessage = (e) => {
-  console.log(e.data);
-}
