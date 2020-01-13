@@ -72,9 +72,10 @@ var configDefault =
             Actions: path.resolve('./resources/actions'),
             Constants: path.resolve('./resources/constants'),
             Hooks: path.resolve('./resources/hooks'),
-            Utils: path.resolve('./resources/utils'),
+            Middlewares: path.resolve('./resources/middlewares'),
             GlobalStyle: path.resolve('./resources/global.scss'),
-            Env: path.resolve('./env.json')
+            Env: path.resolve('./env.json'),
+            Websockets: path.resolve('./websockets')
         }
     },
     devServer:

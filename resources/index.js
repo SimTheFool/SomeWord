@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import {composeWithDevTools} from 'redux-devtools-extension/logOnlyInProduction';
+
 import allReducers from './reducers';
+import reportToWebsocket from 'Middlewares/reportToWebsocket';
 import defaultState from 'Constants/DefaultState';
 
 import 'normalize.css';
 import './index.scss';
 
 import App from 'Components/App';
-import WSConnection from 'Components/WSConnection';
 
 const appNode = document.getElementById('app');
 
@@ -30,13 +32,12 @@ window.addEventListener('orientationchange', (e) => {
 const store = createStore(
   allReducers,
   defaultState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(reportToWebsocket))
 );
 
 ReactDOM.render(
   <Provider store={store}>
     <App/>
-    <WSConnection/>
   </Provider>,    
     appNode
 );
