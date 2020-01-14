@@ -1,11 +1,11 @@
 import WebSocket from 'ws';
 import Env from '../env.json'
 
-import {dispatch, getState} from './store';
+import store from './store';
 import * as actionCreators from './actionCreators';
 
-import types from './constants/messageTypes';
-import serverConst from './constants/serverConst';
+import * as types from './constants/messageTypes';
+import * as serverConst from './constants/serverConst';
 
 var createServer = function()
 {
@@ -17,7 +17,7 @@ var createServer = function()
     
     wss.on('connection', (ws) => {
     
-        dispatch(actionCreators.addClient(ws));
+        store.dispatch(actionCreators.addClient(ws));
     
         ws.on('message', (e) => {
 
@@ -26,29 +26,37 @@ var createServer = function()
             switch(data.msg)
             {
                 case types.SET_CLIENT_STATUS_PLAYING:
-                    dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_PLAYING));
+                    store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_PLAYING));
                     break;
 
                 case types.SET_CLIENT_STATUS_WAITING:
-                    dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_WAITING));
+                    store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_WAITING));
                     break;
 
-                case types.SET_CLIENT_NOT_PLAYING:
-                    dispatch(actionCreators.setClientStatus(ws, serverConst.NOT_PLAYING));
+                case types.SET_CLIENT_STATUS_NOT_PLAYING:
+                    store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_NOT_PLAYING));
                     break;
 
                 case types.PAIR_CLIENT:
-                    dispatch(actionCreators.pairClient(ws));
+                    store.dispatch(actionCreators.pairClient(ws));
                     break;
 
                 case types.FREE_CLIENT:
-                    dispatch(actionCreators.freeClient(ws));
+                    store.dispatch(actionCreators.freeClient(ws));
                     break;
 
                 default:
+                    console.log("wrong request");
                     return;
             }
 
+            console.log(store.state);
+            console.log("**//**");
+
+        });
+
+        ws.on('close', (e) => {
+            store.dispatch(actionCreators.removeClient(ws));
         });
 
     });

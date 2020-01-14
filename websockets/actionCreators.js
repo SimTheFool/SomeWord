@@ -11,6 +11,18 @@ export const addClient = function(ws)
     };
 };
 
+export const removeClient = function(ws)
+{
+    return (store) => {
+        let index = store.findUserIndexByWs(ws);
+        if(index === -1)
+        {
+            return;
+        }
+        store.state.users.splice(index, 1);
+    };
+};
+
 export const setClientStatus = function(ws, status)
 {
     return (store) => {

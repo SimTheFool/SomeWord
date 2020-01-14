@@ -1,4 +1,4 @@
-import serverConst from './constants/serverConst';
+import * as serverConst from './constants/serverConst';
 
 let store = {
 
@@ -15,6 +15,13 @@ let store = {
     findUserByWs: function(ws)
     {
         return this.state.users.find((user) => {
+            return user.ws === ws;
+        });
+    },
+
+    findUserIndexByWs: function(ws)
+    {
+        return this.state.users.findIndex((user) => {
             return user.ws === ws;
         });
     },
