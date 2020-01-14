@@ -40,8 +40,8 @@ var Home = function(props)
         e.preventDefault();
         gameInfos.keyboard = (keyboard === "azerty") ? gameConst.KEYBOARD_AZERTY : gameConst.KEYBOARD_QWERTY;
         gameInfos.gameType = gameType;
-        gameInfos.status = gameConst.WAITING;
         dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setStatus(gameConst.WAITING));
         dispatch(actions.setPseudo(pseudo.toUpperCase()));
     };
 

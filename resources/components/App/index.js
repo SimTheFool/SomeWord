@@ -30,19 +30,6 @@ var App = function()
             dispatch(actions.setStartTime(new Date()));
         }
 
-        if(gameInfos.status === gameConst.WAITING)
-        {
-            if(gameInfos.gameType === gameConst.SOLO)
-            {
-                dispatch(actions.setStatus(gameConst.BEGINNING));
-            }
-
-            if(gameInfos.gameType === gameConst.MULTI)
-            {
-                // coupling with another user through WS, then BEGINNING.
-            }
-        }
-
         if(gameInfos.status === gameConst.WINNING || gameInfos.status === gameConst.LOOSING)
         {
             dispatch(actions.setEndTime(new Date()));

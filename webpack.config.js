@@ -74,8 +74,7 @@ var configDefault =
             Hooks: path.resolve('./resources/hooks'),
             Middlewares: path.resolve('./resources/middlewares'),
             GlobalStyle: path.resolve('./resources/global.scss'),
-            Env: path.resolve('./env.json'),
-            Websockets: path.resolve('./websockets')
+            Env: path.resolve('./env.json')
         }
     },
     devServer:
