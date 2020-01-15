@@ -45,7 +45,7 @@ var createServer = function()
             
             switch(data.msg)
             {
-                case types.SET_CLIENT_STATUS_PLAYING:
+                /* case types.SET_CLIENT_STATUS_PLAYING:
                     store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_PLAYING));
                     break;
 
@@ -55,7 +55,7 @@ var createServer = function()
 
                 case types.SET_CLIENT_STATUS_NOT_PLAYING:
                     store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_NOT_PLAYING));
-                    break;
+                    break; */
 
                 case types.STACK_IN_PAIR_QUEUE:
                     store.dispatch(actionCreators.stackInPairQueue(ws));
@@ -67,6 +67,18 @@ var createServer = function()
 
                 case types.UNPAIR:
                     store.dispatch(actionCreators.unpair(ws));
+                    break;
+
+                case types.SEND_INFOS_TO_OPPONENT:
+                    let opponent = store.findUserByWs(ws).pairedWith;
+                    if(!opponent)
+                    {
+                        return;
+                    }
+                    sendMessage(opponent.ws, {
+                        msg: types.RECEIVE_OPPONENT_INFOS,
+                        payload: data.payload
+                    });
                     break;
 
                 default:

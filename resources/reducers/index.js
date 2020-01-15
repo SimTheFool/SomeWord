@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 
 import userInfosReducer from './userInfos';
+import opponentInfosReducer from './opponentInfos';
 import gameInfosReducer from './gameInfos';
 import inputReducer from './input';
 import chainReducer from './chain';
@@ -11,6 +12,7 @@ import wordPoolReducer from './wordPool';
 
 const allReducers = combineReducers({
     userInfos: userInfosReducer,
+    opponentInfos: opponentInfosReducer,
     gameInfos: gameInfosReducer,
     input: inputReducer,
     chain: chainReducer,

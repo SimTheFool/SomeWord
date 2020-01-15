@@ -23,5 +23,9 @@ Pseudo.propTypes = {
 };
 
 export default React.memo(Pseudo, (prev, next) => {
+    if(prev.pseudo !== next.pseudo)
+    {
+        return false;
+    }
     return true;
 });

@@ -11,6 +11,17 @@ const reportToWebsocket = function(store) {
         connection.send(JSON.stringify(msg));
     };
 
+    let getInfosForOpponent = function(state)
+    {
+        return {
+            pseudo: state.userInfos.pseudo,
+            chain: state.chain,
+            score: state.score,
+            life: state.life,
+            words: state.words
+        };
+    };
+
     connection.onmessage = (e) => {
         let data = JSON.parse(e.data);
 
@@ -18,6 +29,10 @@ const reportToWebsocket = function(store) {
         {
             case "START_PLAYING":
                 store.dispatch(actions.setStatus(gameConst.BEGINNING));
+                break;
+
+            case "RECEIVE_OPPONENT_INFOS":
+                store.dispatch(actions.setOpponentInfos(data.payload));
                 break;
                 
             default:
@@ -31,8 +46,13 @@ const reportToWebsocket = function(store) {
         let afterEffect = () => {};
 
         let isMulti = state.gameInfos.gameType === gameConst.MULTI;
+
         let isChangingStatus = (action.type === types.SET_STATUS) && (action.status !== state.gameInfos.status);
 
+        let isChangingInfosForOpponent = types.CHANGING_INFOS_FOR_OPPONENT_TYPES.some((type) => {
+            return (type === action.type);
+        });
+        
         if(isChangingStatus)
         {
             if(action.status === gameConst.NOT_PLAYING)
@@ -57,14 +77,14 @@ const reportToWebsocket = function(store) {
                         };
                     }
                 }
-                else
+                /* else
                 {
                     afterEffect = () => {
                         sendMessage({
                             msg: "SET_CLIENT_STATUS_NOT_PLAYING"
                         });
                     };
-                }
+                } */
             }
             else if(action.status === gameConst.WAITING)
             {
@@ -85,12 +105,20 @@ const reportToWebsocket = function(store) {
             }
             else if(action.status === gameConst.BEGINNING)
             {
-                afterEffect = () => {
+                /* afterEffect = () => {
                     sendMessage({
                         msg: "SET_CLIENT_STATUS_PLAYING"
                     });
-                };
+                }; */
             }
+        }
+
+        if(isChangingInfosForOpponent)
+        {
+            sendMessage({
+                msg: "SEND_INFOS_TO_OPPONENT",
+                payload: getInfosForOpponent(state)
+            });
         }
 
 

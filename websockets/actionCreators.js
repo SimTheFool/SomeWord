@@ -5,7 +5,7 @@ export const addClient = function(ws)
     return (store) => {
         store.state.users.push({
             ws: ws,
-            status: serverConst.STATUS_NOT_PLAYING,
+            //status: serverConst.STATUS_NOT_PLAYING,
             pairedWith: null
         });
     };
@@ -15,11 +15,17 @@ export const removeClient = function(ws)
 {
     return (store) => {
         let index = store.findUserIndexByWs(ws);
-        if(index === -1)
+        if(index !== -1)
         {
-            return;
+            store.state.users.splice(index, 1);
         }
-        store.state.users.splice(index, 1);
+
+        index= store.findUserIndexInPairQueueByWs(ws);
+        if(index !== -1)
+        {
+            store.state.pairQueue.splice(index, 1);
+        }
+        
     };
 };
 
@@ -65,11 +71,9 @@ export const pairClientsProcess = function()
 {
     return (store) => {
         let queue = store.state.pairQueue;
-        console.log(queue.length);
 
         if(queue.length >= 2)
         {
-            console.log("pairing")
             let user1 = queue.shift();
             let user2 = queue.shift();
             user1.pairedWith = user2;

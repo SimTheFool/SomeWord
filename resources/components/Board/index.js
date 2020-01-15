@@ -20,6 +20,8 @@ var Board = function(props)
     const input = useSelector(state => state.input);
     const createWordPID = useRef(null);
 
+    const opponentWords = useSelector(state => state.opponentInfos.words);
+
     const createWord = () => {
 
         const effectiveWords = words.filter((word) => {
@@ -119,12 +121,25 @@ var Board = function(props)
     }, [speedIndex]);
 
 
+
+
+    let opponent = null;
+    if(gameInfos.gameType === gameConst.MULTI)
+    {
+        opponent = (
+            <div className="board-container border-left">
+                <WordGrid class="marginTest" words={opponentWords} onWordEscape={() => {}} onWordValidated={() => {}}/>
+            </div>
+        );
+    }
+
     return (
         <div id="board">
             <div className="board-container">
                 <WordGrid words={words} onWordEscape={handleWordEscape} onWordValidated={handleWordValidated}/>
                 <InputViewer input={input}/>
             </div>
+            {opponent}
         </div>
     );
 };

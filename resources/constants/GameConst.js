@@ -69,3 +69,7 @@ export const SCORE_PER_CHAR = 10;
 export const CHAIN_FACTOR = (chain) => {
   return Math.pow(chain + 1, 2) / 125;
 };
+
+// Word number per game type
+export const WORD_NB_SOLO = 9;
+export const WORD_NB_MULTI = 6;

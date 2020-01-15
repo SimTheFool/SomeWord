@@ -19,6 +19,11 @@ var HUD = function()
     const score = useSelector(state => state.score);
     const life = useSelector(state => Math.max(0, state.life));
 
+    const [opponentPseudo, opponentLife, opponentChain, opponentScore] = useSelector(state => {
+        return [state.opponentInfos.pseudo, state.opponentInfos.life, state.opponentInfos.chain, state.opponentInfos.score];
+    });
+    const gameType = useSelector(state => state.gameInfos.gameType);
+
     const triggerGameOver = function() {
         dispatch(actions.setStatus(gameConst.WINNING));
         dispatch(actions.deleteAllWords());
@@ -40,6 +45,20 @@ var HUD = function()
         }
     }, [chain]);
 
+
+    let opponent = null;
+    if(gameType === gameConst.MULTI)
+    {
+        opponent = (
+            <div className="HUD-container">
+                <Pseudo pseudo={opponentPseudo}/>
+                <Chain chain={opponentChain}/>
+                <Score score={opponentScore}/>
+                <Lifebar life={opponentLife}/>
+            </div>
+        );
+    }
+
     return (
         <div id="HUD">
             <div className="HUD-container">
@@ -48,6 +67,7 @@ var HUD = function()
                 <Chain chain={chain}/>
                 <Score score={score}/>
             </div>
+            {opponent}
         </div>
     );
 }

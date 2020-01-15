@@ -1,12 +1,5 @@
 import * as types from 'Constants/ActionTypes';
 
-export const setUserInfos = (infos) => {
-    return ({
-        type: types.SET_USER_INFOS,
-        infos
-    });
-};
-
 export const setPseudo = (pseudo) => {
     return ({
         type: types.SET_PSEUDO,
