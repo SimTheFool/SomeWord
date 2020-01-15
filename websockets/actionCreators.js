@@ -31,22 +31,53 @@ export const setClientStatus = function(ws, status)
     };
 };
 
-export const pairClient = function(ws)
+export const stackInPairQueue = function(ws)
 {
     return (store) => {
         let user = store.findUserByWs(ws);
-        let opponent = store.findUserNotPlaying();
-        user.pairedWith = opponent.ws;
-        opponent.pairedWith = user.ws;
+        store.state.pairQueue.push(user);
     };
 };
 
-export const freeClient = function(ws)
+export const freeFromPairQueue = function(ws)
+{
+    return (store) => {
+        let index = store.findUserIndexInPairQueueByWs(ws);
+        if(index === -1)
+        {
+            return;
+        }
+        store.state.pairQueue.splice(index, 1);
+    };
+};
+
+export const unpair = function(ws)
 {
     return (store) => {
         let user = store.findUserByWs(ws);
-        let opponent = store.findUserByWs(user.pairedWith);
-        user.pairedWith = null;
+        let opponent = user.pairedWith;
         opponent.pairedWith = null;
+        user.pairedWith = null;
     };
 };
+
+export const pairClientsProcess = function()
+{
+    return (store) => {
+        let queue = store.state.pairQueue;
+        console.log(queue.length);
+
+        if(queue.length >= 2)
+        {
+            console.log("pairing")
+            let user1 = queue.shift();
+            let user2 = queue.shift();
+            user1.pairedWith = user2;
+            user2.pairedWith = user1;
+
+            return [user1.ws, user2.ws];
+        }
+
+        return null;
+    };
+}

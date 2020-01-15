@@ -11,6 +11,7 @@ import Board from 'Components/Board';
 import InputText from 'Components/InputText';
 import Home from 'Components/Home';
 import GameOverModal from 'Components/GameOverModal';
+import WaitingOpponentModal from 'Components/WaitingOpponentModal';
 
 var App = function()
 {
@@ -39,7 +40,8 @@ var App = function()
     let app;
     if(gameInfos.status === gameConst.NOT_PLAYING || gameInfos.status === gameConst.WAITING)
     {
-        app = <Home/>
+        let modal = (gameInfos.status === gameConst.WAITING && gameInfos.gameType === gameConst.MULTI) ? <WaitingOpponentModal/> : null;
+        app = <><Home/>{modal}</>;
     }
     else
     {

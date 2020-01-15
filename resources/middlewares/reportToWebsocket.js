@@ -11,56 +11,93 @@ const reportToWebsocket = function(store) {
         connection.send(JSON.stringify(msg));
     };
 
-    //@TODO handle message reception
+    connection.onmessage = (e) => {
+        let data = JSON.parse(e.data);
+
+        switch(data.msg)
+        {
+            case "START_PLAYING":
+                store.dispatch(actions.setStatus(gameConst.BEGINNING));
+                break;
+                
+            default:
+        }
+    }
 
     return next => action => {
 
         let state = store.getState();
+        let previousEffect = () => {};
+        let afterEffect = () => {};
 
-        if(state.gameInfos.gameType === gameConst.MULTI)
+        let isMulti = state.gameInfos.gameType === gameConst.MULTI;
+        let isChangingStatus = (action.type === types.SET_STATUS) && (action.status !== state.gameInfos.status);
+
+        if(isChangingStatus)
         {
-            return next(action);
-        }
-
-        if(state.gameInfos.gameType === gameConst.SOLO)
-        {
-
-            if(action.type === types.SET_STATUS && action.status !== state.gameInfos.status)
+            if(action.status === gameConst.NOT_PLAYING)
             {
-                let effect = () => {};
-
-                if(action.status === gameConst.NOT_PLAYING)
+                if(isMulti)
                 {
-                    effect = () => {
+                    if(state.gameInfos.status === gameConst.NOT_PLAYING)
+                    {
+                        afterEffect = () => {
+                            sendMessage({
+                                msg: "UNPAIR"
+                            });
+                        };
+                    }
+
+                    if(state.gameInfos.status === gameConst.WAITING)
+                    {
+                        afterEffect = () => {
+                            sendMessage({
+                                msg: "FREE_FROM_PAIR_QUEUE"
+                            });
+                        };
+                    }
+                }
+                else
+                {
+                    afterEffect = () => {
                         sendMessage({
                             msg: "SET_CLIENT_STATUS_NOT_PLAYING"
                         });
                     };
                 }
-                else if(action.status === gameConst.WAITING)
+            }
+            else if(action.status === gameConst.WAITING)
+            {
+                if(isMulti)
                 {
-                    effect = () => {
-                        store.dispatch(actions.setStatus(gameConst.BEGINNING));
-                    };
-                }
-                else if(action.status === gameConst.BEGINNING)
-                {
-                    effect = () => {
+                    afterEffect = () => {
                         sendMessage({
-                            msg: "SET_CLIENT_STATUS_PLAYING"
+                            msg: "STACK_IN_PAIR_QUEUE"
                         });
                     };
                 }
-
-                let result = next(action);
-                effect();
-                return result;
+                else
+                {
+                    afterEffect = () => {
+                        store.dispatch(actions.setStatus(gameConst.BEGINNING));
+                    };
+                } 
             }
-
-            return next(action);
+            else if(action.status === gameConst.BEGINNING)
+            {
+                afterEffect = () => {
+                    sendMessage({
+                        msg: "SET_CLIENT_STATUS_PLAYING"
+                    });
+                };
+            }
         }
 
-        return next(action);
+
+        previousEffect();
+        let result = next(action);
+        afterEffect();
+        return result;
     };
 
 };

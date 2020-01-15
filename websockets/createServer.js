@@ -7,6 +7,11 @@ import * as actionCreators from './actionCreators';
 import * as types from './constants/messageTypes';
 import * as serverConst from './constants/serverConst';
 
+function sendMessage (ws, msg)
+{
+    ws.send(JSON.stringify(msg));
+};
+
 var createServer = function()
 {
     const wss = new WebSocket.Server({
@@ -14,6 +19,21 @@ var createServer = function()
         noServer: true,
         clientTracking: true
     });
+
+    setInterval(() => {
+        store.dispatch(actionCreators.pairClientsProcess(), (result) => {
+            if(!result)
+            {
+                return;
+            }
+
+            result.forEach((ws) => {
+                sendMessage(ws, {
+                    msg: types.START_PLAYING
+                });
+            });
+        });
+    }, 1000);
     
     wss.on('connection', (ws) => {
     
@@ -37,12 +57,16 @@ var createServer = function()
                     store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_NOT_PLAYING));
                     break;
 
-                case types.PAIR_CLIENT:
-                    store.dispatch(actionCreators.pairClient(ws));
+                case types.STACK_IN_PAIR_QUEUE:
+                    store.dispatch(actionCreators.stackInPairQueue(ws));
                     break;
 
-                case types.FREE_CLIENT:
-                    store.dispatch(actionCreators.freeClient(ws));
+                case types.FREE_FROM_PAIR_QUEUE:
+                    store.dispatch(actionCreators.freeFromPairQueue(ws));
+                    break;
+
+                case types.UNPAIR:
+                    store.dispatch(actionCreators.unpair(ws));
                     break;
 
                 default:
@@ -52,7 +76,6 @@ var createServer = function()
 
             console.log(store.state);
             console.log("**//**");
-
         });
 
         ws.on('close', (e) => {

@@ -1,37 +1,46 @@
 import * as serverConst from './constants/serverConst';
 
-let store = {
+class Store {
 
-    state: 
+    constructor()
     {
-        users: []
-    },
 
-    dispatch: function(action)
+    }
+
+    state = 
     {
-        action(this);
-    },
+        users: [],
+        pairQueue: []
+    }
 
-    findUserByWs: function(ws)
+    dispatch = function(action, afterEffect = () => {})
+    {
+        let result = action(this);
+        afterEffect(result);
+    }
+
+    findUserByWs = function(ws)
     {
         return this.state.users.find((user) => {
             return user.ws === ws;
         });
-    },
+    }
 
-    findUserIndexByWs: function(ws)
+    findUserIndexByWs = function(ws)
     {
         return this.state.users.findIndex((user) => {
             return user.ws === ws;
         });
-    },
+    }
 
-    findUserNotPlaying: function()
+    findUserIndexInPairQueueByWs = function(ws)
     {
-        return this.state.users.find((user) => {
-            return user.status === serverConst.STATUS_NOT_PLAYING;
+        return this.state.pairQueue.findIndex((user) => {
+            return user.ws === ws;
         });
     }
 };
+
+let store = new Store();
 
 export default store;
