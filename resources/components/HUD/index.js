@@ -25,7 +25,7 @@ var HUD = function()
     const gameType = useSelector(state => state.gameInfos.gameType);
 
     const triggerGameOver = function() {
-        dispatch(actions.setStatus(gameConst.WINNING));
+        dispatch(actions.setStatus(gameConst.FINISHING));
         dispatch(actions.deleteAllWords());
     };
 

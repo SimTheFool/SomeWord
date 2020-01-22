@@ -25,8 +25,9 @@ export const NOT_PLAYING = "NOT_PLAYING";
 export const WAITING = "WAITING";
 export const BEGINNING = "BEGINNING";
 export const PLAYING = "PLAYING";
-export const WINNING = "WINNING";
-export const LOOSING = "LOOSING";
+export const FINISHING = "FINISHING";
+export const WAITING_PLAY_AGAIN = "WAITING_PLAY_AGAIN";
+export const ABORT_PLAY_AGAIN = "ABORT_PLAY_AGAIN";
 
 // Game speed
 export const INFINITE = {

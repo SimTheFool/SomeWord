@@ -34,6 +34,12 @@ const reportToWebsocket = function(store) {
             case "RECEIVE_OPPONENT_INFOS":
                 store.dispatch(actions.setOpponentInfos(data.payload));
                 break;
+
+            case "ABORT_PLAY_AGAIN":
+                store.dispatch(actions.setStatus(gameConst.ABORT_PLAY_AGAIN));
+
+            case "FLASH_OPPONENT_DISCONNECTED":
+                console.log('Your opponent has gone');
                 
             default:
         }
@@ -59,20 +65,19 @@ const reportToWebsocket = function(store) {
             {
                 if(isMulti)
                 {
-                    if(state.gameInfos.status === gameConst.NOT_PLAYING)
-                    {
-                        afterEffect = () => {
-                            sendMessage({
-                                msg: "UNPAIR"
-                            });
-                        };
-                    }
-
                     if(state.gameInfos.status === gameConst.WAITING)
                     {
                         afterEffect = () => {
                             sendMessage({
                                 msg: "FREE_FROM_PAIR_QUEUE"
+                            });
+                        };
+                    }
+                    else
+                    {
+                        afterEffect = () => {
+                            sendMessage({
+                                msg: "UNPAIR"
                             });
                         };
                     }
@@ -103,6 +108,23 @@ const reportToWebsocket = function(store) {
                     };
                 } 
             }
+            else if(action.status === gameConst.WAITING_PLAY_AGAIN)
+            {
+                if(isMulti)
+                {
+                    afterEffect = () => {
+                        sendMessage({
+                            msg: "SET_CLIENT_PLAY_AGAIN"
+                        });
+                    };
+                }
+                else
+                {
+                    afterEffect = () => {
+                        store.dispatch(actions.setStatus(gameConst.BEGINNING));
+                    };
+                } 
+            }
             else if(action.status === gameConst.BEGINNING)
             {
                 /* afterEffect = () => {
@@ -115,16 +137,18 @@ const reportToWebsocket = function(store) {
 
         if(isChangingInfosForOpponent)
         {
-            sendMessage({
-                msg: "SEND_INFOS_TO_OPPONENT",
-                payload: getInfosForOpponent(state)
-            });
+            afterEffect = (newState) => {
+                sendMessage({
+                    msg: "SEND_INFOS_TO_OPPONENT",
+                    payload: getInfosForOpponent(newState)
+                });
+            };
         }
 
 
-        previousEffect();
+        previousEffect(state);
         let result = next(action);
-        afterEffect();
+        afterEffect(store.getState());
         return result;
     };
 

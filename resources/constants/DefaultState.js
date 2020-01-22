@@ -13,7 +13,7 @@ const defaultState = {
         pseudo: "",
         chain: 0,
         score: 0,
-        life: 100,
+        life: 0,
         words: []
     },
     gameInfos: {

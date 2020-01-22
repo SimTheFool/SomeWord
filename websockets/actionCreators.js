@@ -5,8 +5,8 @@ export const addClient = function(ws)
     return (store) => {
         store.state.users.push({
             ws: ws,
-            //status: serverConst.STATUS_NOT_PLAYING,
-            pairedWith: null
+            pairedWith: null,
+            playAgain: false
         });
     };
 };
@@ -14,6 +14,9 @@ export const addClient = function(ws)
 export const removeClient = function(ws)
 {
     return (store) => {
+        let user = store.findUserByWs(ws);
+        let opponent = user.pairedWith;
+
         let index = store.findUserIndexByWs(ws);
         if(index !== -1)
         {
@@ -25,15 +28,12 @@ export const removeClient = function(ws)
         {
             store.state.pairQueue.splice(index, 1);
         }
-        
-    };
-};
 
-export const setClientStatus = function(ws, status)
-{
-    return (store) => {
-        let user = store.findUserByWs(ws);
-        user.status = status;
+        if(opponent)
+        {
+            opponent.pairedWith = null;
+            return opponent;
+        }        
     };
 };
 
@@ -62,8 +62,31 @@ export const unpair = function(ws)
     return (store) => {
         let user = store.findUserByWs(ws);
         let opponent = user.pairedWith;
-        opponent.pairedWith = null;
-        user.pairedWith = null;
+        if(opponent)
+        {
+            opponent.pairedWith = null;
+            user.pairedWith = null;
+            return opponent;
+        }
+    };
+};
+
+export const setClientPlayAgain = function(ws)
+{
+    return (store) => {
+        let user = store.findUserByWs(ws);
+        user.playAgain = true;
+        let opponent = user.pairedWith;
+
+        if(!opponent)
+        {
+            return null;
+        }
+
+        if(opponent.playAgain)
+        {
+            return [user, opponent];
+        }
     };
 };
 
@@ -79,7 +102,7 @@ export const pairClientsProcess = function()
             user1.pairedWith = user2;
             user2.pairedWith = user1;
 
-            return [user1.ws, user2.ws];
+            return [user1, user2];
         }
 
         return null;

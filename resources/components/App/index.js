@@ -31,7 +31,7 @@ var App = function()
             dispatch(actions.setStartTime(new Date()));
         }
 
-        if(gameInfos.status === gameConst.WINNING || gameInfos.status === gameConst.LOOSING)
+        if(gameInfos.status === gameConst.FINISHING)
         {
             dispatch(actions.setEndTime(new Date()));
         }
@@ -45,7 +45,7 @@ var App = function()
     }
     else
     {
-        let modal = (gameInfos.status === gameConst.WINNING || gameInfos.status === gameConst.LOOSING) ? <GameOverModal/> : null;
+        let modal = (gameInfos.status === gameConst.FINISHING || gameInfos.status === gameConst.WAITING_PLAY_AGAIN || gameInfos.status === gameConst.ABORT_PLAY_AGAIN) ? <GameOverModal/> : null;
         app = <><HUD/><Board/><InputText/>{modal}</>;
     }
 

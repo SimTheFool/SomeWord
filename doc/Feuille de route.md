@@ -20,4 +20,6 @@ Audio : 22/01
     - Recherche d'effet audio libre de droits et d'une piste sonore en background.
     - Intégration des feedbacks sonores.
 
+Ajout de messages flash:
+
 Rééquilibrage et ajout des objets : deadline indéterminée

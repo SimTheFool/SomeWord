@@ -1,9 +1,9 @@
 import WebSocket from 'ws';
 import Env from '../env.json'
 
+import debug from './debug';
 import store from './store';
 import * as actionCreators from './actionCreators';
-
 import * as types from './constants/messageTypes';
 import * as serverConst from './constants/serverConst';
 
@@ -27,8 +27,9 @@ var createServer = function()
                 return;
             }
 
-            result.forEach((ws) => {
-                sendMessage(ws, {
+            result.forEach((user) => {
+                user.playAgain = false;
+                sendMessage(user.ws, {
                     msg: types.START_PLAYING
                 });
             });
@@ -45,18 +46,6 @@ var createServer = function()
             
             switch(data.msg)
             {
-                /* case types.SET_CLIENT_STATUS_PLAYING:
-                    store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_PLAYING));
-                    break;
-
-                case types.SET_CLIENT_STATUS_WAITING:
-                    store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_WAITING));
-                    break;
-
-                case types.SET_CLIENT_STATUS_NOT_PLAYING:
-                    store.dispatch(actionCreators.setClientStatus(ws, serverConst.STATUS_NOT_PLAYING));
-                    break; */
-
                 case types.STACK_IN_PAIR_QUEUE:
                     store.dispatch(actionCreators.stackInPairQueue(ws));
                     break;
@@ -66,7 +55,36 @@ var createServer = function()
                     break;
 
                 case types.UNPAIR:
-                    store.dispatch(actionCreators.unpair(ws));
+                    store.dispatch(actionCreators.unpair(ws), (opponent) => {
+                        if(!opponent || !opponent.playAgain)
+                        {
+                            return;
+                        }
+
+                        sendMessage(opponent.ws, {
+                            msg: types.ABORT_PLAY_AGAIN
+                        });
+                    });
+                    break;
+
+                case types.SET_CLIENT_PLAY_AGAIN:
+                    store.dispatch(actionCreators.setClientPlayAgain(ws), (result) => {
+                        if(result === null)
+                        {
+                            sendMessage(ws, {
+                                msg: types.ABORT_PLAY_AGAIN
+                            });
+                        }
+                        else if(result)
+                        {
+                            result.forEach((user) => {
+                                user.playAgain = false;
+                                sendMessage(user.ws, {
+                                    msg: types.START_PLAYING
+                                });
+                            });
+                        }
+                    });
                     break;
 
                 case types.SEND_INFOS_TO_OPPONENT:
@@ -85,17 +103,33 @@ var createServer = function()
                     console.log("wrong request");
                     return;
             }
-
-            console.log(store.state);
-            console.log("**//**");
         });
 
         ws.on('close', (e) => {
-            store.dispatch(actionCreators.removeClient(ws));
+            store.dispatch(actionCreators.removeClient(ws), (opponent) => {
+                if(!opponent)
+                {
+                    return;
+                }
+
+                if(opponent.playAgain)
+                {
+                    sendMessage(opponent.ws, {
+                        msg: types.ABORT_PLAY_AGAIN
+                    });
+                }
+
+                sendMessage(opponent.ws, {
+                    msg: types.FLASH_OPPONENT_DISCONNECTED
+                });
+            });
         });
 
     });
 
 };
+
+
+debug();
 
 export default createServer;
