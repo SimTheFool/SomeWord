@@ -1,6 +1,7 @@
 // Input Messages
 
 export const STACK_IN_PAIR_QUEUE = "STACK_IN_PAIR_QUEUE";
+export const WAITING_SOLO_WORD_POOL = "WAITING_SOLO_WORD_POOL";
 export const FREE_FROM_PAIR_QUEUE = "FREE_FROM_PAIR_QUEUE";
 export const UNPAIR = "UNPAIR";
 export const SET_CLIENT_PLAY_AGAIN = "SET_CLIENT_PLAY_AGAIN";

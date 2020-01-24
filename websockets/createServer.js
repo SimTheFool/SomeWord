@@ -1,11 +1,11 @@
 import WebSocket from 'ws';
-import Env from '../env.json'
+import Env from '../env.json';
+import {rword} from 'rword';
 
 import debug from './debug';
 import store from './store';
 import * as actionCreators from './actionCreators';
 import * as types from './constants/messageTypes';
-import * as serverConst from './constants/serverConst';
 
 function sendMessage (ws, msg)
 {
@@ -30,7 +30,11 @@ var createServer = function()
             result.forEach((user) => {
                 user.playAgain = false;
                 sendMessage(user.ws, {
-                    msg: types.START_PLAYING
+                    msg: types.START_PLAYING,
+                    payload: rword.generate(300, {
+                        length: '3-12',
+                        capitalize: 'all'
+                    })
                 });
             });
         });
@@ -48,6 +52,16 @@ var createServer = function()
             {
                 case types.STACK_IN_PAIR_QUEUE:
                     store.dispatch(actionCreators.stackInPairQueue(ws));
+                    break;
+
+                case types.WAITING_SOLO_WORD_POOL:
+                    sendMessage(ws, {
+                        msg: types.START_PLAYING,
+                        payload: rword.generate(300, {
+                            length: '3-12',
+                            capitalize: 'all'
+                        })
+                    });
                     break;
 
                 case types.FREE_FROM_PAIR_QUEUE:
@@ -80,7 +94,11 @@ var createServer = function()
                             result.forEach((user) => {
                                 user.playAgain = false;
                                 sendMessage(user.ws, {
-                                    msg: types.START_PLAYING
+                                    msg: types.START_PLAYING,
+                                    payload: rword.generate(300, {
+                                        length: '3-12',
+                                        capitalize: 'all'
+                                    })
                                 });
                             });
                         }

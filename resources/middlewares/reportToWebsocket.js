@@ -28,6 +28,7 @@ const reportToWebsocket = function(store) {
         switch(data.msg)
         {
             case "START_PLAYING":
+                store.dispatch(actions.setWordPool(data.payload));
                 store.dispatch(actions.setStatus(gameConst.BEGINNING));
                 break;
 
@@ -82,14 +83,6 @@ const reportToWebsocket = function(store) {
                         };
                     }
                 }
-                /* else
-                {
-                    afterEffect = () => {
-                        sendMessage({
-                            msg: "SET_CLIENT_STATUS_NOT_PLAYING"
-                        });
-                    };
-                } */
             }
             else if(action.status === gameConst.WAITING)
             {
@@ -104,7 +97,9 @@ const reportToWebsocket = function(store) {
                 else
                 {
                     afterEffect = () => {
-                        store.dispatch(actions.setStatus(gameConst.BEGINNING));
+                        sendMessage({
+                            msg: "WAITING_SOLO_WORD_POOL"
+                        });
                     };
                 } 
             }
@@ -124,14 +119,6 @@ const reportToWebsocket = function(store) {
                         store.dispatch(actions.setStatus(gameConst.BEGINNING));
                     };
                 } 
-            }
-            else if(action.status === gameConst.BEGINNING)
-            {
-                /* afterEffect = () => {
-                    sendMessage({
-                        msg: "SET_CLIENT_STATUS_PLAYING"
-                    });
-                }; */
             }
         }
 

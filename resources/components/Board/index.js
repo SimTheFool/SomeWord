@@ -64,24 +64,7 @@ var Board = function(props)
         }
 
         dispatch(actions.initializeCurrentGame(gameInfos));
-
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE)
-            {
-                if (xhr.status === 200)
-                {
-                    let wordPool = JSON.parse(xhr.responseText);
-                    dispatch(actions.setWordPool(wordPool));
-                    dispatch(actions.setStatus(gameConst.PLAYING));
-                } else 
-                {
-                    console.error('La requête wordPool n\'a pas aboutie !')
-                }
-            }
-        };
-        xhr.open('GET', './wordsPool.json');
-        xhr.send();
+        dispatch(actions.setStatus(gameConst.PLAYING));
     }, [gameInfos.status]);
 
     // Setting the addWord process.
