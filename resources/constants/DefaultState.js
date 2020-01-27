@@ -25,10 +25,11 @@ const defaultState = {
     },
     input: "",
     chain: 0,
-    life: 100,
+    life: 15,
     score: 0,
     words: [],
-    wordPool: []
+    wordPool: [],
+    flashMessages: []
 };
 
 export default defaultState;

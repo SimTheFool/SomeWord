@@ -2,6 +2,7 @@ import Env from 'Env';
 import * as types from 'Constants/ActionTypes';
 import * as actions from 'Actions';
 import * as gameConst from 'Constants/GameConst';
+import * as flashMessages from 'Constants/FlashMessages'
 
 const reportToWebsocket = function(store) {
 
@@ -38,9 +39,16 @@ const reportToWebsocket = function(store) {
 
             case "ABORT_PLAY_AGAIN":
                 store.dispatch(actions.setStatus(gameConst.ABORT_PLAY_AGAIN));
+                store.dispatch(actions.addFlashMessage(flashMessages.OPONNENT_DISCONNECTED));
+                break;
+
+            case "WAIT_FOR_OPONNENT":
+                store.dispatch(actions.addFlashMessage(flashMessages.WAITING_OPONNENT));
+                break;
 
             case "FLASH_OPPONENT_DISCONNECTED":
-                console.log('Your opponent has gone');
+                store.dispatch(actions.addFlashMessage(flashMessages.OPONNENT_DISCONNECTED));
+                break;
                 
             default:
         }

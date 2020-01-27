@@ -16,9 +16,11 @@ Websockets : Développement du multijoueur et connexion à l'api - 17/01 :
 
 Ajout de messages flash:
 
+Rééquilibrage et ajout des objets :
+
 Audio :
 
     - Recherche d'effet audio libre de droits et d'une piste sonore en background.
     - Intégration des feedbacks sonores.
 
-Rééquilibrage et ajout des objets :
+

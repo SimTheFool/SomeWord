@@ -12,6 +12,7 @@ import InputText from 'Components/InputText';
 import Home from 'Components/Home';
 import GameOverModal from 'Components/GameOverModal';
 import WaitingOpponentModal from 'Components/WaitingOpponentModal';
+import FlashList from 'Components/FlashList';
 
 var App = function()
 {
@@ -52,6 +53,7 @@ var App = function()
     return (
         <>
             {app}
+            <FlashList/>
         </>
     );
 }

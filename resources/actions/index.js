@@ -149,3 +149,17 @@ export const resetInput = () => {
         type: types.RESET_INPUT
     });
 };
+
+export const addFlashMessage = (flashMessage) => {
+    return ({
+        type: types.ADD_FLASH_MESSAGE,
+        flashMessage
+    });
+};
+
+export const removeFlashMessage = (id) => {
+    return ({
+        type: types.REMOVE_FLASH_MESSAGE,
+        id: id
+    });
+};

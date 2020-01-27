@@ -102,6 +102,12 @@ var createServer = function()
                                 });
                             });
                         }
+                        else
+                        {
+                            sendMessage(ws, {
+                                msg: types.WAIT_FOR_OPONNENT
+                            });
+                        }
                     });
                     break;
 

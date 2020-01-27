@@ -1,0 +1,16 @@
+@import 'GlobalStyle';
+
+#flashList{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: auto;
+    width: 30%;
+
+    .flashMessage{
+        width: 100%;
+        margin-top: 0.2rem;
+    }
+}

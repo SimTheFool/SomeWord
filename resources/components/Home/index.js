@@ -84,7 +84,7 @@ var Home = function(props)
                         </div>
                     </div>
 
-                    <AppButton> Jouer </AppButton>
+                    <AppButton> Play </AppButton>
 
                 </form>
                 

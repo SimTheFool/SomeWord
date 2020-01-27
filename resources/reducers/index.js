@@ -9,6 +9,7 @@ import lifeReducer from './life';
 import scoreReducer from './score';
 import wordsReducer from './words';
 import wordPoolReducer from './wordPool';
+import flashMessagesReducer from './flashMessages';
 
 const allReducers = combineReducers({
     userInfos: userInfosReducer,
@@ -19,7 +20,8 @@ const allReducers = combineReducers({
     life: lifeReducer,
     score: scoreReducer,
     words: wordsReducer,
-    wordPool: wordPoolReducer
+    wordPool: wordPoolReducer,
+    flashMessages: flashMessagesReducer
 });
 
 export default allReducers;

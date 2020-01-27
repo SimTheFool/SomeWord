@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import * as gameConst from 'Constants/GameConst';
+import * as flashMessages from 'Constants/FlashMessages';
 import * as actions from 'Actions';
 
 import './style.scss';
@@ -30,16 +31,12 @@ function GameOverModal(props)
         dispatch(actions.setStatus(gameConst.NOT_PLAYING));
     };
 
-
     let playAgain;
     switch(status)
     {
         case gameConst.WAITING_PLAY_AGAIN:
-            playAgain = (<><AppButton onClick={handlePlayAgain}>Play again ?</AppButton> Waiting for opponent</>)
-            break;
-
         case gameConst.ABORT_PLAY_AGAIN:
-            playAgain = "Your opponent has gone";
+            playAgain = null;
             break;
 
         default:

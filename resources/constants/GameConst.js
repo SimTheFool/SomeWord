@@ -64,7 +64,6 @@ export const CHANGE_SPEED_DELAY = 20000;
 export const MIN_SPAWN_DELAY = 1000;
 export const MAX_SPAWN_DELAY = 3700;
 
-
 // Game score
 export const SCORE_PER_CHAR = 10;
 export const CHAIN_FACTOR = (chain) => {

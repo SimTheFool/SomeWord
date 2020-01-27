@@ -14,8 +14,14 @@
 
     width: 75%;
 
+    padding: 0.5em 0;
+
     background-color: $black;
     font-family: $fontFancy;
+
+    border: 2px $lightRed solid;
+    box-shadow: 0 0 1px $red, 0 0 2px $red, 0 0 4px $red, 0 0 8px $red, inset 0 0 1px $red, inset 0 0 2px $red, inset 0 0 4px $red, inset 0 0 8px $red;
+    border-radius: 15px;
 
     #gameover-title{
         text-align: center;
