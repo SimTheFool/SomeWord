@@ -1,5 +1,3 @@
-import * as serverConst from './constants/serverConst';
-
 class Store {
 
     constructor()

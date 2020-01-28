@@ -1,5 +1,3 @@
-import * as serverConst from './constants/serverConst';
-
 export const addClient = function(ws)
 {
     return (store) => {
