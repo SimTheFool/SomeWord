@@ -25,7 +25,7 @@ const defaultState = {
     },
     input: "",
     chain: 0,
-    life: 15,
+    life: 100,
     score: 0,
     words: [],
     wordPool: [],
