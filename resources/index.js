@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import {composeWithDevTools} from 'redux-devtools-extension/logOnlyInProduction';
+
 import allReducers from './reducers';
+import reportToWebsocket from 'Middlewares/reportToWebsocket';
 import defaultState from 'Constants/DefaultState';
-import Env from 'Env';
 
 import 'normalize.css';
 import './index.scss';
@@ -30,7 +32,7 @@ window.addEventListener('orientationchange', (e) => {
 const store = createStore(
   allReducers,
   defaultState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(reportToWebsocket))
 );
 
 ReactDOM.render(
@@ -39,10 +41,3 @@ ReactDOM.render(
   </Provider>,    
     appNode
 );
-
-// Websocket connection
-
-var wsConnection = new WebSocket(`ws://${Env.webSocket.host}:${Env.webSocket.port}`);
-wsConnection.onmessage = (e) => {
-  console.log(e.data);
-}

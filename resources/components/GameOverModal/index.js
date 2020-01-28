@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import * as gameConst from 'Constants/GameConst';
+import * as flashMessages from 'Constants/FlashMessages';
 import * as actions from 'Actions';
 
 import './style.scss';
@@ -11,7 +12,7 @@ import NeonText from 'Components/NeonText';
 function GameOverModal(props)
 {
     const dispatch = useDispatch();
-    const gameInfos = {...useSelector(state => state.gameInfos)};
+    const status = useSelector( state => state.gameInfos.status);
     const userInfos = {...useSelector(state => state.userInfos)};
 
     let timeElapsed = (userInfos.endTime - userInfos.startTime)/1000;
@@ -23,12 +24,24 @@ function GameOverModal(props)
     );
 
     const handlePlayAgain = () => {
-        dispatch(actions.setStatus(gameConst.BEGINNING));
+        dispatch(actions.setStatus(gameConst.WAITING_PLAY_AGAIN));
     };
 
     const handleBackToHome = () => {
         dispatch(actions.setStatus(gameConst.NOT_PLAYING));
     };
+
+    let playAgain;
+    switch(status)
+    {
+        case gameConst.WAITING_PLAY_AGAIN:
+        case gameConst.ABORT_PLAY_AGAIN:
+            playAgain = null;
+            break;
+
+        default:
+            playAgain = (<AppButton onClick={handlePlayAgain}>Play again ?</AppButton>)
+    }
 
 
     return(
@@ -39,9 +52,9 @@ function GameOverModal(props)
 
             <div id="gameover-recap">
                 <ul className="gameover-list">
-                    {/* <li className="gameover-item gameover-pseudo">
+                    <li className="gameover-item gameover-pseudo">
                         {userInfos.pseudo}
-                    </li> */}
+                    </li>
                     <li className="gameover-item">
                         Chain : <span className="gameover-value">{userInfos.bestChain}</span>
                     </li>
@@ -58,7 +71,7 @@ function GameOverModal(props)
             </div>
 
             <div className="gameover-button-left gameover-button">
-                <AppButton onClick={handlePlayAgain}>Play again ?</AppButton>
+                {playAgain}
             </div>
             <div className="gameover-button-right gameover-button">
                 <AppButton onClick={handleBackToHome}>Back to home</AppButton>

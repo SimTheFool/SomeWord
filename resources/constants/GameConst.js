@@ -25,8 +25,9 @@ export const NOT_PLAYING = "NOT_PLAYING";
 export const WAITING = "WAITING";
 export const BEGINNING = "BEGINNING";
 export const PLAYING = "PLAYING";
-export const WINNING = "WINNING";
-export const LOOSING = "LOOSING";
+export const FINISHING = "FINISHING";
+export const WAITING_PLAY_AGAIN = "WAITING_PLAY_AGAIN";
+export const ABORT_PLAY_AGAIN = "ABORT_PLAY_AGAIN";
 
 // Game speed
 export const INFINITE = {
@@ -63,9 +64,12 @@ export const CHANGE_SPEED_DELAY = 20000;
 export const MIN_SPAWN_DELAY = 1000;
 export const MAX_SPAWN_DELAY = 3700;
 
-
 // Game score
 export const SCORE_PER_CHAR = 10;
 export const CHAIN_FACTOR = (chain) => {
   return Math.pow(chain + 1, 2) / 125;
 };
+
+// Word number per game type
+export const WORD_NB_SOLO = 9;
+export const WORD_NB_MULTI = 6;

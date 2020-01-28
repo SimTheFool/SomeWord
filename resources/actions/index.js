@@ -1,12 +1,5 @@
 import * as types from 'Constants/ActionTypes';
 
-export const setUserInfos = (infos) => {
-    return ({
-        type: types.SET_USER_INFOS,
-        infos
-    });
-};
-
 export const setPseudo = (pseudo) => {
     return ({
         type: types.SET_PSEUDO,
@@ -154,5 +147,19 @@ export const setInput = (value) => {
 export const resetInput = () => {
     return ({
         type: types.RESET_INPUT
+    });
+};
+
+export const addFlashMessage = (flashMessage) => {
+    return ({
+        type: types.ADD_FLASH_MESSAGE,
+        flashMessage
+    });
+};
+
+export const removeFlashMessage = (id) => {
+    return ({
+        type: types.REMOVE_FLASH_MESSAGE,
+        id: id
     });
 };

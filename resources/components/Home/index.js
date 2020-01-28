@@ -40,8 +40,8 @@ var Home = function(props)
         e.preventDefault();
         gameInfos.keyboard = (keyboard === "azerty") ? gameConst.KEYBOARD_AZERTY : gameConst.KEYBOARD_QWERTY;
         gameInfos.gameType = gameType;
-        gameInfos.status = gameConst.BEGINNING;
-        dispatch(actions.setGameInfos({...gameInfos}));
+        dispatch(actions.setGameInfos(gameInfos));
+        dispatch(actions.setStatus(gameConst.WAITING));
         dispatch(actions.setPseudo(pseudo.toUpperCase()));
     };
 
@@ -65,10 +65,10 @@ var Home = function(props)
                                 <label htmlFor="solo">Solo</label>
                             </div>
                             
-                            {/* <div>
+                            <div>
                                 <input type="radio" id="multi" name="game-type" value={gameConst.MULTI} checked={gameType === gameConst.MULTI} onChange={handleGameTypeChange} />
                                 <label htmlFor="multi">Multi</label>
-                            </div>        */}              
+                            </div>                     
                         </div>
 
                         <div className="radio-input" hidden={gameInfos.device === gameConst.ON_DESKTOP}>
@@ -84,7 +84,7 @@ var Home = function(props)
                         </div>
                     </div>
 
-                    <AppButton> Jouer </AppButton>
+                    <AppButton> Play </AppButton>
 
                 </form>
                 

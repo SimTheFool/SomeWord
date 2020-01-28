@@ -20,6 +20,8 @@ var Board = function(props)
     const input = useSelector(state => state.input);
     const createWordPID = useRef(null);
 
+    const opponentWords = useSelector(state => state.opponentInfos.words);
+
     const createWord = () => {
 
         const effectiveWords = words.filter((word) => {
@@ -62,24 +64,7 @@ var Board = function(props)
         }
 
         dispatch(actions.initializeCurrentGame(gameInfos));
-
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE)
-            {
-                if (xhr.status === 200)
-                {
-                    let wordPool = JSON.parse(xhr.responseText);
-                    dispatch(actions.setWordPool(wordPool));
-                    dispatch(actions.setStatus(gameConst.PLAYING));
-                } else 
-                {
-                    console.error('La requête wordPool n\'a pas aboutie !')
-                }
-            }
-        };
-        xhr.open('GET', './wordsPool.json');
-        xhr.send();
+        dispatch(actions.setStatus(gameConst.PLAYING));
     }, [gameInfos.status]);
 
     // Setting the addWord process.
@@ -119,12 +104,25 @@ var Board = function(props)
     }, [speedIndex]);
 
 
+
+
+    let opponent = null;
+    if(gameInfos.gameType === gameConst.MULTI)
+    {
+        opponent = (
+            <div className="board-container border-left">
+                <WordGrid class="marginTest" words={opponentWords} onWordEscape={() => {}} onWordValidated={() => {}}/>
+            </div>
+        );
+    }
+
     return (
         <div id="board">
             <div className="board-container">
                 <WordGrid words={words} onWordEscape={handleWordEscape} onWordValidated={handleWordValidated}/>
                 <InputViewer input={input}/>
             </div>
+            {opponent}
         </div>
     );
 };

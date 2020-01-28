@@ -9,6 +9,13 @@ const defaultState = {
         endTime: 0,
         bestSpeed: ""
     },
+    opponentInfos:{
+        pseudo: "",
+        chain: 0,
+        score: 0,
+        life: 0,
+        words: []
+    },
     gameInfos: {
         device: gameConst.ON_DESKTOP,
         keyboard: gameConst.KEYBOARD_AZERTY,
@@ -18,10 +25,11 @@ const defaultState = {
     },
     input: "",
     chain: 0,
-    life: 100,
+    life: 15,
     score: 0,
     words: [],
-    wordPool: []
+    wordPool: [],
+    flashMessages: []
 };
 
 export default defaultState;

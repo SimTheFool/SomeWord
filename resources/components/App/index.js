@@ -11,6 +11,8 @@ import Board from 'Components/Board';
 import InputText from 'Components/InputText';
 import Home from 'Components/Home';
 import GameOverModal from 'Components/GameOverModal';
+import WaitingOpponentModal from 'Components/WaitingOpponentModal';
+import FlashList from 'Components/FlashList';
 
 var App = function()
 {
@@ -30,26 +32,28 @@ var App = function()
             dispatch(actions.setStartTime(new Date()));
         }
 
-        if(gameInfos.status === gameConst.WINNING || gameInfos.status === gameConst.LOOSING)
+        if(gameInfos.status === gameConst.FINISHING)
         {
             dispatch(actions.setEndTime(new Date()));
         }
     }, [gameInfos.status]);
 
     let app;
-    if(gameInfos.status === gameConst.NOT_PLAYING)
+    if(gameInfos.status === gameConst.NOT_PLAYING || gameInfos.status === gameConst.WAITING)
     {
-        app = <Home/>
+        let modal = (gameInfos.status === gameConst.WAITING && gameInfos.gameType === gameConst.MULTI) ? <WaitingOpponentModal/> : null;
+        app = <><Home/>{modal}</>;
     }
     else
     {
-        let modal = (gameInfos.status === gameConst.WINNING || gameInfos.status === gameConst.LOOSING) ? <GameOverModal/> : null;
+        let modal = (gameInfos.status === gameConst.FINISHING || gameInfos.status === gameConst.WAITING_PLAY_AGAIN || gameInfos.status === gameConst.ABORT_PLAY_AGAIN) ? <GameOverModal/> : null;
         app = <><HUD/><Board/><InputText/>{modal}</>;
     }
 
     return (
         <>
             {app}
+            <FlashList/>
         </>
     );
 }

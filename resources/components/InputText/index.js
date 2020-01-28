@@ -39,7 +39,7 @@ var InputText = function(props)
     };
 
     const handleEnterKey = () => {
-        if(status !== gameConst.WINNING && status !== gameConst.LOOSING)
+        if(status !== gameConst.FINISHING)
         {
             checkWord(input);
         }
