@@ -2,13 +2,10 @@ class Store {
 
     constructor()
     {
-
-    }
-
-    state = 
-    {
-        users: [],
-        pairQueue: []
+        this.state = {
+            users: [],
+            pairQueue: []
+        }
     }
 
     dispatch = function(action, afterEffect = () => {})
